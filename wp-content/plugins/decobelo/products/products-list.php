@@ -310,24 +310,28 @@ function get_current_filters($args) {
     
     }
 
-    $filters['child_terms'] = array();
+    if($current_tax) {
 
-    $current_id = get_term_by('slug', $current_slug, $current_tax)->term_id;
+        $filters['child_terms'] = array();
 
-    $args = array(
-        'taxonomy'      => $current_tax,
-        'hide_empty'    => false,
-        'child_of'      => $current_id
-    );
+        $current_id = get_term_by('slug', $current_slug, $current_tax)->term_id;
 
-    $childs = get_terms($args);
+        $args = array(
+            'taxonomy'      => $current_tax,
+            'hide_empty'    => false,
+            'child_of'      => $current_id
+        );
 
-    foreach($childs as $child) {
-        $filters['child_terms'][] = array (
-            'name'  => $child->name,
-            'url'   => get_term_link($child->term_id, $current_tax)
-        );  
-    };
+        $childs = get_terms($args);   
+
+        foreach($childs as $child) {
+            $filters['child_terms'][] = array (
+                'name'  => $child->name,
+                'url'   => get_term_link($child->term_id, $current_tax)
+            );  
+        };
+
+    }
 
     $filters['current'] = array(
         'type' => $current_tax,

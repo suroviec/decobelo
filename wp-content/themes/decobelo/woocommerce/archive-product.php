@@ -80,10 +80,11 @@ echo get_sidebar();
 			'promotion'		=> 'yes' 
 		);
 
-
 		$current_filters = get_current_filters($args);
 
 		render_filters($current_filters);
+
+		
 
 	?>
 
