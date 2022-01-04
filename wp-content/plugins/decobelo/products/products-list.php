@@ -114,6 +114,7 @@ function send_products() {
 // !SECTION
 
 // SECTION Get filters
+
 function get_current_filters($args) {
 
     global $woocommerce;
@@ -277,6 +278,10 @@ function get_current_filters($args) {
 
             // child cats
 
+            // zmienione przez wc_get_terms
+
+            /**
+
             if($current_tax == 'product_cat') {
 
                 if(!empty(get_term_children($current_id, $current_tax))) {
@@ -292,6 +297,7 @@ function get_current_filters($args) {
                 }       
             }
 
+             */
             
         }
         wp_reset_postdata();
@@ -303,6 +309,25 @@ function get_current_filters($args) {
         $filters = '';
     
     }
+
+    $filters['child_terms'] = array();
+
+    $current_id = get_term_by('slug', $current_slug, $current_tax)->term_id;
+
+    $args = array(
+        'taxonomy'      => $current_tax,
+        'hide_empty'    => false,
+        'child_of'      => $current_id
+    );
+
+    $childs = get_terms($args);
+
+    foreach($childs as $child) {
+        $filters['child_terms'][] = array (
+            'name'  => $child->name,
+            'url'   => get_term_link($child->term_id, $current_tax)
+        );  
+    };
 
     $filters['current'] = array(
         'type' => $current_tax,
@@ -321,6 +346,26 @@ function render_filters($filters=null) {
 
     ob_start(); ?>
 
+<?php if($filters['child_terms']) : ?> 
+        <div class="upper-filters">
+            <div class="child-terms">
+                
+                <?php
+
+                    foreach($filters['child_terms'] as $child) {
+                        echo sprintf(
+                            '<a href="%s" title="%s">%s</a>',
+                            $child['url'],
+                            $child['name'] . __(' - zobacz produkty z kategorii', 'decobelo'),
+                            $child['name']
+                        );
+                    };
+                ?>
+            </div>
+        </div>
+    
+    <?php endif; ?>  
+
     <?php   
         echo sprintf(
             '<div class="filters" data-nonce="%s" data-current_type="%s" data-current_term="%s" data-search="%s" data-promocje="%s">',
@@ -333,28 +378,7 @@ function render_filters($filters=null) {
     ?>
 
     <?php //var_dump($filters); ?>
-    
-    <?php if($filters['child_terms']) : ?> 
-        <div class="upper-filters">
-            <div class="child-terms">
-                <?php
 
-                    $url =  "//{$_SERVER['HTTP_HOST']}{$_SERVER['REQUEST_URI']}";
-                    $escaped_url = htmlspecialchars( $url, ENT_QUOTES, 'UTF-8' );
-                    $url_suff = explode('?', $escaped_url)[1];
-
-                    foreach($filters['child_terms'] as $id => $data) {
-                        echo sprintf(
-                            '<a href="%s" class="filter">%s</a>',
-                            $url_suff ? get_term_link($id, 'product_cat'). '?' . $url_suff : get_term_link($id, 'product_cat'),
-                            $data['name']
-                        );
-                    };
-                ?>
-            </div>
-        </div>
-    
-    <?php endif; ?>  
 
         <div class="lower-filters">
             

@@ -55,8 +55,14 @@ echo get_sidebar();
 		$current = array();
 		$current_tax = $query['taxonomy'];
 		$current_slug = $query['term'];
-	
+
 		/**
+
+		echo '<pre>';
+		var_dump($query);
+		echo '</pre>';
+	
+		
 		if(false == $current_filters = get_transient($current_tax . '_' . $current_slug . '_filters')) {
 			$current_filters = get_current_filters($current_tax, $current_slug);
 			set_transient($current_tax . '_' . $current_slug . '_filters', $current_filters, YEAR_IN_SECONDS );
@@ -76,11 +82,6 @@ echo get_sidebar();
 
 
 		$current_filters = get_current_filters($args);
-
-
-		echo '<pre>';
-		//var_dump($current_filters);
-		echo '</pre>';
 
 		render_filters($current_filters);
 
