@@ -1,0 +1,145 @@
+2022-01-03T16:33:31+00:00 CRITICAL syntax error, unexpected 'return' (T_RETURN) w /opt/lampp/htdocs/decobelo/wp-content/themes/decobelo/functions.php w linii 47
+
+2022-01-03T16:39:41+00:00 CRITICAL Uncaught Error: Call to undefined function wc_geta_gallery_image_html() in /opt/lampp/htdocs/decobelo/wp-content/plugins/woocommerce/templates/single-product/product-thumbnails.php:31
+Stack trace:
+#0 /opt/lampp/htdocs/decobelo/wp-content/plugins/woocommerce/includes/wc-core-functions.php(345): include()
+#1 /opt/lampp/htdocs/decobelo/wp-content/plugins/woocommerce/includes/wc-template-functions.php(1538): wc_get_template('single-product/...')
+#2 /opt/lampp/htdocs/decobelo/wp-includes/class-wp-hook.php(303): woocommerce_show_product_thumbnails('')
+#3 /opt/lampp/htdocs/decobelo/wp-includes/class-wp-hook.php(327): WP_Hook->apply_filters('', Array)
+#4 /opt/lampp/htdocs/decobelo/wp-includes/plugin.php(470): WP_Hook->do_action(Array)
+#5 /opt/lampp/htdocs/decobelo/wp-content/themes/decobelo/woocommerce/single-product/product-image.php(52): do_action('woocommerce_pro...')
+#6 /opt/lampp/htdocs/decobelo/wp-content/plugins/woocommerce/includes/wc-core-functions.php(345): include('/opt/lampp/htdo...')
+#7 /opt/lampp/htdocs w /opt/lampp/htdocs/decobelo/wp-content/plugins/woocommerce/templates/single-product/product-thumbnails.php w linii 31
+
+2022-01-03T16:43:27+00:00 CRITICAL Uncaught Error: Call to undefined function custom_thumbnail() in /opt/lampp/htdocs/decobelo/wp-content/themes/decobelo/woocommerce/single-product/product-thumbnails.php:31
+Stack trace:
+#0 /opt/lampp/htdocs/decobelo/wp-content/plugins/woocommerce/includes/wc-core-functions.php(345): include()
+#1 /opt/lampp/htdocs/decobelo/wp-content/plugins/woocommerce/includes/wc-template-functions.php(1538): wc_get_template('single-product/...')
+#2 /opt/lampp/htdocs/decobelo/wp-includes/class-wp-hook.php(303): woocommerce_show_product_thumbnails('')
+#3 /opt/lampp/htdocs/decobelo/wp-includes/class-wp-hook.php(327): WP_Hook->apply_filters('', Array)
+#4 /opt/lampp/htdocs/decobelo/wp-includes/plugin.php(470): WP_Hook->do_action(Array)
+#5 /opt/lampp/htdocs/decobelo/wp-content/themes/decobelo/woocommerce/single-product/product-image.php(50): do_action('woocommerce_pro...')
+#6 /opt/lampp/htdocs/decobelo/wp-content/plugins/woocommerce/includes/wc-core-functions.php(345): include('/opt/lampp/htdo...')
+#7 /opt/lampp/htdocs/decobelo/wp w /opt/lampp/htdocs/decobelo/wp-content/themes/decobelo/woocommerce/single-product/product-thumbnails.php w linii 31
+
+2022-01-03T17:22:06+00:00 CRITICAL Uncaught Error: Call to undefined function custom_product_galery() in /opt/lampp/htdocs/decobelo/wp-content/themes/decobelo/woocommerce/single-product/product-image.php:43
+Stack trace:
+#0 /opt/lampp/htdocs/decobelo/wp-content/plugins/woocommerce/includes/wc-core-functions.php(345): include()
+#1 /opt/lampp/htdocs/decobelo/wp-content/plugins/woocommerce/includes/wc-template-functions.php(1529): wc_get_template('single-product/...')
+#2 /opt/lampp/htdocs/decobelo/wp-includes/class-wp-hook.php(303): woocommerce_show_product_images('')
+#3 /opt/lampp/htdocs/decobelo/wp-includes/class-wp-hook.php(327): WP_Hook->apply_filters('', Array)
+#4 /opt/lampp/htdocs/decobelo/wp-includes/plugin.php(470): WP_Hook->do_action(Array)
+#5 /opt/lampp/htdocs/decobelo/wp-content/themes/decobelo/woocommerce/content-single-product.php(43): do_action('woocommerce_bef...')
+#6 /opt/lampp/htdocs/decobelo/wp-includes/template.php(772): require('/opt/lampp/htdo...')
+#7 /opt/lampp/htdocs/decobelo/wp-content/plugins/woocommerce/includes/wc-core-f w /opt/lampp/htdocs/decobelo/wp-content/themes/decobelo/woocommerce/single-product/product-image.php w linii 43
+
+2022-01-03T17:22:53+00:00 CRITICAL Uncaught Error: Call to undefined function custom_product_galery() in /opt/lampp/htdocs/decobelo/wp-content/themes/decobelo/woocommerce/single-product/product-image.php:43
+Stack trace:
+#0 /opt/lampp/htdocs/decobelo/wp-content/plugins/woocommerce/includes/wc-core-functions.php(345): include()
+#1 /opt/lampp/htdocs/decobelo/wp-content/plugins/woocommerce/includes/wc-template-functions.php(1529): wc_get_template('single-product/...')
+#2 /opt/lampp/htdocs/decobelo/wp-includes/class-wp-hook.php(303): woocommerce_show_product_images('')
+#3 /opt/lampp/htdocs/decobelo/wp-includes/class-wp-hook.php(327): WP_Hook->apply_filters('', Array)
+#4 /opt/lampp/htdocs/decobelo/wp-includes/plugin.php(470): WP_Hook->do_action(Array)
+#5 /opt/lampp/htdocs/decobelo/wp-content/themes/decobelo/woocommerce/content-single-product.php(43): do_action('woocommerce_bef...')
+#6 /opt/lampp/htdocs/decobelo/wp-includes/template.php(772): require('/opt/lampp/htdo...')
+#7 /opt/lampp/htdocs/decobelo/wp-content/plugins/woocommerce/includes/wc-core-f w /opt/lampp/htdocs/decobelo/wp-content/themes/decobelo/woocommerce/single-product/product-image.php w linii 43
+
+2022-01-03T17:23:49+00:00 CRITICAL Uncaught Error: Call to undefined function custom_product_galery() in /opt/lampp/htdocs/decobelo/wp-content/themes/decobelo/woocommerce/single-product/product-image.php:43
+Stack trace:
+#0 /opt/lampp/htdocs/decobelo/wp-content/plugins/woocommerce/includes/wc-core-functions.php(345): include()
+#1 /opt/lampp/htdocs/decobelo/wp-content/plugins/woocommerce/includes/wc-template-functions.php(1529): wc_get_template('single-product/...')
+#2 /opt/lampp/htdocs/decobelo/wp-includes/class-wp-hook.php(303): woocommerce_show_product_images('')
+#3 /opt/lampp/htdocs/decobelo/wp-includes/class-wp-hook.php(327): WP_Hook->apply_filters('', Array)
+#4 /opt/lampp/htdocs/decobelo/wp-includes/plugin.php(470): WP_Hook->do_action(Array)
+#5 /opt/lampp/htdocs/decobelo/wp-content/themes/decobelo/woocommerce/content-single-product.php(43): do_action('woocommerce_bef...')
+#6 /opt/lampp/htdocs/decobelo/wp-includes/template.php(772): require('/opt/lampp/htdo...')
+#7 /opt/lampp/htdocs/decobelo/wp-content/plugins/woocommerce/includes/wc-core-f w /opt/lampp/htdocs/decobelo/wp-content/themes/decobelo/woocommerce/single-product/product-image.php w linii 43
+
+2022-01-03T17:24:11+00:00 CRITICAL Uncaught Error: Call to undefined function custom_product_galery() in /opt/lampp/htdocs/decobelo/wp-content/themes/decobelo/woocommerce/single-product/product-image.php:43
+Stack trace:
+#0 /opt/lampp/htdocs/decobelo/wp-content/plugins/woocommerce/includes/wc-core-functions.php(345): include()
+#1 /opt/lampp/htdocs/decobelo/wp-content/plugins/woocommerce/includes/wc-template-functions.php(1529): wc_get_template('single-product/...')
+#2 /opt/lampp/htdocs/decobelo/wp-includes/class-wp-hook.php(303): woocommerce_show_product_images('')
+#3 /opt/lampp/htdocs/decobelo/wp-includes/class-wp-hook.php(327): WP_Hook->apply_filters('', Array)
+#4 /opt/lampp/htdocs/decobelo/wp-includes/plugin.php(470): WP_Hook->do_action(Array)
+#5 /opt/lampp/htdocs/decobelo/wp-content/themes/decobelo/woocommerce/content-single-product.php(43): do_action('woocommerce_bef...')
+#6 /opt/lampp/htdocs/decobelo/wp-includes/template.php(772): require('/opt/lampp/htdo...')
+#7 /opt/lampp/htdocs/decobelo/wp-content/plugins/woocommerce/includes/wc-core-f w /opt/lampp/htdocs/decobelo/wp-content/themes/decobelo/woocommerce/single-product/product-image.php w linii 43
+
+2022-01-03T17:24:23+00:00 CRITICAL Uncaught Error: Call to undefined function custom_product_galery() in /opt/lampp/htdocs/decobelo/wp-content/themes/decobelo/woocommerce/single-product/product-image.php:43
+Stack trace:
+#0 /opt/lampp/htdocs/decobelo/wp-content/plugins/woocommerce/includes/wc-core-functions.php(345): include()
+#1 /opt/lampp/htdocs/decobelo/wp-content/plugins/woocommerce/includes/wc-template-functions.php(1529): wc_get_template('single-product/...')
+#2 /opt/lampp/htdocs/decobelo/wp-includes/class-wp-hook.php(303): woocommerce_show_product_images('')
+#3 /opt/lampp/htdocs/decobelo/wp-includes/class-wp-hook.php(327): WP_Hook->apply_filters('', Array)
+#4 /opt/lampp/htdocs/decobelo/wp-includes/plugin.php(470): WP_Hook->do_action(Array)
+#5 /opt/lampp/htdocs/decobelo/wp-content/themes/decobelo/woocommerce/content-single-product.php(43): do_action('woocommerce_bef...')
+#6 /opt/lampp/htdocs/decobelo/wp-includes/template.php(772): require('/opt/lampp/htdo...')
+#7 /opt/lampp/htdocs/decobelo/wp-content/plugins/woocommerce/includes/wc-core-f w /opt/lampp/htdocs/decobelo/wp-content/themes/decobelo/woocommerce/single-product/product-image.php w linii 43
+
+2022-01-03T17:24:34+00:00 CRITICAL Uncaught Error: Call to undefined function custom_product_galery() in /opt/lampp/htdocs/decobelo/wp-content/themes/decobelo/woocommerce/single-product/product-image.php:43
+Stack trace:
+#0 /opt/lampp/htdocs/decobelo/wp-content/plugins/woocommerce/includes/wc-core-functions.php(345): include()
+#1 /opt/lampp/htdocs/decobelo/wp-content/plugins/woocommerce/includes/wc-template-functions.php(1529): wc_get_template('single-product/...')
+#2 /opt/lampp/htdocs/decobelo/wp-includes/class-wp-hook.php(303): woocommerce_show_product_images('')
+#3 /opt/lampp/htdocs/decobelo/wp-includes/class-wp-hook.php(327): WP_Hook->apply_filters('', Array)
+#4 /opt/lampp/htdocs/decobelo/wp-includes/plugin.php(470): WP_Hook->do_action(Array)
+#5 /opt/lampp/htdocs/decobelo/wp-content/themes/decobelo/woocommerce/content-single-product.php(43): do_action('woocommerce_bef...')
+#6 /opt/lampp/htdocs/decobelo/wp-includes/template.php(772): require('/opt/lampp/htdo...')
+#7 /opt/lampp/htdocs/decobelo/wp-content/plugins/woocommerce/includes/wc-core-f w /opt/lampp/htdocs/decobelo/wp-content/themes/decobelo/woocommerce/single-product/product-image.php w linii 43
+
+2022-01-03T17:24:55+00:00 CRITICAL Uncaught Error: Call to undefined function custom_product_gallery() in /opt/lampp/htdocs/decobelo/wp-content/themes/decobelo/woocommerce/single-product/product-thumbnails.php:31
+Stack trace:
+#0 /opt/lampp/htdocs/decobelo/wp-content/plugins/woocommerce/includes/wc-core-functions.php(345): include()
+#1 /opt/lampp/htdocs/decobelo/wp-content/plugins/woocommerce/includes/wc-template-functions.php(1538): wc_get_template('single-product/...')
+#2 /opt/lampp/htdocs/decobelo/wp-includes/class-wp-hook.php(303): woocommerce_show_product_thumbnails('')
+#3 /opt/lampp/htdocs/decobelo/wp-includes/class-wp-hook.php(327): WP_Hook->apply_filters('', Array)
+#4 /opt/lampp/htdocs/decobelo/wp-includes/plugin.php(470): WP_Hook->do_action(Array)
+#5 /opt/lampp/htdocs/decobelo/wp-content/themes/decobelo/woocommerce/single-product/product-image.php(50): do_action('woocommerce_pro...')
+#6 /opt/lampp/htdocs/decobelo/wp-content/plugins/woocommerce/includes/wc-core-functions.php(345): include('/opt/lampp/htdo...')
+#7 /opt/lampp/htdocs/decob w /opt/lampp/htdocs/decobelo/wp-content/themes/decobelo/woocommerce/single-product/product-thumbnails.php w linii 31
+
+2022-01-03T17:25:11+00:00 CRITICAL Uncaught Error: Call to undefined function custom_product_gallery() in /opt/lampp/htdocs/decobelo/wp-content/themes/decobelo/woocommerce/single-product/product-thumbnails.php:31
+Stack trace:
+#0 /opt/lampp/htdocs/decobelo/wp-content/plugins/woocommerce/includes/wc-core-functions.php(345): include()
+#1 /opt/lampp/htdocs/decobelo/wp-content/plugins/woocommerce/includes/wc-template-functions.php(1538): wc_get_template('single-product/...')
+#2 /opt/lampp/htdocs/decobelo/wp-includes/class-wp-hook.php(303): woocommerce_show_product_thumbnails('')
+#3 /opt/lampp/htdocs/decobelo/wp-includes/class-wp-hook.php(327): WP_Hook->apply_filters('', Array)
+#4 /opt/lampp/htdocs/decobelo/wp-includes/plugin.php(470): WP_Hook->do_action(Array)
+#5 /opt/lampp/htdocs/decobelo/wp-content/themes/decobelo/woocommerce/single-product/product-image.php(50): do_action('woocommerce_pro...')
+#6 /opt/lampp/htdocs/decobelo/wp-content/plugins/woocommerce/includes/wc-core-functions.php(345): include('/opt/lampp/htdo...')
+#7 /opt/lampp/htdocs/decob w /opt/lampp/htdocs/decobelo/wp-content/themes/decobelo/woocommerce/single-product/product-thumbnails.php w linii 31
+
+2022-01-03T17:25:38+00:00 CRITICAL syntax error, unexpected '}' w /opt/lampp/htdocs/decobelo/wp-content/themes/decobelo/functions.php w linii 49
+
+2022-01-03T17:30:22+00:00 CRITICAL Uncaught Error: Call to undefined function custom_product_gallery() in /opt/lampp/htdocs/decobelo/wp-content/themes/decobelo/woocommerce/single-product/product-image.php:43
+Stack trace:
+#0 /opt/lampp/htdocs/decobelo/wp-content/plugins/woocommerce/includes/wc-core-functions.php(345): include()
+#1 /opt/lampp/htdocs/decobelo/wp-content/plugins/woocommerce/includes/wc-template-functions.php(1529): wc_get_template('single-product/...')
+#2 /opt/lampp/htdocs/decobelo/wp-includes/class-wp-hook.php(303): woocommerce_show_product_images('')
+#3 /opt/lampp/htdocs/decobelo/wp-includes/class-wp-hook.php(327): WP_Hook->apply_filters('', Array)
+#4 /opt/lampp/htdocs/decobelo/wp-includes/plugin.php(470): WP_Hook->do_action(Array)
+#5 /opt/lampp/htdocs/decobelo/wp-content/themes/decobelo/woocommerce/content-single-product.php(43): do_action('woocommerce_bef...')
+#6 /opt/lampp/htdocs/decobelo/wp-includes/template.php(772): require('/opt/lampp/htdo...')
+#7 /opt/lampp/htdocs/decobelo/wp-content/plugins/woocommerce/includes/wc-core- w /opt/lampp/htdocs/decobelo/wp-content/themes/decobelo/woocommerce/single-product/product-image.php w linii 43
+
+2022-01-03T21:11:54+00:00 CRITICAL syntax error, unexpected '$i' (T_VARIABLE), expecting ')' w /opt/lampp/htdocs/decobelo/wp-content/themes/decobelo/db_startpage.php w linii 39
+
+2022-01-03T21:16:29+00:00 CRITICAL Uncaught Error: Object of class WP_Error could not be converted to string in /opt/lampp/htdocs/decobelo/wp-content/themes/decobelo/db_startpage.php:41
+Stack trace:
+#0 /opt/lampp/htdocs/decobelo/wp-content/themes/decobelo/db_startpage.php(41): sprintf('<div class="b%s...', 2, Object(WP_Error), 'bbb', 'https://localho...', 'Kolekcja 8')
+#1 /opt/lampp/htdocs/decobelo/wp-includes/template-loader.php(106): include('/opt/lampp/htdo...')
+#2 /opt/lampp/htdocs/decobelo/wp-blog-header.php(19): require_once('/opt/lampp/htdo...')
+#3 /opt/lampp/htdocs/decobelo/index.php(17): require('/opt/lampp/htdo...')
+#4 {main}
+  thrown w /opt/lampp/htdocs/decobelo/wp-content/themes/decobelo/db_startpage.php w linii 41
+
+2022-01-03T21:16:55+00:00 CRITICAL Uncaught Error: Object of class WP_Error could not be converted to string in /opt/lampp/htdocs/decobelo/wp-content/themes/decobelo/db_startpage.php:41
+Stack trace:
+#0 /opt/lampp/htdocs/decobelo/wp-content/themes/decobelo/db_startpage.php(41): sprintf('<div class="b%s...', 2, Object(WP_Error), 'bbb', 'https://localho...', 'Kolekcja 4')
+#1 /opt/lampp/htdocs/decobelo/wp-includes/template-loader.php(106): include('/opt/lampp/htdo...')
+#2 /opt/lampp/htdocs/decobelo/wp-blog-header.php(19): require_once('/opt/lampp/htdo...')
+#3 /opt/lampp/htdocs/decobelo/index.php(17): require('/opt/lampp/htdo...')
+#4 {main}
+  thrown w /opt/lampp/htdocs/decobelo/wp-content/themes/decobelo/db_startpage.php w linii 41
+

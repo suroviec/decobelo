@@ -1,0 +1,26 @@
+
+#advanced-sortables {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-column-gap: 0.5rem;
+    grid-row-gap: 0.5rem;
+}
+
+.form-table input[type=text],
+.custom-postbox input[type=text],
+.custom-postbox textarea {
+        width: 100%;
+}
+
+img {
+    max-width: 100%;
+}
+
+.meta-box-sortables input,
+.meta-box-sortables textarea {
+    width: 100%;
+}
+
+div.fs-notice.updated, div.fs-notice.success, div.fs-notice.promotion {
+    display: none !important;
+}

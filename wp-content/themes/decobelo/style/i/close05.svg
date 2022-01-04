@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="8.5148087mm"
+   height="8.6376419mm"
+   viewBox="0 0 8.5148086 8.6376419"
+   version="1.1"
+   id="svg5"
+   inkscape:version="1.1.1 (1:1.1+202109281949+c3084ef5ed)"
+   sodipodi:docname="close05.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#ffffff"
+     bordercolor="#ffffff"
+     borderopacity="1"
+     inkscape:pageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="false"
+     inkscape:document-units="mm"
+     showgrid="false"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0"
+     inkscape:zoom="5.5232103"
+     inkscape:cx="60.019442"
+     inkscape:cy="40.918232"
+     inkscape:window-width="1920"
+     inkscape:window-height="1052"
+     inkscape:window-x="1366"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs2" />
+  <g
+     inkscape:label="Warstwa 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-39.808475,-48.73318)">
+    <path
+       id="path857"
+       style="color:#000000;opacity:0.5;fill:#002330;stroke-width:3.77953;stroke-linecap:round;stroke-linejoin:round;-inkscape-stroke:none"
+       d="M 2.5761719 -0.001953125 A 2.5795276 2.5795276 0 0 0 0.75390625 0.7578125 A 2.5795276 2.5795276 0 0 0 0.75390625 4.4042969 L 12.677734 16.322266 L 0.75390625 28.240234 A 2.5795276 2.5795276 0 0 0 0.75390625 31.894531 A 2.5795276 2.5795276 0 0 0 4.4003906 31.894531 L 16.089844 20.205078 L 27.779297 31.894531 A 2.5795276 2.5795276 0 0 0 31.425781 31.894531 A 2.5795276 2.5795276 0 0 0 31.425781 28.240234 L 19.507812 16.322266 L 31.425781 4.4042969 A 2.5795276 2.5795276 0 0 0 31.425781 0.7578125 A 2.5795276 2.5795276 0 0 0 29.601562 -0.001953125 A 2.5795276 2.5795276 0 0 0 27.779297 0.7578125 L 16.089844 12.441406 L 4.4003906 0.7578125 A 2.5795276 2.5795276 0 0 0 2.5761719 -0.001953125 z "
+       transform="matrix(0.26458333,0,0,0.26458333,39.808475,48.73318)" />
+  </g>
+</svg>

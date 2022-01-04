@@ -1,0 +1,4 @@
+2021-12-07T14:57:41+00:00 CRITICAL syntax error, unexpected 'woocommerce_product_loop_start' (T_STRING) w /opt/lampp/htdocs/decobelo/wp-content/themes/decobelo/woocommerce/archive-product.php w linii 66
+
+2021-12-07T21:58:49+00:00 CRITICAL syntax error, unexpected '?>' w /opt/lampp/htdocs/decobelo/wp-content/themes/decobelo/woocommerce/archive-product.php w linii 48
+

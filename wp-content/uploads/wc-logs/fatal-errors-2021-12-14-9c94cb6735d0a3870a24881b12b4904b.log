@@ -1,0 +1,56 @@
+2021-12-14T00:37:02+00:00 CRITICAL Uncaught Error: Object of class WP_Term could not be converted to string in /opt/lampp/htdocs/decobelo/wp-content/plugins/decobelo/products/products-list.php:238
+Stack trace:
+#0 /opt/lampp/htdocs/decobelo/wp-content/plugins/decobelo/products/products-list.php(238): implode(',', Array)
+#1 /opt/lampp/htdocs/decobelo/wp-content/plugins/decobelo/products/products-list.php(58): get_updated_filters(Object(stdClass))
+#2 /opt/lampp/htdocs/decobelo/wp-includes/class-wp-hook.php(303): send_products('')
+#3 /opt/lampp/htdocs/decobelo/wp-includes/class-wp-hook.php(327): WP_Hook->apply_filters('', Array)
+#4 /opt/lampp/htdocs/decobelo/wp-includes/plugin.php(470): WP_Hook->do_action(Array)
+#5 /opt/lampp/htdocs/decobelo/wp-admin/admin-ajax.php(187): do_action('wp_ajax_send_pr...')
+#6 {main}
+  thrown w /opt/lampp/htdocs/decobelo/wp-content/plugins/decobelo/products/products-list.php w linii 238
+
+2021-12-14T14:40:32+00:00 CRITICAL Uncaught Error: Cannot use object of type WP_Term as array in /opt/lampp/htdocs/decobelo/wp-content/plugins/decobelo/products/products-list.php:161
+Stack trace:
+#0 /opt/lampp/htdocs/decobelo/wp-content/themes/decobelo/woocommerce/archive-product.php(67): get_current_filters('kolekcje', 'kolekcja-1')
+#1 /opt/lampp/htdocs/decobelo/wp-includes/template-loader.php(106): include('/opt/lampp/htdo...')
+#2 /opt/lampp/htdocs/decobelo/wp-blog-header.php(19): require_once('/opt/lampp/htdo...')
+#3 /opt/lampp/htdocs/decobelo/index.php(17): require('/opt/lampp/htdo...')
+#4 {main}
+  thrown w /opt/lampp/htdocs/decobelo/wp-content/plugins/decobelo/products/products-list.php w linii 161
+
+2021-12-14T14:40:54+00:00 CRITICAL Uncaught Error: Cannot use object of type WP_Term as array in /opt/lampp/htdocs/decobelo/wp-content/plugins/decobelo/products/products-list.php:161
+Stack trace:
+#0 /opt/lampp/htdocs/decobelo/wp-content/themes/decobelo/woocommerce/archive-product.php(67): get_current_filters('kolekcje', 'kolekcja-1')
+#1 /opt/lampp/htdocs/decobelo/wp-includes/template-loader.php(106): include('/opt/lampp/htdo...')
+#2 /opt/lampp/htdocs/decobelo/wp-blog-header.php(19): require_once('/opt/lampp/htdo...')
+#3 /opt/lampp/htdocs/decobelo/index.php(17): require('/opt/lampp/htdo...')
+#4 {main}
+  thrown w /opt/lampp/htdocs/decobelo/wp-content/plugins/decobelo/products/products-list.php w linii 161
+
+2021-12-14T14:41:44+00:00 CRITICAL Uncaught Error: Cannot use object of type WP_Term as array in /opt/lampp/htdocs/decobelo/wp-content/plugins/decobelo/products/products-list.php:162
+Stack trace:
+#0 /opt/lampp/htdocs/decobelo/wp-content/themes/decobelo/woocommerce/archive-product.php(67): get_current_filters('kolekcje', 'kolekcja-1')
+#1 /opt/lampp/htdocs/decobelo/wp-includes/template-loader.php(106): include('/opt/lampp/htdo...')
+#2 /opt/lampp/htdocs/decobelo/wp-blog-header.php(19): require_once('/opt/lampp/htdo...')
+#3 /opt/lampp/htdocs/decobelo/index.php(17): require('/opt/lampp/htdo...')
+#4 {main}
+  thrown w /opt/lampp/htdocs/decobelo/wp-content/plugins/decobelo/products/products-list.php w linii 162
+
+2021-12-14T14:42:00+00:00 CRITICAL Uncaught Error: Cannot use object of type WP_Term as array in /opt/lampp/htdocs/decobelo/wp-content/plugins/decobelo/products/products-list.php:163
+Stack trace:
+#0 /opt/lampp/htdocs/decobelo/wp-content/themes/decobelo/woocommerce/archive-product.php(67): get_current_filters('kolekcje', 'kolekcja-1')
+#1 /opt/lampp/htdocs/decobelo/wp-includes/template-loader.php(106): include('/opt/lampp/htdo...')
+#2 /opt/lampp/htdocs/decobelo/wp-blog-header.php(19): require_once('/opt/lampp/htdo...')
+#3 /opt/lampp/htdocs/decobelo/index.php(17): require('/opt/lampp/htdo...')
+#4 {main}
+  thrown w /opt/lampp/htdocs/decobelo/wp-content/plugins/decobelo/products/products-list.php w linii 163
+
+2021-12-14T14:44:32+00:00 CRITICAL Uncaught Error: Cannot use object of type WP_Term as array in /opt/lampp/htdocs/decobelo/wp-content/plugins/decobelo/products/products-list.php:159
+Stack trace:
+#0 /opt/lampp/htdocs/decobelo/wp-content/themes/decobelo/woocommerce/archive-product.php(67): get_current_filters('kolekcje', 'kolekcja-1')
+#1 /opt/lampp/htdocs/decobelo/wp-includes/template-loader.php(106): include('/opt/lampp/htdo...')
+#2 /opt/lampp/htdocs/decobelo/wp-blog-header.php(19): require_once('/opt/lampp/htdo...')
+#3 /opt/lampp/htdocs/decobelo/index.php(17): require('/opt/lampp/htdo...')
+#4 {main}
+  thrown w /opt/lampp/htdocs/decobelo/wp-content/plugins/decobelo/products/products-list.php w linii 159
+

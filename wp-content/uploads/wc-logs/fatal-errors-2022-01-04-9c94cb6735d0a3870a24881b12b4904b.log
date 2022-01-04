@@ -1,0 +1,4 @@
+2022-01-04T02:12:13+00:00 CRITICAL syntax error, unexpected ''remember'' (T_CONSTANT_ENCAPSED_STRING), expecting ')' w /opt/lampp/htdocs/decobelo/wp-content/themes/decobelo/functions.php w linii 143
+
+2022-01-04T02:18:38+00:00 CRITICAL syntax error, unexpected 'get_home_url' (T_STRING), expecting ';' or ',' w /opt/lampp/htdocs/decobelo/wp-content/themes/decobelo/functions.php w linii 151
+

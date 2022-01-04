@@ -1,0 +1,45 @@
+2021-12-21T01:18:50+00:00 CRITICAL Uncaught Error: Call to a member function get_value() on null in /opt/lampp/htdocs/decobelo/wp-content/plugins/decobelo/checkout.php:16
+Stack trace:
+#0 /opt/lampp/htdocs/decobelo/wp-includes/class-wp-hook.php(303): my_custom_checkout_fields('')
+#1 /opt/lampp/htdocs/decobelo/wp-includes/class-wp-hook.php(327): WP_Hook->apply_filters('', Array)
+#2 /opt/lampp/htdocs/decobelo/wp-includes/plugin.php(470): WP_Hook->do_action(Array)
+#3 /opt/lampp/htdocs/decobelo/wp-content/themes/decobelo/woocommerce/checkout/form-checkout.php(53): do_action('test')
+#4 /opt/lampp/htdocs/decobelo/wp-content/plugins/woocommerce/includes/wc-core-functions.php(345): include('/opt/lampp/htdo...')
+#5 /opt/lampp/htdocs/decobelo/wp-content/plugins/woocommerce/includes/shortcodes/class-wc-shortcode-checkout.php(293): wc_get_template('checkout/form-c...', Array)
+#6 /opt/lampp/htdocs/decobelo/wp-content/plugins/woocommerce/includes/shortcodes/class-wc-shortcode-checkout.php(67): WC_Shortcode_Checkout::checkout()
+#7 /opt/lampp/htdocs/decobelo/w w /opt/lampp/htdocs/decobelo/wp-content/plugins/decobelo/checkout.php w linii 16
+
+2021-12-21T01:19:18+00:00 CRITICAL Uncaught Error: Call to a member function get_value() on null in /opt/lampp/htdocs/decobelo/wp-content/plugins/decobelo/checkout.php:16
+Stack trace:
+#0 /opt/lampp/htdocs/decobelo/wp-includes/class-wp-hook.php(303): my_custom_checkout_fields('')
+#1 /opt/lampp/htdocs/decobelo/wp-includes/class-wp-hook.php(327): WP_Hook->apply_filters('', Array)
+#2 /opt/lampp/htdocs/decobelo/wp-includes/plugin.php(470): WP_Hook->do_action(Array)
+#3 /opt/lampp/htdocs/decobelo/wp-content/themes/decobelo/woocommerce/checkout/form-checkout.php(53): do_action('test')
+#4 /opt/lampp/htdocs/decobelo/wp-content/plugins/woocommerce/includes/wc-core-functions.php(345): include('/opt/lampp/htdo...')
+#5 /opt/lampp/htdocs/decobelo/wp-content/plugins/woocommerce/includes/shortcodes/class-wc-shortcode-checkout.php(293): wc_get_template('checkout/form-c...', Array)
+#6 /opt/lampp/htdocs/decobelo/wp-content/plugins/woocommerce/includes/shortcodes/class-wc-shortcode-checkout.php(67): WC_Shortcode_Checkout::checkout()
+#7 /opt/lampp/htdocs/decobelo/w w /opt/lampp/htdocs/decobelo/wp-content/plugins/decobelo/checkout.php w linii 16
+
+2021-12-21T01:20:02+00:00 CRITICAL Uncaught Error: Call to a member function get_value() on null in /opt/lampp/htdocs/decobelo/wp-content/plugins/decobelo/checkout.php:16
+Stack trace:
+#0 /opt/lampp/htdocs/decobelo/wp-includes/class-wp-hook.php(303): my_custom_checkout_fields('')
+#1 /opt/lampp/htdocs/decobelo/wp-includes/class-wp-hook.php(327): WP_Hook->apply_filters('', Array)
+#2 /opt/lampp/htdocs/decobelo/wp-includes/plugin.php(470): WP_Hook->do_action(Array)
+#3 /opt/lampp/htdocs/decobelo/wp-content/themes/decobelo/woocommerce/checkout/form-checkout.php(53): do_action('test')
+#4 /opt/lampp/htdocs/decobelo/wp-content/plugins/woocommerce/includes/wc-core-functions.php(345): include('/opt/lampp/htdo...')
+#5 /opt/lampp/htdocs/decobelo/wp-content/plugins/woocommerce/includes/shortcodes/class-wc-shortcode-checkout.php(293): wc_get_template('checkout/form-c...', Array)
+#6 /opt/lampp/htdocs/decobelo/wp-content/plugins/woocommerce/includes/shortcodes/class-wc-shortcode-checkout.php(67): WC_Shortcode_Checkout::checkout()
+#7 /opt/lampp/htdocs/decobelo/w w /opt/lampp/htdocs/decobelo/wp-content/plugins/decobelo/checkout.php w linii 16
+
+2021-12-21T22:11:45+00:00 CRITICAL Uncaught Error: [] operator not supported for strings in /opt/lampp/htdocs/decobelo/wp-content/plugins/woocommerce/includes/wc-template-functions.php:2744
+Stack trace:
+#0 /opt/lampp/htdocs/decobelo/wp-content/themes/decobelo/woocommerce/checkout/form-shipping.php(40): woocommerce_form_field('shipping_first_...', Array, 'Marcin')
+#1 /opt/lampp/htdocs/decobelo/wp-content/plugins/woocommerce/includes/wc-core-functions.php(345): include('/opt/lampp/htdo...')
+#2 /opt/lampp/htdocs/decobelo/wp-content/plugins/woocommerce/includes/class-wc-checkout.php(301): wc_get_template('checkout/form-s...', Array)
+#3 /opt/lampp/htdocs/decobelo/wp-includes/class-wp-hook.php(303): WC_Checkout->checkout_form_shipping('')
+#4 /opt/lampp/htdocs/decobelo/wp-includes/class-wp-hook.php(327): WP_Hook->apply_filters('', Array)
+#5 /opt/lampp/htdocs/decobelo/wp-includes/plugin.php(470): WP_Hook->do_action(Array)
+#6 /opt/lampp/htdocs/decobelo/wp-content/themes/decobelo/woocommerce/checkout/form-checkout.php(132): do_action('woocommerce_che... w /opt/lampp/htdocs/decobelo/wp-content/plugins/woocommerce/includes/wc-template-functions.php w linii 2744
+
+2021-12-21T22:13:40+00:00 CRITICAL syntax error, unexpected 'woocommerce_form_field' (T_STRING) w /opt/lampp/htdocs/decobelo/wp-content/themes/decobelo/woocommerce/checkout/form-shipping.php w linii 40
+

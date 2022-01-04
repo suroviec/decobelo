@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="4.2333331mm"
+   height="2.1166661mm"
+   viewBox="0 0 4.2333331 2.1166661"
+   version="1.1"
+   id="svg5"
+   sodipodi:docname="tr.svg"
+   inkscape:version="1.1.1 (1:1.1+202109281949+c3084ef5ed)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#505050"
+     bordercolor="#ffffff"
+     borderopacity="1"
+     inkscape:pageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="1"
+     inkscape:document-units="mm"
+     showgrid="false"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0"
+     inkscape:zoom="29.761616"
+     inkscape:cx="10.197699"
+     inkscape:cy="8.6352838"
+     inkscape:window-width="1920"
+     inkscape:window-height="1052"
+     inkscape:window-x="1366"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs2" />
+  <g
+     inkscape:label="Warstwa 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-43.682279,-71.027902)">
+    <path
+       id="rect846"
+       style="fill:#a7dce5;fill-opacity:1;stroke-width:0.0298912;stroke-linecap:round;stroke-linejoin:round"
+       d="m 45.798946,71.027902 2.116666,2.116666 h -4.233333 z"
+       sodipodi:nodetypes="cccc" />
+    <path
+       id="path1142"
+       style="fill:#fafdfd;fill-opacity:1;stroke-width:0.025541;stroke-linecap:round;stroke-linejoin:round"
+       d="m 45.798946,71.387029 -1.757539,1.757539 h 3.515078 z" />
+  </g>
+</svg>

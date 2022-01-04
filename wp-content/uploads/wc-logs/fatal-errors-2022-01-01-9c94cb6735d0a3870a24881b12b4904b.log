@@ -1,0 +1,80 @@
+2022-01-01T19:56:46+00:00 CRITICAL syntax error, unexpected 'menu' (T_STRING), expecting ';' or ',' w /opt/lampp/htdocs/decobelo/wp-content/themes/decobelo/functions.php w linii 195
+
+2022-01-01T20:12:20+00:00 CRITICAL syntax error, unexpected 'echo' (T_ECHO) w /opt/lampp/htdocs/decobelo/wp-content/themes/decobelo/functions.php w linii 202
+
+2022-01-01T20:23:35+00:00 CRITICAL Uncaught ArgumentCountError: Too few arguments to function wp_calculate_image_srcset(), 2 passed in /opt/lampp/htdocs/decobelo/wp-content/themes/decobelo/functions.php on line 204 and at least 3 expected in /opt/lampp/htdocs/decobelo/wp-includes/media.php:1243
+Stack trace:
+#0 /opt/lampp/htdocs/decobelo/wp-content/themes/decobelo/functions.php(204): wp_calculate_image_srcset('250', 'menu-img')
+#1 /opt/lampp/htdocs/decobelo/wp-content/themes/decobelo/header.php(35): custom_menu('product_cat', 'Produkty', true)
+#2 /opt/lampp/htdocs/decobelo/wp-includes/template.php(770): require_once('/opt/lampp/htdo...')
+#3 /opt/lampp/htdocs/decobelo/wp-includes/template.php(716): load_template('/opt/lampp/htdo...', true, Array)
+#4 /opt/lampp/htdocs/decobelo/wp-includes/general-template.php(48): locate_template(Array, true, true, Array)
+#5 /opt/lampp/htdocs/decobelo/wp-content/themes/decobelo/db_startpage.php(8): get_header()
+#6 /opt/lampp/htdocs/decobelo/wp-includes/template-loader.php(106): include('/opt/lampp/htdo...')
+#7 /o w /opt/lampp/htdocs/decobelo/wp-includes/media.php w linii 1243
+
+2022-01-01T20:24:45+00:00 CRITICAL Uncaught Error: Call to undefined function wp_get_attachment_image_scrset() in /opt/lampp/htdocs/decobelo/wp-content/themes/decobelo/functions.php:204
+Stack trace:
+#0 /opt/lampp/htdocs/decobelo/wp-content/themes/decobelo/header.php(35): custom_menu('product_cat', 'Produkty', true)
+#1 /opt/lampp/htdocs/decobelo/wp-includes/template.php(770): require_once('/opt/lampp/htdo...')
+#2 /opt/lampp/htdocs/decobelo/wp-includes/template.php(716): load_template('/opt/lampp/htdo...', true, Array)
+#3 /opt/lampp/htdocs/decobelo/wp-includes/general-template.php(48): locate_template(Array, true, true, Array)
+#4 /opt/lampp/htdocs/decobelo/wp-content/themes/decobelo/db_startpage.php(8): get_header()
+#5 /opt/lampp/htdocs/decobelo/wp-includes/template-loader.php(106): include('/opt/lampp/htdo...')
+#6 /opt/lampp/htdocs/decobelo/wp-blog-header.php(19): require_once('/opt/lampp/htdo...')
+#7 /opt/lampp/htdocs/decobelo/index.php(17): require('/opt/lampp/htdo...')
+#8 {main}
+  thrown w /opt/lampp/htdocs/decobelo/wp-content/themes/decobelo/functions.php w linii 204
+
+2022-01-01T20:25:33+00:00 CRITICAL Uncaught Error: Call to undefined function wp_get_attachment_image_scrset() in /opt/lampp/htdocs/decobelo/wp-content/themes/decobelo/functions.php:204
+Stack trace:
+#0 /opt/lampp/htdocs/decobelo/wp-content/themes/decobelo/header.php(35): custom_menu('product_cat', 'Produkty', true)
+#1 /opt/lampp/htdocs/decobelo/wp-includes/template.php(770): require_once('/opt/lampp/htdo...')
+#2 /opt/lampp/htdocs/decobelo/wp-includes/template.php(716): load_template('/opt/lampp/htdo...', true, Array)
+#3 /opt/lampp/htdocs/decobelo/wp-includes/general-template.php(48): locate_template(Array, true, true, Array)
+#4 /opt/lampp/htdocs/decobelo/wp-content/themes/decobelo/db_startpage.php(8): get_header()
+#5 /opt/lampp/htdocs/decobelo/wp-includes/template-loader.php(106): include('/opt/lampp/htdo...')
+#6 /opt/lampp/htdocs/decobelo/wp-blog-header.php(19): require_once('/opt/lampp/htdo...')
+#7 /opt/lampp/htdocs/decobelo/index.php(17): require('/opt/lampp/htdo...')
+#8 {main}
+  thrown w /opt/lampp/htdocs/decobelo/wp-content/themes/decobelo/functions.php w linii 204
+
+2022-01-01T20:26:22+00:00 CRITICAL syntax error, unexpected ')' w /opt/lampp/htdocs/decobelo/wp-content/themes/decobelo/functions.php w linii 205
+
+2022-01-01T20:26:47+00:00 CRITICAL syntax error, unexpected ':', expecting ')' w /opt/lampp/htdocs/decobelo/wp-content/themes/decobelo/functions.php w linii 204
+
+2022-01-01T20:26:58+00:00 CRITICAL Uncaught Error: Call to undefined function wp_get_attachment_image_scrset() in /opt/lampp/htdocs/decobelo/wp-content/themes/decobelo/functions.php:205
+Stack trace:
+#0 /opt/lampp/htdocs/decobelo/wp-content/themes/decobelo/header.php(35): custom_menu('product_cat', 'Produkty', true)
+#1 /opt/lampp/htdocs/decobelo/wp-includes/template.php(770): require_once('/opt/lampp/htdo...')
+#2 /opt/lampp/htdocs/decobelo/wp-includes/template.php(716): load_template('/opt/lampp/htdo...', true, Array)
+#3 /opt/lampp/htdocs/decobelo/wp-includes/general-template.php(48): locate_template(Array, true, true, Array)
+#4 /opt/lampp/htdocs/decobelo/wp-content/themes/decobelo/db_startpage.php(8): get_header()
+#5 /opt/lampp/htdocs/decobelo/wp-includes/template-loader.php(106): include('/opt/lampp/htdo...')
+#6 /opt/lampp/htdocs/decobelo/wp-blog-header.php(19): require_once('/opt/lampp/htdo...')
+#7 /opt/lampp/htdocs/decobelo/index.php(17): require('/opt/lampp/htdo...')
+#8 {main}
+  thrown w /opt/lampp/htdocs/decobelo/wp-content/themes/decobelo/functions.php w linii 205
+
+2022-01-01T20:29:57+00:00 CRITICAL syntax error, unexpected ';', expecting ')' w /opt/lampp/htdocs/decobelo/wp-content/themes/decobelo/functions.php w linii 206
+
+2022-01-01T20:32:04+00:00 CRITICAL syntax error, unexpected ')' w /opt/lampp/htdocs/decobelo/wp-content/themes/decobelo/functions.php w linii 205
+
+2022-01-01T20:33:30+00:00 CRITICAL syntax error, unexpected 'echo' (T_ECHO) w /opt/lampp/htdocs/decobelo/wp-content/themes/decobelo/functions.php w linii 204
+
+2022-01-01T20:40:51+00:00 CRITICAL syntax error, unexpected 'img_id' (T_STRING) w /opt/lampp/htdocs/decobelo/wp-content/themes/decobelo/functions.php w linii 205
+
+2022-01-01T20:41:13+00:00 CRITICAL syntax error, unexpected ')' w /opt/lampp/htdocs/decobelo/wp-content/themes/decobelo/functions.php w linii 205
+
+2022-01-01T20:43:10+00:00 CRITICAL syntax error, unexpected 'if' (T_IF), expecting ')' w /opt/lampp/htdocs/decobelo/wp-content/themes/decobelo/functions.php w linii 205
+
+2022-01-01T20:44:04+00:00 CRITICAL syntax error, unexpected ':' w /opt/lampp/htdocs/decobelo/wp-content/themes/decobelo/functions.php w linii 202
+
+2022-01-01T20:56:25+00:00 CRITICAL syntax error, unexpected '&&' (T_BOOLEAN_AND) w /opt/lampp/htdocs/decobelo/wp-content/themes/decobelo/functions.php w linii 199
+
+2022-01-01T20:58:30+00:00 CRITICAL syntax error, unexpected '&&' (T_BOOLEAN_AND) w /opt/lampp/htdocs/decobelo/wp-content/themes/decobelo/functions.php w linii 199
+
+2022-01-01T21:01:58+00:00 CRITICAL syntax error, unexpected '&&' (T_BOOLEAN_AND) w /opt/lampp/htdocs/decobelo/wp-content/themes/decobelo/functions.php w linii 199
+
+2022-01-01T21:51:29+00:00 CRITICAL syntax error, unexpected ''url'' (T_CONSTANT_ENCAPSED_STRING), expecting ')' w /opt/lampp/htdocs/decobelo/wp-content/themes/decobelo/functions.php w linii 181
+

@@ -1,0 +1,111 @@
+//out: false
+
+#promowane-kolekcje {
+    &:extend(.pb25);
+    position: relative;
+}
+
+.products {
+    display: grid;
+    &:extend(.pb25);
+    row-gap: 2.5rem;
+    column-gap: 1.5rem;
+    @media @desktop {
+        grid-template-columns: repeat(4,1fr);
+    }
+    @media @wide {
+        grid-template-columns: repeat(4,1fr);
+    }
+    li {
+        aspect-ratio: 1;
+        position: relative;
+        a {
+            display: inline-block;
+            position: relative;
+            &.add_to_cart_button {
+                .before('add_to_cart');
+                color: #fff;
+                padding-left: 2rem;
+                transition: 0.3s ease;
+                &:hover {
+                    color: @black;
+                    transition: 0.3s ease;
+                }
+            }
+        }
+    }
+    .product-imgs {
+        position: relative;
+        line-height: 0;
+        //cursor: url('../style/i/link.svg'), auto;
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        img:nth-of-type(1) {
+            position: relative;
+            z-index: 2;
+            opacity: 1;
+            .trans(0.75s);
+        }
+        img:nth-of-type(2) {
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 1;
+        }
+        span {
+            position: absolute;
+            right: 0;
+            top: 0;
+        }
+        &:hover {
+            img:nth-of-type(1) {
+                opacity: 0;
+                .trans(0.75s);
+            }
+        }
+    }
+    .product-title {
+        h2 {
+            display: inline-block;
+            padding: 1rem 0.25rem 0.5rem 0;
+            margin: 0;
+            .f2();
+        }
+        span.onsale {
+            font-size: 0;
+            width: 0.5rem;
+            height: 0.5rem;
+            display: inline-block;
+            background-color: @red;
+            vertical-align: top;
+            border-radius: 0.5rem;
+            margin-top: 1rem;
+        }    
+    }
+    a:hover {
+        text-decoration: none;
+    }
+    .product-price {
+        position: relative;
+        del {
+            margin-right: 0.25rem;
+        }
+        ins {
+            text-decoration: none;
+        }
+        .added_to_cart {
+            display: none;
+        }
+    }
+}
+
+.home .products {
+    @media @desktop {
+        :nth-child(n+5) {
+            display: none;
+        }
+    }
+}

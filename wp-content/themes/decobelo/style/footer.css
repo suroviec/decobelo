@@ -1,0 +1,13 @@
+footer #menu-stopki {
+  align-items: flex-start;
+}
+footer #menu-stopki > li {
+  margin-right: 2rem;
+}
+footer .social li {
+  display: inline-block;
+  margin-right: 0.5rem;
+}
+footer .social li img {
+  width: 1rem;
+}
