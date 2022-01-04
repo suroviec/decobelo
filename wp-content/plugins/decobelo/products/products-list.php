@@ -318,7 +318,7 @@ function get_current_filters($args) {
 
         $args = array(
             'taxonomy'      => $current_tax,
-            'hide_empty'    => false,
+            'hide_empty'    => true,
             'child_of'      => $current_id
         );
 
@@ -353,9 +353,7 @@ function render_filters($filters=null) {
 <?php if($filters['child_terms']) : ?> 
         <div class="upper-filters">
             <div class="child-terms">
-                
                 <?php
-
                     foreach($filters['child_terms'] as $child) {
                         echo sprintf(
                             '<a href="%s" title="%s">%s</a>',

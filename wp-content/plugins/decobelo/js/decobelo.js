@@ -409,6 +409,11 @@ jQuery('document').ready(function(){
 
           // ANCHOR wysylka query
 
+          query.page = 1;
+
+          console.log(query);
+
+
           jQuery.ajax({
              type : "post",
              dataType : "json",
@@ -545,14 +550,17 @@ jQuery('document').ready(function(){
                   }
 
                 });
-               */
+
+                **/  
+               
             },
              complete: function() {
                 document.querySelector('.products').classList.remove('hide');
              }
+
           });
 
-
+          
 
        };
  
@@ -564,6 +572,8 @@ jQuery('document').ready(function(){
 
       loadmore.addEventListener('click', function() {
          query.page = query.page + 1;
+
+         console.log(query);
 
          jQuery.ajax({
             type : "post",
@@ -590,6 +600,7 @@ jQuery('document').ready(function(){
                document.querySelector('.products').classList.remove('hide');
             }
          });
+
       });
    }
 
