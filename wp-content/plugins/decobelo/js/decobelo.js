@@ -1,8 +1,78 @@
+// ANCHOR state
+
+var query;
+var nonce;
+
+jQuery('document').ready(function(){
+
+   if(document.body.classList.contains('archive')){
+
+      // przygotowanie query
+
+      if((document.querySelector('.filters') == null) && (document)) {
+         return;
+      };
+     
+      var currentType = document.querySelector('.filters').getAttribute('data-current_type');
+      var currentTerm = document.querySelector('.filters').getAttribute('data-current_term');
+      var currentSearch = document.querySelector('.filters').getAttribute('data-search');
+      var promocje = document.querySelector('.filters').getAttribute('data-promocje');
+   
+      nonce = document.querySelector('.filters').getAttribute('data-nonce');
+      
+      query = {
+        "firstTerm" : {
+           type : currentType,
+           value : currentTerm
+        },
+        "secondTerm": {
+           "product_cat" : {
+              type : "",
+              title : "",
+              values : [],
+           },
+           "kolekcje" : {
+              type : "",
+              title : "",
+              values : [],
+           }
+        },
+        "attrs": {},
+        "search" : currentSearch,
+        "promocje" : promocje,
+        "onsale" : {},
+        "orderby" : {},
+        "page" : 1
+     }; 
+
+
+      // ustawienie punktu startowego historii po wczytaniu strony
+
+      history.pushState({nonce: nonce, query: query}, "title 1", "")
+
+      // dodanie event listenera do zmiany w historii
+
+      window.addEventListener('popstate', (event) => {
+         setTimeout(
+            function() {
+               var data = JSON.parse(JSON.stringify(event.state));
+               sendQuery(data.nonce, data.query);
+               query = data.query;
+            },0
+         )
+      });      
+
+   };
+
+});
+   
+
+
+
+
 // ANCHOR sticky filters
 
    if(document.body.classList.contains('archive')) {
-
-      console.log(1);
 
       var oldpos = window.pageYOffset;
       var filters = document.querySelector('.lower-filters');
@@ -23,8 +93,6 @@
       });
 
    } else if (document.body.classList.contains('page-template')) {
-
-      console.log(2);
 
       var oldpos = window.pageYOffset;
       var menu = document.querySelector('#masthead');
@@ -265,47 +333,6 @@ jQuery('document').ready(function(){
  
 jQuery('document').ready(function(){
 
-   
-    if((document.querySelector('.filters') == null) && (document)) {
-       return;
-    };
-   
- 
-    var nonce = document.querySelector('.filters').getAttribute('data-nonce');
-    var currentType = document.querySelector('.filters').getAttribute('data-current_type');
-    var currentTerm = document.querySelector('.filters').getAttribute('data-current_term');
-    var currentSearch = document.querySelector('.filters').getAttribute('data-search');
-    var promocje = document.querySelector('.filters').getAttribute('data-promocje');
- 
- 
-    var nonce = document.querySelector('.filters').getAttribute('data-nonce');
-    
-    var query = {
-      "firstTerm" : {
-         type : currentType,
-         value : currentTerm
-      },
-      "secondTerm": {
-         "product_cat" : {
-            type : "",
-            title : "",
-            values : [],
-         },
-         "kolekcje" : {
-            type : "",
-            title : "",
-            values : [],
-         }
-      },
-      "attrs": {},
-      "search" : currentSearch,
-      "promocje" : promocje,
-      "onsale" : {},
-      "orderby" : {},
-      "page" : 1
-   }; 
-    
- 
     document.querySelector('.filters').addEventListener('click',function(e){
 
  
@@ -411,158 +438,63 @@ jQuery('document').ready(function(){
 
           query.page = 1;
 
-          console.log(query);
+          var url = '';
 
+          // ANCHOR zmiana url 
 
-          jQuery.ajax({
-             type : "post",
-             dataType : "json",
-             url : my_ajax.ajax_url,
-             data : {action: "send_products", nonce: nonce, query: query},
- 
-             beforeSend: function () {
-                document.querySelector('.products').classList.add('hide');
-             },
-             
-             success: function(response) {
- 
-                if(response.type == "success") {
-                   
-                   document.querySelector('.products').innerHTML = response.products;
- 
-                   var filters = document.querySelectorAll('a.filter');
- 
-                   var activeArr = JSON.parse(response.active);
-                   
-                   var activeDiv = document.querySelector('.active-filters');
- 
-                   // span Aktywne filtry
- 
-                   if ((activeArr.length == 1) && (activeArr[0].term_slug == "ordeby")) {
-                     activeDiv.classList.remove('active');
-                   } else if(activeArr.length > 0 ) {
-                     activeDiv.classList.add('active');
-                   } else {
-                     activeDiv.classList.remove('active');
-                   }
- 
-                   // usuniecie aktywnych filtrow 
- 
-                   var activeBtns = activeDiv.querySelectorAll('a');
-                   activeBtns.forEach(button => {
-                      button.remove();
-                   });
- 
-                   // render aktywnych filtrow
- 
-                   activeArr.forEach(active => {
+          // second term
 
-                     if(active.term_slug == "orderby") {
-                        return;
-                     }
+          for (var tax in query.secondTerm) {
 
-                      var btn = document.createElement('a');
-                      btn.classList.add('filter', 'selected');
-                      
-                      var name;
- 
-                      if(!active.term_name) {
-                         name = active.term_value;
-                      } else {
-                         name = active.term_name;
-                      }
- 
-                      btn.innerHTML = "<b>" + active.tax_name + "</b>: " + name;
-                      btn.setAttribute('data-type', active.term_slug);
-                      btn.setAttribute('data-value', active.term_value);
-                      btn.setAttribute('data-title', active.tax_name);
-                      btn.setAttribute('title', 'Usuń filtr');
- 
-                      var append = true;
- 
-                      var activeBtns = activeDiv.querySelectorAll('a');
- 
-                      activeBtns.forEach(btn => {
-                         if((btn.getAttribute('data-type') == active.term_slug) && (btn.getAttribute('data-value') == active.term_value)) {
-                            append = false;
-                         }
-                      });
-                      
-                      if(append == true) {
-                         activeDiv.appendChild(btn);
-                      };
- 
-                      activeBtns.forEach(btn => {
-                         if((btn.getAttribute('data-type') == active.term_slug) && (btn.getAttribute('data-value') == active.term_value)) {
-                            append = false;
-                         }
-                      });
-                      // dodanie klasy selcted do aktywnych filtrow
-                      
-                   });
- 
-                   filters.forEach(filter => {
-                      filter.classList.remove('selected');
-                      activeArr.forEach(active => {
-                         if((filter.getAttribute('data-type') === active.term_slug) && (filter.getAttribute('data-value') === active.term_value)) {
-                            filter.classList.add('selected');
-                         } 
-                      });
-                   });
+            var taxonomy = query.secondTerm[tax];
 
-                } else {
-                   console.log('err');
-                }
+            if(taxonomy.type) {
+               url += taxonomy.type + "=";
+               var taxterms = taxonomy.values;
+               for (var key in taxterms) {
+                  url += taxterms[key].value + ",";
+               }
+            }
 
-               // STUB wygaszanie niedost opcji
+            url = url.slice(0, -1);
 
-               /**
- 
-                var availableTerms = JSON.parse(response.available);
- 
-                console.log('availableTerms');
-                console.log(availableTerms);
- 
-                var lowerBtns = document.querySelectorAll('.lower-filters a');
- 
-                lowerBtns.forEach(lowerBtn => {
-                   var available = false;
-                   availableTerms.forEach(term => {
-                      if((term.type == lowerBtn.getAttribute('data-type')) && (term.value == lowerBtn.getAttribute('data-value'))) {
-                         available = true;
-                      };
-                   });
- 
-                   var paSelected = false;
- 
-                   activeArr.forEach(term => {
-                      if(term.term_slug.search('pa') == 0) {
-                         paSelected = true;
-                      };
-                   });
- 
-                  if(available == false) {
-                     if(paSelected == true) {
-                        lowerBtn.classList.add('unavailable');
-                     };
-                  } else {
-                     lowerBtn.classList.remove('unavailable');
-                  }
+          }
 
-                });
-
-                **/  
-               
-            },
-             complete: function() {
-                document.querySelector('.products').classList.remove('hide');
-             }
-
-          });
 
           
+          // atrybuty
+
+          for (var attr in query.attrs) {
+
+            if (!query.attrs.hasOwnProperty(attr)) continue;
+
+            var values = query.attrs[attr]['values'];
+
+            url += "&";
+
+            url += attr.replace('pa_', '') + "=";
+
+            url += query.attrs[attr]['values'].toString();
+
+            url += "&";
+
+            url = url.slice(0, -1);
+
+          }            
+         
+         //console.log(url);
+
+         //var newurl = window.location.protocol + "//" + window.location.host + window.location.pathname + url;
+         history.pushState({nonce: nonce, query: query}, "title 1", "?" + url);
+
+         //console.log(query);
+         
 
        };
+
+       //console.log(query);
+
+       sendQuery(nonce, query);
  
     });
 
@@ -573,7 +505,7 @@ jQuery('document').ready(function(){
       loadmore.addEventListener('click', function() {
          query.page = query.page + 1;
 
-         console.log(query);
+         //console.log(query);
 
          jQuery.ajax({
             type : "post",
@@ -605,6 +537,154 @@ jQuery('document').ready(function(){
    }
 
 });
+function sendQuery(nonce,query) {
+
+   jQuery.ajax({
+      type : "post",
+      dataType : "json",
+      url : my_ajax.ajax_url,
+      data : {action: "send_products", nonce: nonce, query: query},
+
+      beforeSend: function () {
+         document.querySelector('.products').classList.add('hide');
+      },
+      
+      success: function(response) {
+
+         if(response.type == "success") {
+            
+            document.querySelector('.products').innerHTML = response.products;
+
+            var filters = document.querySelectorAll('a.filter');
+
+            var activeArr = JSON.parse(response.active);
+            
+            var activeDiv = document.querySelector('.active-filters');
+
+            // span Aktywne filtry
+
+            if ((activeArr.length == 1) && (activeArr[0].term_slug == "ordeby")) {
+              activeDiv.classList.remove('active');
+            } else if(activeArr.length > 0 ) {
+              activeDiv.classList.add('active');
+            } else {
+              activeDiv.classList.remove('active');
+            }
+
+            // usuniecie aktywnych filtrow 
+
+            var activeBtns = activeDiv.querySelectorAll('a');
+            activeBtns.forEach(button => {
+               button.remove();
+            });
+
+            // render aktywnych filtrow
+
+            activeArr.forEach(active => {
+
+              if(active.term_slug == "orderby") {
+                 return;
+              }
+
+               var btn = document.createElement('a');
+               btn.classList.add('filter', 'selected');
+               
+               var name;
+
+               if(!active.term_name) {
+                  name = active.term_value;
+               } else {
+                  name = active.term_name;
+               }
+
+               btn.innerHTML = "<b>" + active.tax_name + "</b>: " + name;
+               btn.setAttribute('data-type', active.term_slug);
+               btn.setAttribute('data-value', active.term_value);
+               btn.setAttribute('data-title', active.tax_name);
+               btn.setAttribute('title', 'Usuń filtr');
+
+               var append = true;
+
+               var activeBtns = activeDiv.querySelectorAll('a');
+
+               activeBtns.forEach(btn => {
+                  if((btn.getAttribute('data-type') == active.term_slug) && (btn.getAttribute('data-value') == active.term_value)) {
+                     append = false;
+                  }
+               });
+               
+               if(append == true) {
+                  activeDiv.appendChild(btn);
+               };
+
+               activeBtns.forEach(btn => {
+                  if((btn.getAttribute('data-type') == active.term_slug) && (btn.getAttribute('data-value') == active.term_value)) {
+                     append = false;
+                  }
+               });
+               // dodanie klasy selcted do aktywnych filtrow
+               
+            });
+
+            filters.forEach(filter => {
+               filter.classList.remove('selected');
+               activeArr.forEach(active => {
+                  if((filter.getAttribute('data-type') === active.term_slug) && (filter.getAttribute('data-value') === active.term_value)) {
+                     filter.classList.add('selected');
+                  } 
+               });
+            });
+
+         } else {
+            console.log('err');
+         }
+
+        // STUB wygaszanie niedost opcji
+
+        /**
+
+         var availableTerms = JSON.parse(response.available);
+
+         console.log('availableTerms');
+         console.log(availableTerms);
+
+         var lowerBtns = document.querySelectorAll('.lower-filters a');
+
+         lowerBtns.forEach(lowerBtn => {
+            var available = false;
+            availableTerms.forEach(term => {
+               if((term.type == lowerBtn.getAttribute('data-type')) && (term.value == lowerBtn.getAttribute('data-value'))) {
+                  available = true;
+               };
+            });
+
+            var paSelected = false;
+
+            activeArr.forEach(term => {
+               if(term.term_slug.search('pa') == 0) {
+                  paSelected = true;
+               };
+            });
+
+           if(available == false) {
+              if(paSelected == true) {
+                 lowerBtn.classList.add('unavailable');
+              };
+           } else {
+              lowerBtn.classList.remove('unavailable');
+           }
+
+         });
+
+         **/  
+        
+     },
+      complete: function() {
+         document.querySelector('.products').classList.remove('hide');
+      }
+
+   });
+}
 
  // !SECTION
  
