@@ -394,8 +394,22 @@ function get_current_filters($args) {
 }
 // !SECTION
 
+function catch_filters($current_vars, $term, $value) {
+
+    $check = 'test';
+
+    foreach($current_vars as $filter_name => $var_data) {
+        if(($var_data['tax'] == $term) && in_array($value, $var_data['values'])) {
+            $check = 'selected';
+        }
+    }
+
+    return $check;
+
+};
+
 // SECTION Render filters
-function render_filters($filters=null) {
+function render_filters($filters=null, $current_vars=null) {
 
     ob_start(); ?>
 
@@ -456,10 +470,11 @@ function render_filters($filters=null) {
                                     foreach ($filters['second_term']['terms'] as $term) {
                                         echo wp_sprintf(
                                             '<li>
-                                                <a href="%s" data-value="%s" data-type="%s" class="filter">%s</a>',
+                                                <a href="%s" data-value="%s" data-type="%s" class="filter %s">%s</a>',
                                             $filters['second_term']['tax'] == 'kolekcje' ? add_query_arg('kolekcja', $term['slug']) : add_query_arg('kategoria', $term['slug']),
                                             $term['slug'],
                                             $filters['second_term']['tax'],
+                                            catch_filters($current_vars, $filters['second_term']['tax'], $term['slug'],),
                                             $term['name']
                                         );
 
@@ -469,8 +484,9 @@ function render_filters($filters=null) {
 
                                             foreach($term['categories'] as $subcat) {
                                                 echo sprintf(
-                                                    '<li><a href="%s" class="filter" data-type="%s" data-value="%s">%s</a></li>',
+                                                    '<li><a href="%s" class="filter %s" data-type="%s" data-value="%s">%s</a></li>',
                                                     $filters['second_term']['tax'] == 'kolekcje' ? add_query_arg('kolekcja', $term['slug']) : add_query_arg('kategoria', $term['slug']),
+                                                    catch_filters($current_vars, $filters['second_term']['tax'], $term['slug'],),
                                                     $filters['second_term']['tax'],
                                                     $subcat['slug'],
                                                     $subcat['name']
@@ -535,12 +551,14 @@ function render_filters($filters=null) {
                                         echo wp_sprintf(
 
                                             '<li>
-                                                <a href="%s" data-value="%s" data-type="%s" class="filter">%s</a>
+                                                <a href="%s" data-value="%s" data-type="%s" class="filter %s">%s</a>
                                             </li>',
                                             $url,
                                             $term,
                                             $attribute['slug'],
+                                            catch_filters($current_vars, $attribute['slug'], $term),
                                             $term
+                                            
                                         );
                                     };
 
@@ -625,6 +643,10 @@ function render_filters($filters=null) {
         <div class="active-filters">
             <span><?php _e('Aktywne filtry', 'decobelo'); ?>:</span>
         </div>
+
+        <pre>
+            <?php var_dump($current_vars); ?>
+        </pre>
 
     </div>
 
