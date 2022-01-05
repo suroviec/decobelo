@@ -749,29 +749,40 @@ function sendQuery(nonce,query) {
  // lista ulubionych
  
  jQuery(document).ready( function() {
-     jQuery(".list-btn").click( function(e) {
-       e.preventDefault(); 
-       product_id = jQuery(this).attr("data-product_id");
-       nonce = jQuery(this).attr("data-nonce");
-       user = jQuery(this).attr("data-user");
-       jQuery.ajax({
-           type : "post",
-           dataType : "json",
-           url : my_ajax.ajax_url,
-           data : {action: "list", product_id : product_id, nonce: nonce, user: user},
-           
-           success: function(response) {
-              if(response.type == "success") {
-                document.querySelector('.list-'+product_id).classList.add('inlist');
-                document.querySelector('.list-count').textContent = response.length;
-                jQuery('.saved-list').html(response.lista);
-              } else {
-                 console.log('err');
-              }
-           }
-        });
-     });
-  });
+
+   var productimgs = document.querySelectorAll('.product-imgs');
+
+   productimgs.forEach(function(pimg) {
+      pimg.addEventListener('click', function(e) {
+         
+         if(e.target.classList.contains('list-btn') == true) {
+
+            e.preventDefault(); 
+            product_id = e.target.getAttribute("data-product_id");
+            nonce = e.target.getAttribute("data-nonce");
+            user = e.target.getAttribute("data-user");
+            jQuery.ajax({
+               type : "post",
+               dataType : "json",
+               url : my_ajax.ajax_url,
+               data : {action: "list", product_id : product_id, nonce: nonce, user: user},
+               
+               success: function(response) {
+                  if(response.type == "success") {
+                     document.querySelector('.list-'+product_id).classList.add('inlist');
+                     document.querySelector('.list-count').textContent = response.length;
+                     jQuery('.saved-list').html(response.lista);
+                  } else {
+                     console.log('err');
+                  }
+               }
+            });
+
+         };
+   
+      })
+   })
+});
 
  jQuery(document).ready(function(){
     
