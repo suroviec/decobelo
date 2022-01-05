@@ -82,6 +82,12 @@ echo get_sidebar();
 
 		$current_filters = get_current_filters($args);
 
+		/**
+		echo '<pre>';
+		var_dump($current_filters);
+		echo '</pre>';
+		 */
+
 		render_filters($current_filters);
 
 		

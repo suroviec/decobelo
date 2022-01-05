@@ -498,7 +498,7 @@ jQuery('document').ready(function(){
  
     });
 
-    const loadmore = document.querySelector('#load-more');
+    var loadmore = document.querySelector('#load-more');    
 
     if(loadmore) {
 
@@ -624,6 +624,7 @@ function sendQuery(nonce,query) {
                });
                // dodanie klasy selcted do aktywnych filtrow
                
+               
             });
 
             filters.forEach(filter => {
@@ -634,6 +635,18 @@ function sendQuery(nonce,query) {
                   } 
                });
             });
+
+            // loadmore on off
+
+            var loadmore = document.querySelector('#load-more');
+
+            if(loadmore) {
+               if(query.page == response.count) {
+                  loadmore.classList.add('hide');
+               } else {
+                  loadmore.classList.remove('hide');
+               }
+            }
 
          } else {
             console.log('err');

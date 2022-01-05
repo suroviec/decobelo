@@ -140,8 +140,8 @@ function get_current_filters($args) {
     
     $args = array(
         'status'    => 'publish',
-        'limit'     => $products_per_page,
-        'page'      => $paged,
+        'limit'     => -1,
+        'page'      => 1,
         'paginate'  => true,
         'orderby'   => $ordering['orderby'],
         'order'     => $ordering['order'],
@@ -182,6 +182,8 @@ function get_current_filters($args) {
             // atrybuty
             
             $attributes = $product->get_attributes();   
+
+            $filters['test'] = $args;
 
             foreach($attributes as $slug => $data) {
 
