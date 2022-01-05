@@ -1,5 +1,52 @@
 <?php
 
+// ANCHOR new vars
+
+function vars( $vars ) {
+
+    $list_of_vars = list_of_vars();
+
+    // lista produktow z list_of_vars
+    foreach($list_of_vars as $var_name => $var_data) {
+        $vars[] = $var_name;
+    }
+
+    // produkty nie sa przekazywane z list of vars
+    $vars[] = 'produkty';
+
+	return $vars;
+}
+add_filter( 'query_vars', 'vars' );
+
+function list_of_vars($current_tax=null) {
+
+    $taxonomies = get_taxonomies();
+
+		$list_of_vars = array();
+
+		foreach($taxonomies as $taxonomy_name => $taxonomy_value) {
+			if(strpos($taxonomy_name, 'pa_') !== false) {
+				$list_of_vars[str_replace('pa_', '', $taxonomy_name)] = array(
+					'tax' => $taxonomy_name,
+				);
+			}
+		}
+    	if($current_tax == 'kolekcje') {
+			$list_of_vars['produkty'] = array(
+                'tax' => 'product_cat'
+            );
+		} else {
+			$list_of_vars['kolekcje'] = array(
+                'tax' => 'kolekcje'
+            );
+		}
+
+        return $list_of_vars;
+}
+
+
+
+
 add_action("wp_ajax_send_products", 'send_products');
 add_action("wp_ajax_nopriv_send_products", 'send_products');
 

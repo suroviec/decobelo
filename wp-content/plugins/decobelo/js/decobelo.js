@@ -45,6 +45,7 @@ jQuery('document').ready(function(){
         "page" : 1
      }; 
 
+     console.log(query);
 
       // ustawienie punktu startowego historii po wczytaniu strony
 
@@ -449,18 +450,25 @@ jQuery('document').ready(function(){
             var taxonomy = query.secondTerm[tax];
 
             if(taxonomy.type) {
-               url += taxonomy.type + "=";
+
+               if(taxonomy.type == 'product_cat') {
+                  url += "produkty=";
+               } else {
+                  url += taxonomy.type + "=";
+               }
+               
+               
                var taxterms = taxonomy.values;
                for (var key in taxterms) {
-                  url += taxterms[key].value + ",";
+                  
+                  url += taxterms[key].value;
+                  if(taxterms.length > 1) url += ',';
+               }
+               if(taxterms.length > 1) {
+                  url = url.slice(0, -1);
                }
             }
-
-            url = url.slice(0, -1);
-
           }
-
-
           
           // atrybuty
 
@@ -537,6 +545,9 @@ jQuery('document').ready(function(){
    }
 
 });
+
+// ANCHOR send query
+
 function sendQuery(nonce,query) {
 
    jQuery.ajax({
@@ -647,6 +658,8 @@ function sendQuery(nonce,query) {
                   loadmore.classList.remove('hide');
                }
             }
+
+            console.log(query)
 
          } else {
             console.log('err');

@@ -50,13 +50,13 @@ echo get_sidebar();
 
 	<?php 
 		// pobranie akt kategorii / kolekcji
-
 		global $wp_query;
 		$query = $wp_query->query_vars;
 		$current = array();
 		$current_tax = $query['taxonomy'];
 		$current_slug = $query['term'];
 
+		echo '<pre>';
 
 		$list_of_vars = list_of_vars($current_tax);
 
@@ -69,6 +69,26 @@ echo get_sidebar();
 			};
 		};
 		
+
+		//var_dump($list_of_vars);
+		echo '---</br>';
+		var_dump($current_vars);
+
+		//var_dump($query);
+		echo '</pre>';
+	
+		/**
+		
+		if(false == $current_filters = get_transient($current_tax . '_' . $current_slug . '_filters')) {
+			$current_filters = get_current_filters($current_tax, $current_slug);
+			set_transient($current_tax . '_' . $current_slug . '_filters', $current_filters, YEAR_IN_SECONDS );
+			var_dump($current_filters);
+		} else {
+			var_dump($current_filters);
+		}
+		 */
+
+		
 		$args = array(
 			'current_tax' 	=> $current_tax, 
 			'current_slug' 	=> $current_slug,
@@ -78,103 +98,77 @@ echo get_sidebar();
 
 		$current_filters = get_current_filters($args);
 
-		render_filters($current_filters);		
-
+		/**
 		echo '<pre>';
-		var_dump($current_vars);
+		var_dump($current_filters);s
 		echo '</pre>';
-		
-
+		 */
+		render_filters($current_filters);		
 	?>
 
 
 
 <?php
 
-// custom loop
+// default loop
 
-if(!function_exists('wc_get_products')) {
-    return;
-  }
+/**
 
-	$paged                   = (get_query_var('paged')) ? absint(get_query_var('paged')) : 1;
-	$ordering                = WC()->query->get_catalog_ordering_args();
-	$ordering['orderby']     = array_shift(explode(' ', $ordering['orderby']));
-	$ordering['orderby']     = stristr($ordering['orderby'], 'price') ? 'meta_value_num' : $ordering['orderby'];
-	$products_per_page       = apply_filters('loop_shop_per_page', wc_get_default_products_per_row() * wc_get_default_product_rows_per_page());
+if ( woocommerce_product_loop() ) {
 
-	$tax_data = array();
+	/**
+	 * Hook: woocommerce_before_shop_loop.
+	 *
+	 * @hooked woocommerce_output_all_notices - 10
+	 * @hooked woocommerce_result_count - 20
+	 * @hooked woocommerce_catalog_ordering - 30
+	 */
+	//do_action( 'woocommerce_before_shop_loop' );
 
-	$tax_data[] = array(
-		array(
-			'taxonomy' 			=> $current_tax,
-			'field'				=> 'slug',
-			'terms'				=> $current_slug,
-			'include_children'	=> true
-		)	
-	);
+	woocommerce_product_loop_start();
 
-	if( !empty($current_vars) == true ) {
+	
 
-		foreach( $current_vars as $var => $data ) {
+	if ( wc_get_loop_prop( 'total' ) ) {
 
-			$tax_data[] = array(
-				array(
-					'taxonomy' 			=> $data['tax'],	
-					'field'				=> 'slug',
-					'terms'				=> $data['values'],
-					'include_children'	=> true
-				)	
-			);
+		
 
-		};
+		while ( have_posts() ) {
 
-	};
-
-	$tax_query = array(
-        'relation' => 'AND',
-        array(
-            $tax_data
-        )
-    );
-
-	$args =  array(
-		'meta_key'	=> '_price',
-		'status'  	=> 'publish',
-		'limit'    	=> $products_per_page,
-		'page'     	=> $paged,
-		'paginate' 	=> true,
-		'return'   	=> 'ids',
-	);
-
-	if(!empty($tax_data)) {
-        $args['tax_query'] = $tax_query;
-    }
-
-
-	$products = wc_get_products($args);
-
-	if($products) {
-
-		//do_action('woocommerce_before_shop_loop');
-
-		woocommerce_product_loop_start();
 			
-		foreach($products->products as $product) {
 
-			$post_object = get_post($product);
-			setup_postdata($GLOBALS['post'] =& $post_object);
-			wc_get_template_part('content', 'product');
+			the_post();
+
+			/**
+			 * Hook: woocommerce_shop_loop.
+			 */
+			
+
+			do_action( 'woocommerce_shop_loop' );
+
+			wc_get_template_part( 'content', 'product' );
 		}
-
-		wp_reset_postdata();
-
-		woocommerce_product_loop_end();
-
-		do_action('woocommerce_after_shop_loop');
-	} else {
-		do_action('woocommerce_no_products_found');
 	}
+
+	woocommerce_product_loop_end();
+
+	/**
+	 * Hook: woocommerce_after_shop_loop.
+	 *
+	 * @hooked woocommerce_pagination - 10
+	 */
+	do_action( 'woocommerce_after_shop_loop' );
+} else {
+	/**
+	 * Hook: woocommerce_no_products_found.
+	 *
+	 * @hooked wc_no_products_found - 10
+	 */
+	do_action( 'woocommerce_no_products_found' );
+}
+
+
+
 
 /**
  * Hook: woocommerce_after_main_content.
