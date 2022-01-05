@@ -54,7 +54,7 @@ menubtns.forEach(function(el) {
     })
 
     el.nextElementSibling.addEventListener('scroll', function(e) {
-        console.log('aa');
+        //console.log('aa');
         //e.stopPropagation();
     })
 
@@ -98,7 +98,7 @@ if(loginSubmit) {
                 var emailAlert = document.createElement("span");
                 emailVal.classList.add('err');
                 var text = document.createTextNode('Wprowadź e-mail');
-                console.log(emailAlert.classList.contains('active'));
+                //console.log(emailAlert.classList.contains('active'));
                 emailAlert.appendChild(text);
                 emailAlert.classList.add('err-msg');
                 document.querySelector('p.login-username').appendChild(emailAlert);
@@ -113,7 +113,7 @@ if(loginSubmit) {
                 var emailAlert = document.createElement("span");
                 emailVal.classList.add('err');
                 var text = document.createTextNode('Sprawdź e-mail');
-                console.log(emailAlert.classList.contains('active'));
+                //console.log(emailAlert.classList.contains('active'));
                 emailAlert.appendChild(text);
                 emailAlert.classList.add('err-msg');
                 document.querySelector('p.login-username').appendChild(emailAlert);
@@ -146,7 +146,7 @@ if(loginSubmit) {
     })
     
     emailVal.addEventListener('input', function() {
-        console.log(emailVal.value.match(valid));
+        //console.log(emailVal.value.match(valid));
         if(emailVal.value.match(/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/) !== 'null') {
             emailVal.classList.remove('err');
             const errMsg = document.querySelector('.login-username .err-msg');
