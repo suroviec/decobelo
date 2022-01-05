@@ -558,7 +558,7 @@ function render_filters($filters=null, $current_vars=null) {
                                             $attribute['slug'],
                                             catch_filters($current_vars, $attribute['slug'], $term),
                                             $term
-                                            
+
                                         );
                                     };
 
@@ -643,10 +643,6 @@ function render_filters($filters=null, $current_vars=null) {
         <div class="active-filters">
             <span><?php _e('Aktywne filtry', 'decobelo'); ?>:</span>
         </div>
-
-        <pre>
-            <?php var_dump($current_vars); ?>
-        </pre>
 
     </div>
 

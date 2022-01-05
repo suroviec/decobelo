@@ -45,7 +45,7 @@ jQuery('document').ready(function(){
         "page" : 1
      }; 
 
-     console.log(query);
+     
 
       // ustawienie punktu startowego historii po wczytaniu strony
 
@@ -61,7 +61,60 @@ jQuery('document').ready(function(){
                query = data.query;
             },0
          )
-      });      
+      }); 
+
+      // TODO budowa query z zaznaczonych filtrow
+
+      
+      
+      selectedFilters = document.querySelectorAll('.filter.selected');
+
+      selectedFilters.forEach(element => {
+         
+         var type = element.getAttribute('data-type')
+         var value = element.getAttribute('data-value')
+         var title = element.parentElement.parentElement.getAttribute('data-title');
+
+         // atrybuty
+
+         if(type.includes('pa_') == true) {
+            
+            if(!query.attrs[type]) {
+               query.attrs[type] = {
+                  'title'  : title,
+                  'values' : []
+               };
+            }
+            
+            query.attrs[type].values.push(value);
+            
+         }
+
+         // second term
+
+         if(type.includes('kolekcje') == true) {
+            
+            if(!query.secondTerm.kolekcje.title) {
+               query.secondTerm.kolekcje = {
+                  'title'  : title,
+                  'type'   : 'kolekcje',
+                  'values' : []
+               };
+            }
+            query.secondTerm.kolekcje.values.push(
+               {
+                  'name'   : element.textContent,
+                  'value'  : value
+               }
+            )
+            
+         }
+
+
+      });
+
+      console.log(query);
+
 
    };
 
