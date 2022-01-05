@@ -750,7 +750,7 @@ function sendQuery(nonce,query) {
  
  jQuery(document).ready( function() {
 
-   var productimgs = document.querySelectorAll('.product-imgs');
+   var productimgs = document.querySelectorAll('.products');
 
    productimgs.forEach(function(pimg) {
       pimg.addEventListener('click', function(e) {
