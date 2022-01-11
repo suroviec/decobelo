@@ -75,7 +75,7 @@ jQuery('document').ready(function(){
          var value = element.getAttribute('data-value')
          var title = element.parentElement.parentElement.getAttribute('data-title');
 
-         // atrybuty
+         // atrybuty //
 
          if(type.includes('pa_') == true) {
             
@@ -90,7 +90,7 @@ jQuery('document').ready(function(){
             
          }
 
-         // second term
+         // second term //
 
          if(type.includes('kolekcje') == true) {
             
@@ -108,6 +108,27 @@ jQuery('document').ready(function(){
                }
             )
             
+         }
+
+         // promocje //
+
+         if(type.includes('onsale') == true) {
+            query.onsale = {
+               type: 'onsale', 
+               title: 'W promocji', 
+               value: 'tak'
+            }
+         }
+
+         // orderby //
+
+         if(type.includes('orderby') == true) {
+            query.orderby = {
+               title:   'Sortowanie', 
+               value:   value, 
+               name:    element.textContent, 
+               type:    'orderby'
+            }
          }
 
 
@@ -488,44 +509,44 @@ jQuery('document').ready(function(){
              }
           } 
 
-          // ANCHOR wysylka query
+         // ANCHOR wysylka query
 
-          query.page = 1;
+         query.page = 1;
 
-          var url = '';
+         var url = '';
 
-          // ANCHOR zmiana url 
+         // ANCHOR zmiana url 
 
-          // second term
+         // second term
 
-          for (var tax in query.secondTerm) {
+         for (var tax in query.secondTerm) {
 
-            var taxonomy = query.secondTerm[tax];
+         var taxonomy = query.secondTerm[tax];
 
-            if(taxonomy.type) {
+         if(taxonomy.type) {
 
-               if(taxonomy.type == 'product_cat') {
-                  url += "produkty=";
-               } else {
-                  url += taxonomy.type + "=";
-               }
-               
-               
-               var taxterms = taxonomy.values;
-               for (var key in taxterms) {
-                  
-                  url += taxterms[key].value;
-                  if(taxterms.length > 1) url += ',';
-               }
-               if(taxterms.length > 1) {
-                  url = url.slice(0, -1);
-               }
+            if(taxonomy.type == 'product_cat') {
+               url += "produkty=";
+            } else {
+               url += taxonomy.type + "=";
             }
-          }
-          
-          // atrybuty
+            
+            
+            var taxterms = taxonomy.values;
+            for (var key in taxterms) {
+               
+               url += taxterms[key].value;
+               if(taxterms.length > 1) url += ',';
+            }
+            if(taxterms.length > 1) {
+               url = url.slice(0, -1);
+            }
+         }
+         }
+         
+         // atrybuty
 
-          for (var attr in query.attrs) {
+         for (var attr in query.attrs) {
 
             if (!query.attrs.hasOwnProperty(attr)) continue;
 
@@ -541,7 +562,26 @@ jQuery('document').ready(function(){
 
             url = url.slice(0, -1);
 
-          }            
+         }  
+
+         // promocje
+
+         if(query.onsale.value == "tak") {
+            url += "&promocje=tak";
+         }
+
+         // sortowanie
+
+         var translateorderby = {
+            'price'     : 'cena-rosnaco',
+            'price-desc': 'cena-malejaco',
+            'date'      : 'on-najnowszych'
+         }
+          
+         if(query.orderby.value) {
+            url += "&sortowanie=" + translateorderby[query.orderby.value];
+         }
+          
          
          //console.log(url);
 

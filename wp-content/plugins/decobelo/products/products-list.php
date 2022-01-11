@@ -41,11 +41,16 @@ function list_of_vars($current_tax=null) {
             );
 		}
 
+        $list_of_vars['sortowanie'] = array(
+            'tax' => 'orderby'
+        );
+
+        $list_of_vars['promocje'] = array(
+            'tax' => 'onsale'
+        );
+
         return $list_of_vars;
 }
-
-
-
 
 add_action("wp_ajax_send_products", 'send_products');
 add_action("wp_ajax_nopriv_send_products", 'send_products');
@@ -581,10 +586,11 @@ function render_filters($filters=null, $current_vars=null) {
                                 <li>
                                 <?php 
                                     echo sprintf(
-                                        '<a href="%s" data-value="%s" data-type="%s" class="filter">%s</a>',
+                                        '<a href="%s" data-value="%s" data-type="%s" class="filter %s">%s</a>',
                                         '',
                                         'tak',
                                         'onsale',
+                                        $current_vars['promocje']['values'][0] == 'tak' ? 'selected' : '',
                                         'tak'
                                     )
                                 ?>
@@ -605,26 +611,30 @@ function render_filters($filters=null, $current_vars=null) {
                                             'title' => 'Sortowanie',
                                             'value' => 'price',
                                             'name'  => 'ceny rosnąco',
+                                            'slug'  => 'cena-rosnaco'
                                         ),
                                         array(
                                             'title' => 'Sortowanie',
                                             'value' => 'price-desc',
                                             'name'  => 'ceny malejąco',
+                                            'slug'  => 'cena-malejaco'
                                         ),
                                         array(
                                             'title' => 'Sortowanie',
                                             'value' => 'date',
                                             'name'  => 'od najnowszych',
+                                            'slug'  => 'od-najnowszych',
                                         )
                                 );
 
                                 foreach($orderbys as $orderby) {
 
                                     echo sprintf(
-                                        '<li><a href="%s" data-value="%s" data-type="%s" class="filter">%s</a></li>',
+                                        '<li><a href="%s" data-value="%s" data-type="%s" class="filter %s">%s</a></li>',
                                         '',
                                         $orderby['value'],
                                         'orderby',
+                                        $current_vars['sortowanie']['values'][0] == $orderby['slug'] ? 'selected' : '',
                                         $orderby['name']
                                     );
                                 }

@@ -35,3 +35,7 @@ Stack trace:
 
 2022-01-05T15:52:35+00:00 CRITICAL syntax error, unexpected ')' w /opt/lampp/htdocs/decobelo/wp-content/themes/decobelo/woocommerce/archive-product.php w linii 111
 
+2022-01-05T19:27:09+00:00 CRITICAL syntax error, unexpected ',' w /opt/lampp/htdocs/decobelo/wp-content/themes/decobelo/woocommerce/archive-product.php w linii 172
+
+2022-01-05T19:27:16+00:00 CRITICAL syntax error, unexpected ')', expecting end of file w /opt/lampp/htdocs/decobelo/wp-content/themes/decobelo/woocommerce/archive-product.php w linii 173
+

@@ -582,3 +582,13 @@ if ( defined( 'JETPACK__VERSION' ) ) {
 if ( class_exists( 'WooCommerce' ) ) {
 	require get_template_directory() . '/inc/woocommerce.php';
 }
+
+
+/**
+ * Disable WooCommerce block styles (front-end).
+ */
+function themesharbor_disable_woocommerce_block_styles() {
+	wp_dequeue_style( 'wc-blocks-style' );
+	wp_dequeue_style( 'wp-block-library' );
+  }
+  add_action( 'wp_enqueue_scripts', 'themesharbor_disable_woocommerce_block_styles' );

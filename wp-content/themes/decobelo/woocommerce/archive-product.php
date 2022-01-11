@@ -80,9 +80,6 @@ echo get_sidebar();
 
 		render_filters($current_filters, $current_vars);		
 
-		echo '<pre>';
-		//var_dump($current_vars);
-		echo '</pre>';
 	?>
 
 
@@ -112,18 +109,54 @@ if(!function_exists('wc_get_products')) {
 		)	
 	);
 
+	$args = array();
+
 	if( !empty($current_vars) == true ) {
 
 		foreach( $current_vars as $var => $data ) {
 
-			$tax_data[] = array(
-				array(
-					'taxonomy' 			=> $data['tax'],	
-					'field'				=> 'slug',
-					'terms'				=> $data['values'],
-					'include_children'	=> true
-				)	
-			);
+
+			if ($var == 'sortowanie') { // orderby
+
+				if($data['values'][0] == 'cena-rosnaco') {
+		
+					$args['orderby'] = 'meta_value_num';
+					$args['meta_key'] = '_price';
+					$args['order'] = 'asc';
+		
+				} elseif($data['values'][0] == 'cena-malejaco') {
+		
+					$args['orderby'] = 'meta_value_num';
+					$args['meta_key'] = '_price';
+					$args['order'] = 'desc';
+		
+				} elseif($data['values'][0] == 'od-najnowszych') {
+		
+					$args['orderby'] = 'date';
+					$args['order'] = 'desc';
+		
+				}
+				
+			} else if ($var == 'promocje') {
+
+				if ($data['values'][0] == 'tak') {
+					
+					$args['include'] = wc_get_product_ids_on_sale();
+
+				}
+
+			} else { // taksonomie glowne i atrybuty
+
+				$tax_data[] = array(
+					array(
+						'taxonomy' 			=> $data['tax'],	
+						'field'				=> 'slug',
+						'terms'				=> $data['values'],
+						'include_children'	=> true
+					)	
+				);
+
+			}
 
 		};
 
@@ -136,14 +169,15 @@ if(!function_exists('wc_get_products')) {
         )
     );
 
-	$args =  array(
-		'meta_key'	=> '_price',
-		'status'  	=> 'publish',
-		'limit'    	=> $products_per_page,
-		'page'     	=> $paged,
-		'paginate' 	=> true,
-		'return'   	=> 'ids',
-	);
+	$args['meta_key'] 	= '_price';
+	$args['status'] 	= 'publish';
+	$args['limit']		= $products_per_page;
+	$args['page'] 		= $paged;
+	$args['paginate'] 	= true;
+	$args['return'] 	= 'ids';
+	
+
+
 
 	if(!empty($tax_data)) {
         $args['tax_query'] = $tax_query;
