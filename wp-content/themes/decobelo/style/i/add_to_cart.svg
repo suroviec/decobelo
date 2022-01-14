@@ -2,12 +2,12 @@
 <!-- Created with Inkscape (http://www.inkscape.org/) -->
 
 <svg
-   width="3.898196mm"
-   height="2.7771904mm"
-   viewBox="0 0 3.898196 2.7771904"
+   width="7.0960693mm"
+   height="7.0960693mm"
+   viewBox="0 0 7.0960694 7.0960692"
    version="1.1"
    id="svg3000"
-   inkscape:version="1.1.1 (1:1.1+202109281949+c3084ef5ed)"
+   inkscape:version="1.1.1 (3bf5ae0d25, 2021-09-20)"
    sodipodi:docname="add_to_cart.svg"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
@@ -27,9 +27,9 @@
      fit-margin-left="0"
      fit-margin-right="0"
      fit-margin-bottom="0"
-     inkscape:zoom="16"
-     inkscape:cx="3.40625"
-     inkscape:cy="2.1875"
+     inkscape:zoom="22.627417"
+     inkscape:cx="13.147767"
+     inkscape:cy="11.976621"
      inkscape:window-width="1920"
      inkscape:window-height="1052"
      inkscape:window-x="1366"
@@ -42,45 +42,41 @@
      inkscape:label="Warstwa 1"
      inkscape:groupmode="layer"
      id="layer1"
-     transform="translate(-143.14426,-136.86872)">
-    <circle
-       cx="145.19275"
-       cy="139.29909"
-       fill="none"
-       r="0.23121437"
-       stroke="#000000"
-       stroke-linecap="round"
-       stroke-linejoin="round"
-       stroke-width="0.231214"
-       id="circle2"
-       style="stroke:#002330;stroke-opacity:1" />
-    <circle
-       cx="146.58003"
-       cy="139.29909"
-       fill="none"
-       r="0.23121437"
-       stroke="#000000"
-       stroke-linecap="round"
-       stroke-linejoin="round"
-       stroke-width="0.231214"
-       id="circle4-7"
-       style="stroke:#002330;stroke-opacity:1" />
-    <path
-       d="m 144.92338,137.56498 h 2.00347 l -0.19422,0.96994 a 0.23121438,0.23121438 0 0 1 -0.23121,0.18613 h -1.22197 a 0.23121438,0.23121438 0 0 1 -0.23121,-0.20116 l -0.17573,-1.33179 a 0.23121438,0.23121438 0 0 0 -0.2289,-0.20116 h -0.26011"
-       fill="none"
-       stroke="#000000"
-       stroke-linecap="round"
-       stroke-linejoin="round"
-       stroke-width="0.231214"
-       id="path6"
-       style="stroke:#002330;stroke-opacity:1" />
-    <path
-       style="fill:none;stroke:#002330;stroke-width:0.264583px;stroke-linecap:round;stroke-linejoin:miter;stroke-opacity:1"
-       d="m 143.79724,137.00101 v 1.04138"
-       id="path880" />
-    <path
-       style="fill:none;stroke:#002330;stroke-width:0.264583px;stroke-linecap:round;stroke-linejoin:miter;stroke-opacity:1"
-       d="m 144.31793,137.5217 h -1.04138"
-       id="path2603" />
+     transform="translate(-133.80711,-133.59187)">
+    <g
+       id="g909"
+       transform="translate(-0.40248258,0.00523718)">
+      <circle
+         cx="137.21085"
+         cy="138.41492"
+         fill="none"
+         r="0.27338797"
+         stroke="#000000"
+         stroke-linecap="round"
+         stroke-linejoin="round"
+         stroke-width="0.273387"
+         id="circle2"
+         style="fill:none;fill-opacity:1;stroke:#ffffff;stroke-width:0.301;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <circle
+         cx="138.85118"
+         cy="138.41492"
+         fill="none"
+         r="0.27338797"
+         stroke="#000000"
+         stroke-linecap="round"
+         stroke-linejoin="round"
+         stroke-width="0.273387"
+         id="circle4-7"
+         style="fill:none;fill-opacity:1;stroke:#ffffff;stroke-width:0.301;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+      <path
+         d="m 136.89235,136.3645 h 2.36891 l -0.22965,1.14685 a 0.27338798,0.27338798 0 0 1 -0.27339,0.22008 h -1.44485 a 0.27338798,0.27338798 0 0 1 -0.27338,-0.23784 l -0.20779,-1.57471 a 0.27338798,0.27338798 0 0 0 -0.27065,-0.23785 H 136.254"
+         fill="none"
+         stroke="#000000"
+         stroke-linecap="round"
+         stroke-linejoin="round"
+         stroke-width="0.273387"
+         id="path6"
+         style="fill:none;fill-opacity:1;stroke:#ffffff;stroke-width:0.501;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    </g>
   </g>
 </svg>

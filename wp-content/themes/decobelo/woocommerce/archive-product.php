@@ -31,6 +31,23 @@ do_action( 'woocommerce_before_main_content' );
 echo get_sidebar();
 
 ?>
+
+
+<?php 
+	global $post;
+	if($post->ID == 233) : ?>
+
+<header class="woocommerce-products-header">
+	<h1 class="woocommerce-products-header__title page-title">Kategorie produktów</h1>
+</header>
+
+<?php custom_menu('product_cat', 'Produkty', true, true); ?>
+
+
+
+<?php else : ?>
+
+
 <header class="woocommerce-products-header">
 	<?php if ( apply_filters( 'woocommerce_show_page_title', true ) ) : ?>
 		<h1 class="woocommerce-products-header__title page-title"><?php woocommerce_page_title(); ?></h1>
@@ -46,6 +63,8 @@ echo get_sidebar();
 	do_action( 'woocommerce_archive_description' );
 	?>
 </header>
+
+	
 
 
 	<?php 
@@ -68,7 +87,7 @@ echo get_sidebar();
 				$current_vars[$query_var]['values'] = explode(",", get_query_var($query_var));
 			};
 		};
-		
+	
 		$args = array(
 			'current_tax' 	=> $current_tax, 
 			'current_slug' 	=> $current_slug,
@@ -207,6 +226,8 @@ if(!function_exists('wc_get_products')) {
 	} else {
 		do_action('woocommerce_no_products_found');
 	}
+
+endif;
 
 /**
  * Hook: woocommerce_after_main_content.

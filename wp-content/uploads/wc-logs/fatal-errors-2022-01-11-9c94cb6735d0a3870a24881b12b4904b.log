@@ -1,0 +1,12 @@
+2022-01-11T22:31:42+00:00 CRITICAL Uncaught ArgumentCountError: Too few arguments to function short_desc_loop(), 1 passed in /opt/lampp/htdocs/decobelo/wp-includes/class-wp-hook.php on line 303 and exactly 2 expected in /opt/lampp/htdocs/decobelo/wp-content/themes/decobelo/functions.php:32
+Stack trace:
+#0 /opt/lampp/htdocs/decobelo/wp-includes/class-wp-hook.php(303): short_desc_loop('')
+#1 /opt/lampp/htdocs/decobelo/wp-includes/class-wp-hook.php(327): WP_Hook->apply_filters(NULL, Array)
+#2 /opt/lampp/htdocs/decobelo/wp-includes/plugin.php(470): WP_Hook->do_action(Array)
+#3 /opt/lampp/htdocs/decobelo/wp-content/themes/decobelo/woocommerce/content-product.php(56): do_action('woocommerce_sho...')
+#4 /opt/lampp/htdocs/decobelo/wp-includes/template.php(772): require('/opt/lampp/htdo...')
+#5 /opt/lampp/htdocs/decobelo/wp-content/plugins/woocommerce/includes/wc-core-functions.php(284): load_template('/opt/lampp/htdo...', false)
+#6 /opt/lampp/htdocs/decobelo/wp-content/themes/decobelo/woocommerce/archive-product.php(199): wc_get_template_part('content w /opt/lampp/htdocs/decobelo/wp-content/themes/decobelo/functions.php w linii 32
+
+2022-01-11T22:34:53+00:00 CRITICAL syntax error, unexpected ')', expecting ';' or ',' w /opt/lampp/htdocs/decobelo/wp-content/themes/decobelo/functions.php w linii 34
+

@@ -401,15 +401,19 @@ function get_current_filters($args) {
 
 function catch_filters($current_vars, $term, $value) {
 
-    $check = 'test';
+    if($current_vars) {
 
-    foreach($current_vars as $filter_name => $var_data) {
-        if(($var_data['tax'] == $term) && in_array($value, $var_data['values'])) {
-            $check = 'selected';
+        $check = 'test';
+
+        foreach($current_vars as $filter_name => $var_data) {
+            if(($var_data['tax'] == $term) && in_array($value, $var_data['values'])) {
+                $check = 'selected';
+            }
         }
-    }
+    
+        return $check;
 
-    return $check;
+    }
 
 };
 
@@ -417,6 +421,8 @@ function catch_filters($current_vars, $term, $value) {
 function render_filters($filters=null, $current_vars=null) {
 
     ob_start(); ?>
+
+
 
 <?php if($filters['child_terms']) : ?> 
         <div class="upper-filters">
@@ -452,9 +458,9 @@ function render_filters($filters=null, $current_vars=null) {
 
         <div class="lower-filters">
             
-            <div class="switcher"><?php _e('Filtry', 'decobelo') ?></div>
-
             <div class="filters-list">
+
+                    <div class="switcher"><?php _e('Filtry', 'decobelo') ?></div>
          
                     <?php if($filters['second_term']) : ?>
 
@@ -599,59 +605,97 @@ function render_filters($filters=null, $current_vars=null) {
                         </div>
                     </div>    
 
-                    <div class="order-filter">
-                        <div>
-                            <span>Sortowanie</span>
-                            <ul data-filter="order" data-title="Sortowanie">
+                    <div class="sort-cont">
+                        <span><b>Sortowanie: </b></span>
+                        <div class="order-filter">
+                            <div>
+                                <span>Domyślnie</span>
+                                <ul data-filter="order" data-title="Sortowanie">
 
-                            <?php
+                                <?php
 
-                                $orderbys = array(
-                                        array(
-                                            'title' => 'Sortowanie',
-                                            'value' => 'price',
-                                            'name'  => 'ceny rosnąco',
-                                            'slug'  => 'cena-rosnaco'
-                                        ),
-                                        array(
-                                            'title' => 'Sortowanie',
-                                            'value' => 'price-desc',
-                                            'name'  => 'ceny malejąco',
-                                            'slug'  => 'cena-malejaco'
-                                        ),
-                                        array(
-                                            'title' => 'Sortowanie',
-                                            'value' => 'date',
-                                            'name'  => 'od najnowszych',
-                                            'slug'  => 'od-najnowszych',
-                                        )
-                                );
-
-                                foreach($orderbys as $orderby) {
-
-                                    echo sprintf(
-                                        '<li><a href="%s" data-value="%s" data-type="%s" class="filter %s">%s</a></li>',
-                                        '',
-                                        $orderby['value'],
-                                        'orderby',
-                                        $current_vars['sortowanie']['values'][0] == $orderby['slug'] ? 'selected' : '',
-                                        $orderby['name']
+                                    $orderbys = array(
+                                            array(
+                                                'title' => 'Sortowanie',
+                                                'value' => 'price',
+                                                'name'  => 'ceny rosnąco',
+                                                'slug'  => 'cena-rosnaco'
+                                            ),
+                                            array(
+                                                'title' => 'Sortowanie',
+                                                'value' => 'price-desc',
+                                                'name'  => 'ceny malejąco',
+                                                'slug'  => 'cena-malejaco'
+                                            ),
+                                            array(
+                                                'title' => 'Sortowanie',
+                                                'value' => 'date',
+                                                'name'  => 'od najnowszych',
+                                                'slug'  => 'od-najnowszych',
+                                            )
                                     );
-                                }
-                            ?>
 
-                            </ul>
-                        </div>
-                    </div>  
+                                    foreach($orderbys as $orderby) {
+
+                                        echo sprintf(
+                                            '<li><a href="%s" data-value="%s" data-type="%s" class="filter %s">%s</a></li>',
+                                            '',
+                                            $orderby['value'],
+                                            'orderby',
+                                            $current_vars['sortowanie']['values'][0] == $orderby['slug'] ? 'selected' : '',
+                                            $orderby['name']
+                                        );
+                                    }
+                                ?>
+
+                                </ul>
+                            </div>
+                        </div> 
+                    </div> 
                         
                     <?php endif; ?>
 
             </div>
-
+            
         </div>
 
-        <div class="active-filters">
-            <span><?php _e('Aktywne filtry', 'decobelo'); ?>:</span>
+        <?php 
+            $temp_vars = $current_vars;
+            if($current_vars['sortowanie']) {
+                unset($temp_vars['sortowanie']);
+            };    
+            $activecheck = count($temp_vars);    
+        ?>
+
+        <div class="active-filters <?php echo $activecheck > 0 ? 'active' : ''; ?>">
+
+            <?php 
+
+                echo '<span>Aktywne filtry: </span>';
+
+                if($current_vars) {
+                    foreach($current_vars as $current_var_slug => $current_var_data) {
+
+
+                        foreach($current_var_data['values'] as $current_var_value) {
+
+                            if($current_var_slug == 'sortowanie') {
+                                continue;
+                            }
+    
+                            echo sprintf(
+                                '<a class="filter selected" data-type="%s" data-value="%s" data-title="%s" title="Usuń filtr"><b>%s</b>: %s</a>',            
+                                $current_var_data['tax'],
+                                $current_var_value,
+                                get_taxonomy($current_var_data['tax'])->labels->singular_name,
+                                $current_var_data['tax'] == 'onsale' ? 'W promocji' : get_taxonomy($current_var_data['tax'])->labels->singular_name,
+                                ($current_var_data['tax'] == 'kolekcje') || ($current_var_data['tax'] == 'product_cat') ? get_term_by('slug', $current_var_value, $current_var_slug)->name : $current_var_value
+                            );
+                        }
+                    }
+                }    
+
+            ?> 
         </div>
 
     </div>

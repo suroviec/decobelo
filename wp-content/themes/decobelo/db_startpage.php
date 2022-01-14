@@ -23,37 +23,31 @@ get_header();
 			</div>
 
 			<?php
-				$collections = get_post_meta($post->ID, 'start_collections')[0];
-				shuffle($collections);
-				$i = 2;
-				foreach(array_slice($collections, 0, 3) as $collection) {
-					echo sprintf(
-						'<div class="b%s">
-						<a href="%s" title="%s">
-						<img src="%s">
-							<span class="name">%s</span>
-						</a>
-						</div>',
-						$i,
-						get_term_link(get_term($collection)->term_id),
-						get_term($collection)->name . ' - '. __('Zobacz produkty z kolekcji', 'decobelo'),
-						wp_get_attachment_url(get_term_meta($collection, 'img')[0]),
-						get_term($collection)->name
-					);		
-					$i++;
-				}
+
+				$slider = get_post_meta($post->ID, 'slides')[0][0];
+				
+				echo sprintf(
+					'<div class="b2">
+					<a href="%s" title="%s">
+						%s
+						%s
+						<div class="slider-content">
+							<span class="small-header">%s</span>
+							<span class="text">%s</span>
+							<button class="mainbtn">Więcej</button>
+						</div>
+					</a>
+					</div>',
+					$slider['url'],
+					$slider['link_name'],
+					wp_get_attachment_image($slider['img']['desktop'], 'desktop', false, array('class' => 'desktop')),
+					wp_get_attachment_image($slider['img']['mobile'], 'mobile', false, array('class' => 'mobile')),
+					$slider['title'],
+					$slider['content']
+				);		
+
 			?>
 		</div>	
-		<a href="" class="ar black right-b"><?php _e('Zobacz wszystkie kolekcje', 'decobelo'); ?></a>
-	</section>
-	
-	<section id="info-1" class="info-12">
-		<span class="bigheader">
-			Bezpieczne produkty produkowane w Polsce</span>
-		<span class="content">
-			<span class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ut vulputate purus, sit amet hendrerit enim. Sed nec egestas felis. Duis sagittis rhoncus erat sollicitudin aliquam. In rhoncus nulla in dui iaculis fermentum. </span>
-			<a href="" class="mainbtn">Zobacz jak pracujemy</a>
-		</span>
 	</section>
 
 	<section id="kategorie">
@@ -61,9 +55,9 @@ get_header();
 		<span class="header"><?php _e('Kategorie produktów', 'decobelo'); ?></span>
 		<?php start_products_block('product_cat', 'Produkty', true); ?>
 
-		
+
 		<!---
-		
+
 		<span class="header"><?php _e('Kategorie produktów', 'decobelo'); ?></span>
 		<div id="start-boxes-2" class="g">
 			<?php 
@@ -110,6 +104,68 @@ get_header();
 		--->
 	</section>
 
+	<section id="bannery">
+
+	<?php
+
+		for($i = 1; $i < 3; $i++) {
+
+			$slider = get_post_meta($post->ID, 'slides')[0][$i];
+
+			echo sprintf(
+				'<div class="">
+				<div>
+					%s
+					%s
+					<div class="slider-content">
+						<span class="small-header">%s</span>
+						<span class="text">%s</span>
+						<a class="mainbtn" href="%s" title="%s">%s</a>
+					</div>
+				</div>
+				</div>',
+				wp_get_attachment_image($slider['img']['desktop'], 'desktop', false, array('class' => 'desktop')),
+				wp_get_attachment_image($slider['img']['mobile'], 'mobile', false, array('class' => 'mobile')),
+				$slider['title'],
+				$slider['content'],
+				$slider['url'],
+				$slider['link_name'],
+				$slider['link_name']
+			);
+
+
+		}		
+
+	?>
+
+	</section>
+
+	<section id="promocje">
+		<span class="header"><?php _e('Wybrane produkty w promocji', 'decobelo'); ?></span>
+		<a href="<?php echo get_permalink(60); ?>" title="<?php _e('Zobacz wszystkie', 'decobelo'); ?>" class="smallbtn1 flr"><?php _e('Zobacz wszystkie promocje', 'decobelo'); ?></a>
+		<?php echo do_shortcode('[sale_products limit="8"  orderby="rand" order="rand"]'); ?>
+	</section>
+
+	<section id="info-1" class="info-12">
+		<span class="bigheader">
+			Bezpieczne produkty produkowane w Polsce</span>
+		<span class="content">
+			<span class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ut vulputate purus, sit amet hendrerit enim. Sed nec egestas felis. Duis sagittis rhoncus erat sollicitudin aliquam. In rhoncus nulla in dui iaculis fermentum. </span>
+			<a href="" class="mainbtn">Zobacz jak pracujemy</a>
+		</span>
+	</section>
+
+	<section id="kolekcje">
+
+		<span class="header"><?php _e('Kolekcje produktów', 'decobelo'); ?></span>
+
+		<?php custom_menu('kolekcje', 'Kolekcje', true, true); ?>
+		
+	</section>
+	
+
+	
+
 	<section id="info-2" class="info-22">
 		<div class="">
 			<?php echo wp_get_attachment_image(258, 'full'); ?>
@@ -123,13 +179,9 @@ get_header();
 			</span>
 		</div>
 	</section>
-	
-	<section id="promocje">
-		<span class="header"><?php _e('Wybrane produkty w promocji', 'decobelo'); ?></span>
-		<a href="<?php echo get_permalink(60); ?>" title="<?php _e('Zobacz produkty w promocji', 'decobelo'); ?>" class="ar black right-t"><?php _e('Zobacz wszystkie produkty w promocji', 'decobelo'); ?></a>
-		<?php echo do_shortcode('[sale_products limit="6"  orderby="rand" order="rand"]'); ?>
-	</section>
 
+	
+	
 	<!--
 
 	<section id="polecane">

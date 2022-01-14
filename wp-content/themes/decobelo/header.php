@@ -44,7 +44,7 @@
 			<div class="menu-menu-glowne-container">
 			<ul id="primary-menu" class="menu">
 				<?php custom_menu('product_cat', 'Produkty', true); ?>
-				<?php custom_menu('kolekcje', 'Kolekcje', true); ?>
+				<?php custom_menu('kolekcje', 'Kolekcje', true, false, 'kolekcje'); ?>
 				<li><a href="<?php echo get_permalink(60); ?>"><?php _e('Promocje', 'decobelo'); ?></a></li>
 				<li><a href="<?php echo get_permalink(15); ?>"><?php _e('Szyte na miarę', 'decobelo'); ?></a></li>
 				<li>
@@ -62,7 +62,7 @@
 		<div id="shop-menu">
 			<ul>
 				<li id="list-btn">
-					<a href="" class="cover-btn">
+					<a href="" class="cover-btn" title="<?php _e('Lista Twoich ulubionych produktów', 'decobelo'); ?>">
 						<?php _e('Lista ulubionych', 'decobelo'); ?>
 						<?php 
 							echo sprintf(
@@ -81,7 +81,9 @@
 					</div>
 				</li>
 				<li id="user-btn" class="<?php echo get_current_user_id() > 0 ? 'logged' : '' ?>">
-					<a href="" class="cover-btn"><?php _e('Moje konto', 'decobelo'); ?></a>
+					
+					<a href="" class="cover-btn" title="<?php echo get_current_user_id() > 0 ? 'Jesteś zalogowana / zalogowany' : 'Kliknij, aby zalogować' ?>"><?php _e('Moje konto', 'decobelo'); ?></a>
+
 					<ul class="submenu">
 						<div class="close"></div>
 						<div>
@@ -90,18 +92,23 @@
 					</ul>
 				</li>
 				<li id="cart-btn" >
-					<a href="" class="cover-btn">
+					<a href="" class="cover-btn" title="<?php _e('Zobacz zawartość koszyka', 'decobelo')?>">
 						<?php _e('Koszyk', 'decobelo'); ?>
 						<span class="cart-count"></span>
 					</a>
 					<div class="cart-container submenu">
 						<div class="close"></div>
 						<span class="submenu-header"><?php _e('Koszyk', 'decobelo'); ?></span>
-						<div id="cart-msg"></div>
-						<ul class="cart-list">
-							<span class="small-header"><?php _e('Zawartość koszyka', 'decobelo'); ?></span>
-							<?php woocommerce_mini_cart(); ?>
-						</ul>
+						<div class="minicart-cont">
+							<div id="cart-msg"></div>
+							<ul class="cart-list">
+								<div class="mini-cart">
+									<?php woocommerce_mini_cart(); ?>
+								</div>
+							</ul>
+								<div class="mini-cart-bottom"></div>
+						</div>
+						
 					</div>
 				</li>
 			</ul>

@@ -27,7 +27,7 @@ jQuery(function($){
 		e.preventDefault();
 		var button = $(this);
 		button.next().val(''); // emptying the hidden field
-		button.hide().prev().html('<a class="button">Upload image</a>');
+		button.hide().prev().html('<a class="button">Dodaj zdjęcie</a>');
 	});
 
 });

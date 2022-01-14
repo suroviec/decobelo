@@ -11,6 +11,7 @@ function cart_count_update($fragments){
     return $fragments;
 }
 
+remove_action('woocommerce_widget_shopping_cart_total', 'woocommerce_widget_shopping_cart_subtotal', 10 );
 
 add_filter('woocommerce_add_to_cart_fragments', 'cart_list_update');
 
@@ -23,6 +24,35 @@ function cart_list_update($fragments) {
     <?php $fragments['.cart-list'] = ob_get_clean();
         return $fragments;
 }
+
+add_filter('woocommerce_add_to_cart_fragments', 'mini_update');
+
+function mini_update($fragments) {
+    ob_start(); ?>
+
+    <?php if(WC()->cart->get_cart_contents_count() > 0) : ?>
+
+        <div class="mini-cart-bottom">
+            <div>
+                <p><b><?php _e('Kwota łącznie: ', 'decobelo') ;?></b><span class="mini-total"><?php echo WC()->cart->get_cart_total(); ?></span></p>
+            </div>
+            <div>
+                <a href="<?php echo wc_get_checkout_url(); ?>" class="mainbtn"><?php _e('Złóż zamówienie', 'decobelo'); ?></a>
+            </div>
+        </div>
+
+    <?php else : ?>
+
+        <div class="mini-cart-bottom"></div>
+
+    <?php 
+    
+    endif;
+
+    $fragments['.mini-cart-bottom'] = ob_get_clean();
+    return $fragments;
+}
+
 
 // DODANIE NAZWY PRODUKTU DO PRZYCISKU
 
@@ -41,7 +71,6 @@ function filter_wc_loop_add_to_cart_link( $button_html, $product, $args ) {
     return $button_html;
 }
 
-
 add_action('wp_footer','custom_jquery_add_to_cart_script');
 function custom_jquery_add_to_cart_script(){
         ?>
@@ -49,6 +78,7 @@ function custom_jquery_add_to_cart_script(){
 
                     jQuery( document.body ).on( 'added_to_cart', function(event, fragments, cart_hash, button){
 
+                  
                         if(!button) {
                             var name = document.querySelector('h1.product_title').textContent;
                         } else {
@@ -58,11 +88,17 @@ function custom_jquery_add_to_cart_script(){
                         var cover = document.querySelector('#cover');
                         minicart.classList.add('active');
                         cover.classList.add('active');
+                    
                         let cartmsg = document.querySelector('#cart-msg');
                         cartmsg.classList.add('active');
                         cartmsg.innerHTML = "<span>Dodano " + name + " do koszyka</span>";
+                        document.querySelector('.minicart-cont').style.gridTemplateRows = "4.4rem 1fr 7rem 3rem";
                     });
 
+                    jQuery('document').ready(function(){
+                        document.querySelector('#cart-msg').classList.remove('active');
+                    });
+             
             </script>
         <?php
 }

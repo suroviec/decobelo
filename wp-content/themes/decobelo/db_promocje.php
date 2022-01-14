@@ -1,6 +1,7 @@
 <?php
 /**
  * 	Template Name: Strona promocji
+ *	pochodna archive-product.ph
  * 
  */
 
@@ -22,7 +23,7 @@ echo get_sidebar();
 ?>
 <header class="woocommerce-products-header">
 	<?php if ( apply_filters( 'woocommerce_show_page_title', true ) ) : ?>
-		<h1 class="woocommerce-products-header__title page-title"><?php woocommerce_page_title(); ?></h1>
+		<h1 class="woocommerce-products-header__title page-title"><?php _e('Produkty w promocji', 'decobelo')?></h1>
 	<?php endif; ?>
 
 	<?php
@@ -44,6 +45,17 @@ echo get_sidebar();
 		$current = array();
 		$current_tax = $query['taxonomy'];
 		$current_slug = $query['term'];
+
+		$list_of_vars = list_of_vars($current_tax);
+
+		$current_vars = array();	
+
+		foreach($list_of_vars as $query_var => $query_var_data) {
+			if(!empty(get_query_var($query_var))) {
+				$current_vars[$query_var]['tax'] = $list_of_vars[$query_var]['tax'];
+				$current_vars[$query_var]['values'] = explode(",", get_query_var($query_var));
+			};
+		};
 		
 		$args = array(
 			'current_tax' 	=> $current_tax, 
@@ -54,7 +66,7 @@ echo get_sidebar();
 
 		$current_filters = get_current_filters($args);
 
-		render_filters($current_filters);
+		render_filters($current_filters, $current_vars);
 
 	?>
 
@@ -108,6 +120,9 @@ if ( woocommerce_product_loop() ) {
         do_action('woocommerce_no_products_found');
     }
 
+	woocommerce_product_loop_end();
+
+
 	$total = $products->total;
 	$products_per_page = apply_filters('loop_shop_per_page', wc_get_default_products_per_row() * wc_get_default_product_rows_per_page());
 
@@ -126,8 +141,6 @@ if ( woocommerce_product_loop() ) {
 		echo ob_get_clean();
 
 	}
-
-	woocommerce_product_loop_end();
 
 	/**
 	 * Hook: woocommerce_after_shop_loop.

@@ -1,0 +1,79 @@
+2022-01-13T02:17:00+00:00 CRITICAL syntax error, unexpected ',' w /opt/lampp/htdocs/decobelo/wp-content/themes/decobelo/functions.php w linii 375
+
+2022-01-13T02:27:56+00:00 CRITICAL Uncaught Error: Call to undefined function wp_get_attachment_img() in /opt/lampp/htdocs/decobelo/wp-content/themes/decobelo/functions.php:375
+Stack trace:
+#0 /opt/lampp/htdocs/decobelo/wp-includes/class-wp-hook.php(303): custom_archive_product_img('')
+#1 /opt/lampp/htdocs/decobelo/wp-includes/class-wp-hook.php(327): WP_Hook->apply_filters(NULL, Array)
+#2 /opt/lampp/htdocs/decobelo/wp-includes/plugin.php(470): WP_Hook->do_action(Array)
+#3 /opt/lampp/htdocs/decobelo/wp-content/themes/decobelo/woocommerce/content-product.php(46): do_action('woocommerce_bef...')
+#4 /opt/lampp/htdocs/decobelo/wp-includes/template.php(772): require('/opt/lampp/htdo...')
+#5 /opt/lampp/htdocs/decobelo/wp-content/plugins/woocommerce/includes/wc-core-functions.php(284): load_template('/opt/lampp/htdo...', false)
+#6 /opt/lampp/htdocs/decobelo/wp-content/plugins/woocommerce/includes/shortcodes/class-wc-shortcode-products.php(660): wc_get_template_part('content', 'product')
+#7 /opt/lampp/htdocs/decobelo/wp-content/plugins/woocommerce/incl w /opt/lampp/htdocs/decobelo/wp-content/themes/decobelo/functions.php w linii 375
+
+2022-01-13T02:30:43+00:00 CRITICAL Uncaught Error: Call to undefined function wp_get_attachment_img() in /opt/lampp/htdocs/decobelo/wp-content/themes/decobelo/functions.php:375
+Stack trace:
+#0 /opt/lampp/htdocs/decobelo/wp-includes/class-wp-hook.php(303): custom_archive_product_img('')
+#1 /opt/lampp/htdocs/decobelo/wp-includes/class-wp-hook.php(327): WP_Hook->apply_filters(NULL, Array)
+#2 /opt/lampp/htdocs/decobelo/wp-includes/plugin.php(470): WP_Hook->do_action(Array)
+#3 /opt/lampp/htdocs/decobelo/wp-content/themes/decobelo/woocommerce/content-product.php(46): do_action('woocommerce_bef...')
+#4 /opt/lampp/htdocs/decobelo/wp-includes/template.php(772): require('/opt/lampp/htdo...')
+#5 /opt/lampp/htdocs/decobelo/wp-content/plugins/woocommerce/includes/wc-core-functions.php(284): load_template('/opt/lampp/htdo...', false)
+#6 /opt/lampp/htdocs/decobelo/wp-content/plugins/woocommerce/includes/shortcodes/class-wc-shortcode-products.php(660): wc_get_template_part('content', 'product')
+#7 /opt/lampp/htdocs/decobelo/wp-content/plugins/woocommerce/incl w /opt/lampp/htdocs/decobelo/wp-content/themes/decobelo/functions.php w linii 375
+
+2022-01-13T02:31:00+00:00 CRITICAL Uncaught Error: Call to undefined function wp_get_attachment_img() in /opt/lampp/htdocs/decobelo/wp-content/themes/decobelo/functions.php:375
+Stack trace:
+#0 /opt/lampp/htdocs/decobelo/wp-includes/class-wp-hook.php(303): custom_archive_product_img('')
+#1 /opt/lampp/htdocs/decobelo/wp-includes/class-wp-hook.php(327): WP_Hook->apply_filters(NULL, Array)
+#2 /opt/lampp/htdocs/decobelo/wp-includes/plugin.php(470): WP_Hook->do_action(Array)
+#3 /opt/lampp/htdocs/decobelo/wp-content/themes/decobelo/woocommerce/content-product.php(46): do_action('woocommerce_bef...')
+#4 /opt/lampp/htdocs/decobelo/wp-includes/template.php(772): require('/opt/lampp/htdo...')
+#5 /opt/lampp/htdocs/decobelo/wp-content/plugins/woocommerce/includes/wc-core-functions.php(284): load_template('/opt/lampp/htdo...', false)
+#6 /opt/lampp/htdocs/decobelo/wp-content/plugins/woocommerce/includes/shortcodes/class-wc-shortcode-products.php(660): wc_get_template_part('content', 'product')
+#7 /opt/lampp/htdocs/decobelo/wp-content/plugins/woocommerce/incl w /opt/lampp/htdocs/decobelo/wp-content/themes/decobelo/functions.php w linii 375
+
+2022-01-13T02:31:12+00:00 CRITICAL Uncaught Error: Call to undefined function wp_get_attachment_img() in /opt/lampp/htdocs/decobelo/wp-content/themes/decobelo/functions.php:375
+Stack trace:
+#0 /opt/lampp/htdocs/decobelo/wp-includes/class-wp-hook.php(303): custom_archive_product_img('')
+#1 /opt/lampp/htdocs/decobelo/wp-includes/class-wp-hook.php(327): WP_Hook->apply_filters(NULL, Array)
+#2 /opt/lampp/htdocs/decobelo/wp-includes/plugin.php(470): WP_Hook->do_action(Array)
+#3 /opt/lampp/htdocs/decobelo/wp-content/themes/decobelo/woocommerce/content-product.php(46): do_action('woocommerce_bef...')
+#4 /opt/lampp/htdocs/decobelo/wp-includes/template.php(772): require('/opt/lampp/htdo...')
+#5 /opt/lampp/htdocs/decobelo/wp-content/plugins/woocommerce/includes/wc-core-functions.php(284): load_template('/opt/lampp/htdo...', false)
+#6 /opt/lampp/htdocs/decobelo/wp-content/plugins/woocommerce/includes/shortcodes/class-wc-shortcode-products.php(660): wc_get_template_part('content', 'product')
+#7 /opt/lampp/htdocs/decobelo/wp-content/plugins/woocommerce/incl w /opt/lampp/htdocs/decobelo/wp-content/themes/decobelo/functions.php w linii 375
+
+2022-01-13T02:32:39+00:00 CRITICAL Uncaught Error: Call to undefined function wp_get_attachment_img() in /opt/lampp/htdocs/decobelo/wp-content/themes/decobelo/functions.php:376
+Stack trace:
+#0 /opt/lampp/htdocs/decobelo/wp-includes/class-wp-hook.php(303): custom_archive_product_img('')
+#1 /opt/lampp/htdocs/decobelo/wp-includes/class-wp-hook.php(327): WP_Hook->apply_filters(NULL, Array)
+#2 /opt/lampp/htdocs/decobelo/wp-includes/plugin.php(470): WP_Hook->do_action(Array)
+#3 /opt/lampp/htdocs/decobelo/wp-content/themes/decobelo/woocommerce/content-product.php(46): do_action('woocommerce_bef...')
+#4 /opt/lampp/htdocs/decobelo/wp-includes/template.php(772): require('/opt/lampp/htdo...')
+#5 /opt/lampp/htdocs/decobelo/wp-content/plugins/woocommerce/includes/wc-core-functions.php(284): load_template('/opt/lampp/htdo...', false)
+#6 /opt/lampp/htdocs/decobelo/wp-content/plugins/woocommerce/includes/shortcodes/class-wc-shortcode-products.php(660): wc_get_template_part('content', 'product')
+#7 /opt/lampp/htdocs/decobelo/wp-content/plugins/woocommerce/incl w /opt/lampp/htdocs/decobelo/wp-content/themes/decobelo/functions.php w linii 376
+
+2022-01-13T02:37:40+00:00 CRITICAL Uncaught Error: Call to undefined function wp_get_attachment_src() in /opt/lampp/htdocs/decobelo/wp-content/themes/decobelo/functions.php:376
+Stack trace:
+#0 /opt/lampp/htdocs/decobelo/wp-includes/class-wp-hook.php(303): custom_archive_product_img('')
+#1 /opt/lampp/htdocs/decobelo/wp-includes/class-wp-hook.php(327): WP_Hook->apply_filters(NULL, Array)
+#2 /opt/lampp/htdocs/decobelo/wp-includes/plugin.php(470): WP_Hook->do_action(Array)
+#3 /opt/lampp/htdocs/decobelo/wp-content/themes/decobelo/woocommerce/content-product.php(46): do_action('woocommerce_bef...')
+#4 /opt/lampp/htdocs/decobelo/wp-includes/template.php(772): require('/opt/lampp/htdo...')
+#5 /opt/lampp/htdocs/decobelo/wp-content/plugins/woocommerce/includes/wc-core-functions.php(284): load_template('/opt/lampp/htdo...', false)
+#6 /opt/lampp/htdocs/decobelo/wp-content/plugins/woocommerce/includes/shortcodes/class-wc-shortcode-products.php(660): wc_get_template_part('content', 'product')
+#7 /opt/lampp/htdocs/decobelo/wp-content/plugins/woocommerce/incl w /opt/lampp/htdocs/decobelo/wp-content/themes/decobelo/functions.php w linii 376
+
+2022-01-13T02:46:11+00:00 CRITICAL Uncaught Error: Call to undefined function wp_get_attachment_src() in /opt/lampp/htdocs/decobelo/wp-content/themes/decobelo/functions.php:378
+Stack trace:
+#0 /opt/lampp/htdocs/decobelo/wp-includes/class-wp-hook.php(303): custom_archive_product_img('')
+#1 /opt/lampp/htdocs/decobelo/wp-includes/class-wp-hook.php(327): WP_Hook->apply_filters(NULL, Array)
+#2 /opt/lampp/htdocs/decobelo/wp-includes/plugin.php(470): WP_Hook->do_action(Array)
+#3 /opt/lampp/htdocs/decobelo/wp-content/themes/decobelo/woocommerce/content-product.php(46): do_action('woocommerce_bef...')
+#4 /opt/lampp/htdocs/decobelo/wp-includes/template.php(772): require('/opt/lampp/htdo...')
+#5 /opt/lampp/htdocs/decobelo/wp-content/plugins/woocommerce/includes/wc-core-functions.php(284): load_template('/opt/lampp/htdo...', false)
+#6 /opt/lampp/htdocs/decobelo/wp-content/plugins/woocommerce/includes/shortcodes/class-wc-shortcode-products.php(660): wc_get_template_part('content', 'product')
+#7 /opt/lampp/htdocs/decobelo/wp-content/plugins/woocommerce/incl w /opt/lampp/htdocs/decobelo/wp-content/themes/decobelo/functions.php w linii 378
+

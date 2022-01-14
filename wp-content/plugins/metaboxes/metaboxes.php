@@ -11,3 +11,4 @@
 
 require('kolekcje.php');
 require('mediauploader.php');
+require('start.php');

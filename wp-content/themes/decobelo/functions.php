@@ -7,6 +7,10 @@
  * @package Decobelo
  */
 
+
+remove_action('woocommerce_widget_shopping_cart_total', 'woocommerce_widget_shopping_cart_subtotal', 10 );
+add_action('mini_cart_bottom_total', 'woocommerce_widget_shopping_cart_total',1 );
+
 // ANCHOR cart upsells
 
 remove_action('woocommerce_cart_collaterals', 'woocommerce_cross_sell_display');
@@ -166,10 +170,15 @@ function auto_redirect_after_logout(){
 /** nowy rozmiar obrazka dla menu kategorii **/
 
 add_image_size( 'menu-img', '354', '200', array('center', 'center') );
+add_image_size( 'desktop', '1280', '845', array('center', 'center') );
+add_image_size( 'vertical', '690', '455', array('center', 'center') );
+add_image_size( 'mobile', '746', '746', array('center', 'center') );
+add_image_size( 'img_on_product_list', '420', '420', true,  );
+
 
 // ANCHOR custom menu 
 
-function custom_menu($tax='product_cat', $name='Produkty', $img = false) {
+function custom_menu($tax='product_cat', $name='Produkty', $img = false, $main=false, $link = 'sklep') {
 
 	$r_terms = get_terms(
 		array(
@@ -203,12 +212,14 @@ function custom_menu($tax='product_cat', $name='Produkty', $img = false) {
 
 	};
 
+	if($main == false) {
+		echo '<li id="menu-' . $tax . '"><a href="' . $link . '">' . $name . '</a><ul class="sub-menu">';
+		echo '<span class="menu-header">' . $name . '</span>';
+		echo '<span class="close"></span>';
+	} else {
+		echo '<ul class="main-cats menu-'. $tax .'">';
+	}
 	
-	echo '<li id="menu-' . $tax . '"><a href="">' . $name . '</a><ul class="sub-menu">';
-
-	echo '<span class="menu-header">' . $name . '</span>';
-
-	echo '<span class="close"></span>';
 
 	foreach($terms as $term) {
 
@@ -246,7 +257,12 @@ function custom_menu($tax='product_cat', $name='Produkty', $img = false) {
 		echo '</li>';
 	};
 
-	echo '</ul></li>';
+	if($main == false) {
+		echo '</ul></li>';
+	} else {
+		echo '</ul>';
+	}
+	
 
 };
 
@@ -360,12 +376,13 @@ add_action('woocommerce_before_shop_loop_item_title', 'custom_archive_product_im
 
 function custom_archive_product_img() {
 	global $product;
+	echo $product->get_image('img_on_product_list');
 	echo sprintf(
 		'<img src="%s" alt="%s">',
-		wp_get_attachment_url( $product->get_gallery_attachment_ids()[0], 'medium'),
-		__($product->get_name().' - przykład aranżacji', 'decobelo')
+		wp_get_attachment_image_src( $product->get_gallery_attachment_ids()[0], 'img_on_product_list')[0],
+		'aaa'
 	);
-	echo $product->get_image('woocommerce_single');
+	
 }
 
 // PRZESUNIECIE ADD TO CART NA LISCIE PRODUKTOW
@@ -376,8 +393,8 @@ add_action('woocommerce_after_shop_loop_item_title', 'woocommerce_template_loop_
 
 // ZMIANA POLOZENIA TEKSTU PROMOCJA W PRODUKCIE W LISCIE PRODUKTOW
 
-remove_action( 'woocommerce_before_shop_loop_item_title', 'woocommerce_show_product_loop_sale_flash', 10 ); 
-add_action( 'woocommerce_shop_loop_item_title', 'woocommerce_show_product_loop_sale_flash', 10 ); 
+//remove_action( 'woocommerce_before_shop_loop_item_title', 'woocommerce_show_product_loop_sale_flash', 10 ); 
+add_action( 'woocommerce_before_shop_loop_item_title', 'woocommerce_show_product_loop_sale_flash', 10 ); 
 
 
 // CUSTOM SCRIPTS W PANELU ADMINA

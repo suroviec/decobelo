@@ -5,7 +5,7 @@ var nonce;
 
 jQuery('document').ready(function(){
 
-   if(document.body.classList.contains('archive')){
+   if(document.body.classList.contains('archive') || document.body.classList.contains('page-template-db_promocje')){
 
       // przygotowanie query
 
@@ -45,31 +45,36 @@ jQuery('document').ready(function(){
         "page" : 1
      }; 
 
-     
-
       // ustawienie punktu startowego historii po wczytaniu strony
 
-      history.pushState({nonce: nonce, query: query}, "title 1", "")
+      history.replaceState({nonce: nonce, query: query}, "title 1", "")
 
       // dodanie event listenera do zmiany w historii
 
+
       window.addEventListener('popstate', (event) => {
-         setTimeout(
-            function() {
-               var data = JSON.parse(JSON.stringify(event.state));
-               sendQuery(data.nonce, data.query);
-               query = data.query;
-            },0
-         )
+
+         var data = JSON.parse(JSON.stringify(event.state));
+
+         if(data) {
+            setTimeout(
+               function() {
+                     sendQuery(data.nonce, data.query);
+                     query = data.query;
+                  
+               },0
+            )
+
+         }
       }); 
 
       // TODO budowa query z zaznaczonych filtrow
 
-      
-      
       selectedFilters = document.querySelectorAll('.filter.selected');
 
       selectedFilters.forEach(element => {
+
+         if(element.parentElement.classList.contains('active-filters') == true) return;
          
          var type = element.getAttribute('data-type')
          var value = element.getAttribute('data-value')
@@ -133,21 +138,13 @@ jQuery('document').ready(function(){
 
 
       });
-
-      console.log(query);
-
-
    };
 
 });
    
-
-
-
-
 // ANCHOR sticky filters
 
-   if(document.body.classList.contains('archive')) {
+   if(document.body.classList.contains('archive') && document.querySelector('.lower-filters') ) {
 
       var oldpos = window.pageYOffset;
       var filters = document.querySelector('.lower-filters');
@@ -167,7 +164,7 @@ jQuery('document').ready(function(){
          }
       });
 
-   } else if (document.body.classList.contains('page-template')) {
+       } else if (document.body.classList.contains('page-template')) {
 
       var oldpos = window.pageYOffset;
       var menu = document.querySelector('#masthead');
@@ -240,9 +237,7 @@ window.onload = function() {
             nip.classList.remove('visible');
          }
       })
-   
  }
-
 }
  
  
@@ -403,16 +398,37 @@ jQuery('document').ready(function(){
 
    } 
 });
- 
+
+
+var activemenus = document.querySelectorAll('.sub-menu, .submenu  ');
+
+activemenus.forEach(function(el){
+   var links = el.querySelectorAll('a')
+   links.forEach(function(link){
+      if((link.classList.contains('remove-from-list') == false) && (link.classList.contains('remove') == false)) {
+         link.addEventListener('click', function(e) {
+            setTimeout(function(){
+               el.classList.remove('active');
+               document.getElementById('cover').classList.remove('active');
+               document.body.style.marginTop = "0px";
+            },400)
+         }); 
+      }
+   });
+});
+
+
+
 // SECTION lista produktow
  
 jQuery('document').ready(function(){
 
+   if(!document.querySelector('.filters')) return;
+
     document.querySelector('.filters').addEventListener('click',function(e){
 
- 
        if(e.target.classList.contains('filter')) {
- 
+
           var filter = e.target;
  
           e.preventDefault(); 
@@ -581,21 +597,15 @@ jQuery('document').ready(function(){
          if(query.orderby.value) {
             url += "&sortowanie=" + translateorderby[query.orderby.value];
          }
-          
-         
-         //console.log(url);
-
+       
          //var newurl = window.location.protocol + "//" + window.location.host + window.location.pathname + url;
          history.pushState({nonce: nonce, query: query}, "title 1", "?" + url);
-
-         //console.log(query);
          
+         sendQuery(nonce, query);
 
        };
 
-       //console.log(query);
-
-       sendQuery(nonce, query);
+      
  
     });
 
@@ -605,8 +615,6 @@ jQuery('document').ready(function(){
 
       loadmore.addEventListener('click', function() {
          query.page = query.page + 1;
-
-         //console.log(query);
 
          jQuery.ajax({
             type : "post",
@@ -665,6 +673,7 @@ function sendQuery(nonce,query) {
             
             var activeDiv = document.querySelector('.active-filters');
 
+            
             // span Aktywne filtry
 
             if ((activeArr.length == 1) && (activeArr[0].term_slug == "ordeby")) {
@@ -675,6 +684,17 @@ function sendQuery(nonce,query) {
               activeDiv.classList.remove('active');
             }
 
+            // ANCHOR selected do wybranych filtrow
+
+            filters.forEach(filter => {
+               filter.classList.remove('selected');
+               activeArr.forEach(active => {
+                  if((filter.getAttribute('data-type') === active.term_slug) && (filter.getAttribute('data-value') === active.term_value)) {
+                     filter.classList.add('selected');
+                  } 
+               });
+            });
+
             // usuniecie aktywnych filtrow 
 
             var activeBtns = activeDiv.querySelectorAll('a');
@@ -682,14 +702,28 @@ function sendQuery(nonce,query) {
                button.remove();
             });
 
+            // usuniecie z obiektu aktywnych filtrow orderby
+
+            const orderbys = {
+               'price-desc'   : 'wg ceny malejąco',
+               'price'        : 'wg ceny rosnąco',
+               'date'         : 'od najnowszych'
+            }
+            
+
+            for(i = 0; i < activeArr.length; i++) {
+               if(activeArr[i].term_slug == 'orderby') {
+                  document.querySelector('.order-filter span').textContent = orderbys[activeArr[i].term_name];
+                  document.querySelector('.order-filter div').style.width = "auto";
+                  document.querySelector('.order-filter ul').style.width = "100%";
+                  activeArr.splice(i,1);
+               };
+
+            }
+
             // render aktywnych filtrow
 
             activeArr.forEach(active => {
-
-              if(active.term_slug == "orderby") {
-                 return;
-              }
-
                var btn = document.createElement('a');
                btn.classList.add('filter', 'selected');
                
@@ -725,34 +759,47 @@ function sendQuery(nonce,query) {
                   if((btn.getAttribute('data-type') == active.term_slug) && (btn.getAttribute('data-value') == active.term_value)) {
                      append = false;
                   }
-               });
-               // dodanie klasy selcted do aktywnych filtrow
-               
-               
+               });  
             });
 
-            filters.forEach(filter => {
-               filter.classList.remove('selected');
-               activeArr.forEach(active => {
-                  if((filter.getAttribute('data-type') === active.term_slug) && (filter.getAttribute('data-value') === active.term_value)) {
-                     filter.classList.add('selected');
+            if(activeArr.length == 0) {
+               activeDiv.classList.remove('active');
+            }
+
+            // STUB dodanie badge do grupy aktywnych filtrow
+
+            /**
+
+            var filterslist = document.querySelectorAll('.filters-list ul');
+            var activeterms = JSON.parse(response.active);
+
+            filterslist.forEach(flist => {     
+               var selectedg = false;          
+               activeterms.forEach(element => {
+                  if (element.term_slug == flist.getAttribute('data-filter')) {
+                     selectedg = true;
                   } 
                });
+               if(selectedg == true) {
+                  flist.previousElementSibling.classList.add('selectedgroup');
+               } else {
+                  flist.previousElementSibling.classList.remove('selectedgroup');
+               }
             });
+
+             */
 
             // loadmore on off
 
             var loadmore = document.querySelector('#load-more');
 
             if(loadmore) {
-               if(query.page == response.count) {
+               if((query.page == response.count) || (response.count == 0)) {
                   loadmore.classList.add('hide');
                } else {
                   loadmore.classList.remove('hide');
                }
             }
-
-            console.log(query)
 
          } else {
             console.log('err');
@@ -808,9 +855,12 @@ function sendQuery(nonce,query) {
  // !SECTION
  
  // ANCHOR dodatkowe eventy do przyciskow filtrow
+
+ // TODO odblokowac
+
+
  
  var activeFilters = document.querySelector('.active-filters');
- 
  
  if(activeFilters) {
     activeFilters.addEventListener('click', (e)=> {
@@ -988,8 +1038,11 @@ function sendQuery(nonce,query) {
    cover.addEventListener('click', ()=> {
       actives = document.querySelectorAll('.active');
       actives.forEach((el)=> {
-         el.classList.remove('active');
+         if(el.classList.contains('active-filters') == false) {
+            el.classList.remove('active');
+         }
       });
+      document.querySelector('.minicart-cont').style.gridTemplateRows = "1fr 7rem 3rem";
       cover.classList.remove('white');
    })
    
@@ -999,9 +1052,12 @@ function sendQuery(nonce,query) {
       btn.addEventListener('click', ()=> {
          actives = document.querySelectorAll('.active');
          actives.forEach((el)=> {
-            el.classList.remove('active');
-         })
+            if(el.classList.contains('active-filters') == false) {
+               el.classList.remove('active');
+            }
+         });
          cover.classList.remove('white');
+         document.querySelector('.minicart-cont').style.gridTemplateRows = "1fr 7rem 3rem";
       })
    })
 
