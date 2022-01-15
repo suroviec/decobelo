@@ -144,12 +144,16 @@ jQuery('document').ready(function(){
    
 // ANCHOR sticky filters
 
-   if(document.body.classList.contains('archive') && document.querySelector('.lower-filters') ) {
+   var width = window.innerWidth;
+
+   if(document.body.classList.contains('archive') && document.querySelector('.lower-filters') && (width > 768) ) {
 
       var oldpos = window.pageYOffset;
       var filters = document.querySelector('.lower-filters');
       var filterspos = filters.getBoundingClientRect().top;
       var filtersheight = filters.offsetHeight;
+
+      
       
       document.addEventListener('scroll', function(){
          
@@ -164,7 +168,9 @@ jQuery('document').ready(function(){
          }
       });
 
-       } else if (document.body.classList.contains('page-template')) {
+       } else if ((document.body.classList.contains('page-template')) && (width > 768)) {
+
+      console.log(width);
 
       var oldpos = window.pageYOffset;
       var menu = document.querySelector('#masthead');
@@ -210,11 +216,7 @@ jQuery('document').ready(function(){
                oldpos = newpos;
 
             }
-         
-            
-
       });
-
    }
 
 
@@ -927,6 +929,7 @@ function sendQuery(nonce,query) {
                   if(response.type == "success") {
                      document.querySelector('.list-'+product_id).classList.add('inlist');
                      document.querySelector('.list-count').textContent = response.length;
+                     document.querySelector('.list-count-mobile').textContent = response.length;
                      jQuery('.saved-list').html(response.lista);
                   } else {
                      console.log('err');

@@ -1,5 +1,13 @@
 var cover = document.getElementById('cover');
 
+function hideactives() {
+    actives = document.querySelectorAll('.active');
+    actives.forEach((el)=> {
+        if(el.classList.contains('active-filters') == false) {
+            el.classList.remove('active');
+        }
+    });
+}
 
 /** header */
 
@@ -76,6 +84,31 @@ searchicon.addEventListener('click', function(e) {
 searchinput.querySelector('.close').addEventListener('click', function(){
     searchinput.style.display = "none";
 })
+
+
+// ANCHOR filtry
+
+
+if(document.body.classList.contains('archive') && (window.innerWidth < 768)) {
+
+    let filterswitch = document.querySelector('#filter-switch');
+    let filterslist = document.querySelector('.filters-list');
+    let showproducts = document.querySelector('#show-products');
+    let catbtns = document.querySelector('#categorybtns');
+
+    filterswitch.addEventListener('click', function() {
+        setTimeout(() => {
+            filterslist.classList.add('active');    
+        }, 100);
+    });
+
+    showproducts.addEventListener('click', function() {
+        hideactives();
+    });
+
+
+
+}
 
 
 

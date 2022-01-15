@@ -14,7 +14,8 @@
 <html <?php language_attributes(); ?>>
 <head>
 	<meta charset="<?php bloginfo( 'charset' ); ?>">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+
 	<link rel="profile" href="https://gmpg.org/xfn/11">
 	<?php wp_head(); ?>
 </head>
@@ -39,25 +40,36 @@
 			<?php the_custom_logo(); ?>
 		</div><!-- .site-branding -->
 
-		<nav id="site-navigation" class="main-navigation">
-			<button class="menu-toggle mobile" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e( 'Primary Menu', 'decobelo' ); ?></button>
-			<div class="menu-menu-glowne-container">
-			<ul id="primary-menu" class="menu">
-				<?php custom_menu('product_cat', 'Produkty', true); ?>
-				<?php custom_menu('kolekcje', 'Kolekcje', true, false, 'kolekcje'); ?>
-				<li><a href="<?php echo get_permalink(60); ?>"><?php _e('Promocje', 'decobelo'); ?></a></li>
-				<li><a href="<?php echo get_permalink(15); ?>"><?php _e('Szyte na miarę', 'decobelo'); ?></a></li>
-				<li>
-					<a href="" id="search-icon" title="<?php _e('Wyszukaj produkt', 'decobelo'); ?>">Wyszukaj</a>
-				</li>
-				<div id="search">
-					<?php echo do_shortcode('[fibosearch]'); ?>
-					<div class="close"></div>
-				</div>
-			</ul>
-			</div>
+		<div id="main-menu">
+			<nav id="site-navigation" class="main-navigation">
+				<ul id="primary-menu" class="menu">
+					<?php custom_menu('product_cat', 'Produkty', true); ?>
+					<?php custom_menu('kolekcje', 'Kolekcje', true, false, 'kolekcje'); ?>
+					<li><a href="<?php echo get_permalink(60); ?>"><?php _e('Promocje', 'decobelo'); ?></a></li>
+					<li><a href="<?php echo get_permalink(15); ?>"><?php _e('Szyte na miarę', 'decobelo'); ?></a></li>
+				</ul>
+			</nav><!-- #site-navigation -->
+			<a href="" id="cart-icon" class="cover-btn" title="<?php _e('Wyszukaj produkt', 'decobelo'); ?>">
+				Koszyk
+				<span class="cart-count-mobile">0</span>
+			</a>	
+			<a href="" id="list-icon" class="cover-btn" title="<?php _e('Wyszukaj produkt', 'decobelo'); ?>">
+				Ulubione
+				<?php 
+					echo sprintf(
+						'<span class="list-count-mobile">%s</span>',
+						WC()->session->get('list') ? count(WC()->session->get('list')) : '0'
+					);
+				?>
+			</a>	
+			<a href="" id="search-icon" class="cover-btn" title="<?php _e('Wyszukaj produkt', 'decobelo'); ?>">Wyszukaj</a>	
+			<a href="" id="menu-switcher" class="cover-btn" title="<?php _e('Wyszukaj produkt', 'decobelo'); ?>">Menu</a>
+			<div id="search">
+				<?php echo do_shortcode('[fibosearch]'); ?>
+				<div class="close"></div>
+			</div>	
+		</div>
 
-		</nav><!-- #site-navigation -->
 
 		<div id="shop-menu">
 			<ul>

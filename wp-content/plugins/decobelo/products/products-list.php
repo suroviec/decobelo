@@ -655,8 +655,10 @@ function render_filters($filters=null, $current_vars=null) {
                         
                     <?php endif; ?>
 
+                <div id="show-products">
+                    <button class="mainbtn"><?php _e('Pokaż produkty', 'decobelo'); ?></button>
+                </div>    
             </div>
-            
         </div>
 
         <?php 

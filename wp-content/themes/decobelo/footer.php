@@ -12,40 +12,69 @@
 ?>	
 	<?php if(is_checkout()) : ?>
 
-		<script>
+	<script>
+		
+		window.easyPackAsyncInit = function () {
+		easyPack.init({
+			defaultLocation: [51.778711878622225, 19.451706487124284]
+		});
+		var map = easyPack.mapWidget('map-widget', function(point){
+			console.log(point);
+			document.querySelector('#inpost span').innerHTML = "Wybrany paczkomat:<br><b>" + point.name + ", " + point.address_details.city + ", " + point.address_details.street + " " + point.address_details.building_number + "</b>";
+			document.querySelector('#inpost input').value = point.name;
+			document.querySelector('#inpost a').textContent = "Zmień";
+			document.querySelector('#inpost a').style.marginLeft = "8px";
 			
-			window.easyPackAsyncInit = function () {
-			easyPack.init({
-				defaultLocation: [51.778711878622225, 19.451706487124284]
+			var actives = document.querySelectorAll('.active');
+			actives.forEach(function(el	){
+				el.classList.remove('active');
 			});
-			var map = easyPack.mapWidget('map-widget', function(point){
-				console.log(point);
-				document.querySelector('#inpost span').innerHTML = "Wybrany paczkomat:<br><b>" + point.name + ", " + point.address_details.city + ", " + point.address_details.street + " " + point.address_details.building_number + "</b>";
-				document.querySelector('#inpost input').value = point.name;
-				document.querySelector('#inpost a').textContent = "Zmień";
-				document.querySelector('#inpost a').style.marginLeft = "8px";
-				
-				var actives = document.querySelectorAll('.active');
-				actives.forEach(function(el	){
-					el.classList.remove('active');
-				});
 
-				document.querySelector('#map-widget').style.display = "none";
+			document.querySelector('#map-widget').style.display = "none";
 
-				});
-			};
+			});
+		};
 			 
 	</script>
 	
-			
-		</script>
-		
-		<div id="map"><div id="map-widget"></div></div>;
+	
+	<div id="map"><div id="map-widget"></div></div>;
 
 	<?php endif; ?>
 	
 	<footer id="colophon" class="site-footer">
-		
+
+			<?php if(is_archive()) : ?>
+
+				<div id="filter-switch-cont">
+					<button id="filter-switch" class="mainbtn" ><span class="options"></span><?php _e('Przeglądaj opcje', 'decobelo'); ?>
+				</div>	
+
+			<?php endif; ?>
+			
+			<div id="mobile-menu">	
+
+				<a href="" id="cart-icon" class="cover-btn" title="<?php _e('Wyszukaj produkt', 'decobelo'); ?>">
+					Koszyk
+					<span class="cart-count-mobile">0</span>
+				</a>	
+				<a href="" id="list-icon" class="cover-btn" title="<?php _e('Wyszukaj produkt', 'decobelo'); ?>">
+					Ulubione
+					<?php 
+						echo sprintf(
+							'<span class="list-count-mobile">%s</span>',
+							WC()->session->get('list') ? count(WC()->session->get('list')) : '0'
+						);
+					?>
+				</a>	
+				<a href="" id="search-icon" class="cover-btn" title="<?php _e('Wyszukaj produkt', 'decobelo'); ?>">Wyszukaj</a>	
+				<a href="" id="menu-switcher" class="cover-btn" title="<?php _e('Wyszukaj produkt', 'decobelo'); ?>">Menu</a>
+				<div id="search">
+					<?php echo do_shortcode('[fibosearch]'); ?>
+					<div class="close"></div>
+				</div>
+			</div>	
+	
 		<div class="frt">
 		<div class="footer-info">
 			<div class="footer-logo">
@@ -106,7 +135,6 @@
 			</div>
 		</div>
 			<nav id="footer-navigation" class="footer-navigation">
-				<button class="menu-toggle mobile" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e( 'Primary Menu', 'decobelo' ); ?></button>
 				<?php
 				wp_nav_menu(
 					array(

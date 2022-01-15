@@ -35,6 +35,10 @@
 
 .flr {
     float: right;
+    margin-top: 1rem;
+    @media @mobile {
+        float: none;
+    }
 }
 
 .fr {
@@ -54,6 +58,9 @@
     flex-flow: row wrap;
     justify-content: space-between;
     align-items: flex-start;
+    @media @mobile {
+        display: inline-block;
+    }
 }
 
 .frb {
@@ -215,6 +222,7 @@
         top: 50%;
         transform: translateY(-50%);
         &:extend(.bgcontain all);
+        background-repeat: no-repeat;
     }
     
 }

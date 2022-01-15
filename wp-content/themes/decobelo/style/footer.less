@@ -6,9 +6,19 @@ footer {
     background-size: 44%;
     background-repeat: no-repeat;
     background-position: left center;
+    @media @mobile {
+        background-size: auto 100%;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
     #menu-stopki {
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
+        @media @mobile {
+            grid-template-columns: 1fr;
+            row-gap: @columngap;
+            padding-top: @columngap;
+        }
         &:extend(.frt);
         & > li {
             @media @desktop {
