@@ -49,21 +49,7 @@
 					<li><a href="<?php echo get_permalink(15); ?>"><?php _e('Szyte na miarę', 'decobelo'); ?></a></li>
 				</ul>
 			</nav><!-- #site-navigation -->
-			<a href="" id="cart-icon" class="cover-btn" title="<?php _e('Wyszukaj produkt', 'decobelo'); ?>">
-				Koszyk
-				<span class="cart-count-mobile">0</span>
-			</a>	
-			<a href="" id="list-icon" class="cover-btn" title="<?php _e('Wyszukaj produkt', 'decobelo'); ?>">
-				Ulubione
-				<?php 
-					echo sprintf(
-						'<span class="list-count-mobile">%s</span>',
-						WC()->session->get('list') ? count(WC()->session->get('list')) : '0'
-					);
-				?>
-			</a>	
-			<a href="" id="search-icon" class="cover-btn" title="<?php _e('Wyszukaj produkt', 'decobelo'); ?>">Wyszukaj</a>	
-			<a href="" id="menu-switcher" class="cover-btn" title="<?php _e('Wyszukaj produkt', 'decobelo'); ?>">Menu</a>
+			<a href="" id="search-icon" class="cover-btn" title="<?php _e('Wyszukaj produkt', 'decobelo'); ?>"><?php _e('Wyszukaj', 'decobelo'); ?></a>	
 			<div id="search">
 				<?php echo do_shortcode('[fibosearch]'); ?>
 				<div class="close"></div>
@@ -73,6 +59,19 @@
 
 		<div id="shop-menu">
 			<ul>
+				<li id="mobile-info-cont" class="mobile">
+					<a href="" id="mobile-info-switcher" class="cover-btn"></a>
+					<nav id="mobile-info" class="footer-navigation" style="display:none">
+						<?php
+						wp_nav_menu(
+							array(
+								'theme_location' => 'menu-stopki',
+								'menu_id'        => 'menu-stopki',
+							)
+						);
+						?>
+					</nav> 
+				</li>
 				<li id="list-btn">
 					<a href="" class="cover-btn" title="<?php _e('Lista Twoich ulubionych produktów', 'decobelo'); ?>">
 						<?php _e('Lista ulubionych', 'decobelo'); ?>

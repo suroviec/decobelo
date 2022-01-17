@@ -54,11 +54,11 @@
 			
 			<div id="mobile-menu">	
 
-				<a href="" id="cart-icon" class="cover-btn" title="<?php _e('Wyszukaj produkt', 'decobelo'); ?>">
+				<a href="" id="cart-icon" class="cover-btn" title="<?php _e('Koszyk', 'decobelo'); ?>">
 					Koszyk
 					<span class="cart-count-mobile">0</span>
 				</a>	
-				<a href="" id="list-icon" class="cover-btn" title="<?php _e('Wyszukaj produkt', 'decobelo'); ?>">
+				<a href="" id="list-icon" class="cover-btn" title="<?php _e('Ulubione', 'decobelo'); ?>">
 					Ulubione
 					<?php 
 						echo sprintf(
@@ -67,8 +67,8 @@
 						);
 					?>
 				</a>	
-				<a href="" id="search-icon" class="cover-btn" title="<?php _e('Wyszukaj produkt', 'decobelo'); ?>">Wyszukaj</a>	
-				<a href="" id="menu-switcher" class="cover-btn" title="<?php _e('Wyszukaj produkt', 'decobelo'); ?>">Menu</a>
+				<a href="" id="search-icon-mobile" class="cover-btn" title="<?php _e('Wyszukaj produkt', 'decobelo'); ?>"><?php _e('Wyszukaj', 'decobelo'); ?></a>	
+				<a href="" id="menu-switcher" class="cover-btn" title="<?php _e('Kategorie produktów', 'decobelo'); ?>"><?php _e('Produkty', 'decobelo'); ?></a>
 				<div id="search">
 					<?php echo do_shortcode('[fibosearch]'); ?>
 					<div class="close"></div>
@@ -134,16 +134,16 @@
 				</ul>
 			</div>
 		</div>
-			<nav id="footer-navigation" class="footer-navigation">
-				<?php
-				wp_nav_menu(
-					array(
-						'theme_location' => 'menu-stopki',
-						'menu_id'        => 'menu-stopki',
-					)
-				);
-				?>
-			</nav>
+		<nav id="footer-navigation" class="footer-navigation">
+			<?php
+			wp_nav_menu(
+				array(
+					'theme_location' => 'menu-stopki',
+					'menu_id'        => 'menu-stopki',
+				)
+			);
+			?>
+		</nav>
 		</div>
 		<div class="site-info">
 			<span>Ⓒ <?php echo date("Y"); ?> Decobelo</span>

@@ -249,7 +249,7 @@ jQuery('document').ready(function(){
 
    var productBox = document.querySelector('.product-float');
 
-   if(productBox == null) {
+   if((productBox == null) || (window.innerWidth < 769)) {
       return;
    }
 
@@ -346,7 +346,7 @@ jQuery('document').ready(function(){
  
  jQuery('document').ready(function(){
  
-    const imgs = document.querySelectorAll('.woocommerce-product-gallery img');
+    const imgs = document.querySelectorAll('.custom-gallery img');
  
     imgs.forEach(img => {
        img.title = "";
@@ -356,7 +356,7 @@ jQuery('document').ready(function(){
     });
  
     if((imgs.length % 2) !== 0) {
-       document.querySelector('.woocommerce-product-gallery div:last-of-type').classList.add('wide-img');
+       document.querySelector('.custom-gallery div:last-of-type').classList.add('wide-img');
     } 
  
  
@@ -373,7 +373,7 @@ jQuery('document').ready(function(){
    if(document.body.classList.contains('single-product')) {
 
       var lightbox = GLightbox({
-         selector : '.woocommerce-product-gallery__wrapper > .woocommerce-product-gallery__image > a',
+         selector : '.woocommerce-product-gallery__wrapper > .woocommerce-product-gallery__image > a, .custom-gallery a',
          loop: true,
          preload: false,
          openEffect : 'fade',
@@ -607,7 +607,6 @@ jQuery('document').ready(function(){
 
        };
 
-      
  
     });
 
@@ -1033,8 +1032,12 @@ function sendQuery(nonce,query) {
    coverBtns.forEach((btn)=>{
       btn.addEventListener('click', (e)=> {
          e.preventDefault();
-         btn.nextElementSibling.classList.add('active');
-         cover.classList.add('active');
+         if((window.innerWidth > 768) || (btn.parentElement.getAttribute('id') == "user-btn")) {
+            btn.nextElementSibling.classList.add('active');
+         } 
+         if (btn.classList.contains('selected') == true) {
+            cover.classList.add('active');
+         }
       })
    })
    

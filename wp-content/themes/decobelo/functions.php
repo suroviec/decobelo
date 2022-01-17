@@ -19,11 +19,14 @@ add_action('woocommerce_after_cart','woocommerce_cross_sell_display');
 
 remove_action( 'woocommerce_after_shop_loop', 'woocommerce_pagination', 10 );
 
+remove_action( 'woocommerce_product_thumbnails', 'woocommerce_show_product_thumbnails', 20 );
+add_action( 'custom_gallery', 'woocommerce_show_product_thumbnails', 25 );
 
 // ANCHOR przesuniecie onsale obok tytulu
 
 remove_action('woocommerce_before_single_product_summary', 'woocommerce_show_product_sale_flash', 10);
-add_action('woocommerce_single_product_summary', 'woocommerce_show_product_sale_flash', 5 );
+add_action('custom_gallery', 'woocommerce_show_product_sale_flash', 5 );
+
 
 // ANCHOR usuniecie ratingu na widoku listy
 
@@ -221,6 +224,7 @@ function custom_menu($tax='product_cat', $name='Produkty', $img = false, $main=f
 	}
 	
 
+
 	foreach($terms as $term) {
 
 		if(($img == true) && ($term['img_id']))  {
@@ -240,7 +244,7 @@ function custom_menu($tax='product_cat', $name='Produkty', $img = false, $main=f
 			if($term['sub']) {
 		
 				echo '<ul>';
-
+				
 					foreach($term['sub'] as $s_term) {
 
 						echo sprintf(
@@ -289,7 +293,8 @@ function start_products_block($tax='product_cat', $name='Produkty', $img = false
 			$terms[$r_term->term_id] = array(
 				'name' 	=> $r_term->name,
 				'url'	=> get_term_link($r_term->term_id, $tax),
-				'img_id'	=> get_term_meta($r_term->term_id, 'img')[0]
+				'img_id'	=> get_term_meta($r_term->term_id, 'img')[0],
+				'sub'	=> array()
 			);
 		} else {
 			$terms[$r_term->parent]['sub'][] = array(
@@ -300,7 +305,18 @@ function start_products_block($tax='product_cat', $name='Produkty', $img = false
 
 	};
 
-	
+	echo '<pre>';
+	$test = get_terms(array(
+		'taxonomy' 		=> 'product_cat',
+		'hide_empty' 	=> false,
+		'order'			=> 'ASC',
+		'childless'		=> false
+	));	
+	var_dump($test);
+	echo '----';
+	var_dump($terms);
+	echo '</pre>';
+
 	echo '<ul class="">';
 
 	foreach($terms as $term) {
@@ -322,6 +338,8 @@ function start_products_block($tax='product_cat', $name='Produkty', $img = false
 			if($term['sub']) {
 		
 				echo '<ul>';
+
+					var_dump($term['sub']);
 
 					foreach($term['sub'] as $s_term) {
 

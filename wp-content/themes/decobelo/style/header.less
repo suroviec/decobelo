@@ -9,14 +9,17 @@
     position: relative;
     display: flex;
     @media @mobile {
-        display: none;
+        #primary-menu > li > a {
+            display: none;
+        }
+        width: 0;
     }
     #primary-menu {
         .fr();
         position: relative;
         & > li {
             padding: 0 0.75rem;
-            a {
+            & > a {
                 .bold();
                 .p(0.5rem);
                 text-transform: uppercase;
@@ -111,6 +114,11 @@
 #shop-menu {
     & > ul {
         &:extend(.fr);
+        @media @mobile {
+            & > ul {
+                justify-content: end;
+            }
+        }
         & > li {
             padding: 1rem;
             & > a {
@@ -145,10 +153,11 @@
     }
 }
 
+
 .cart-count, .list-count, .list-count-mobile, .cart-count-mobile {
     position: relative;
     position: absolute;
-    top: -1rem;
+    top: 0  rem;
     right: -1rem;
     &:extend(.bold);
     background-color: #002330;
@@ -167,7 +176,7 @@
 }
 
 .cart-count-mobile, .list-count-mobile {
-    top: -0.5rem;
+    top: -0.25rem;
     right: 0.25rem;
     height: 1rem;
     width: 1rem;

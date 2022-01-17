@@ -15,9 +15,12 @@ const headerSwitchers = document.querySelectorAll('#shop-menu > ul > li >a');
 
 headerSwitchers.forEach(function(switcher) {
     switcher.addEventListener('click', function(){
-        
+        cover.classList.add('active');
     })
 })
+
+
+
 
 // ANCHOR header menu 
 
@@ -70,16 +73,25 @@ menubtns.forEach(function(el) {
 
 // ANCHOR search
 
-var searchicon = document.getElementById('search-icon');
+var searchicons = document.querySelectorAll('#search-icon, #search-icon-mobile');
 var searchinput = document.getElementById('search');
 
-searchicon.addEventListener('click', function(e) {
-    e.preventDefault();
-    searchinput.style.display = "block";
-    searchinput.classList.add('active');
-    searchicon.classList.add('active');
-    cover.classList.add('active');
-});
+searchicons.forEach(
+    function(searchicon) {
+        searchicon.addEventListener('click', function(e) {
+            e.preventDefault();
+            document.querySelector('.dgwt-wcas-suggestions-wrapp').classList.remove('hide');
+            searchinput.style.display = "block";
+            document.getElementById('dgwt-wcas-search-input-1').focus();
+            searchinput.classList.add('active');
+            searchicon.classList.add('active');
+            cover.classList.add('active');
+        });
+    });
+
+
+
+
 
 searchinput.querySelector('.close').addEventListener('click', function(){
     searchinput.style.display = "none";
@@ -97,13 +109,19 @@ if(document.body.classList.contains('archive') && (window.innerWidth < 768)) {
     let catbtns = document.querySelector('#categorybtns');
 
     filterswitch.addEventListener('click', function() {
+        cover.classList.add('active');
         setTimeout(() => {
             filterslist.classList.add('active');    
         }, 100);
+        setTimeout(() => {
+            window.scrollTo(0,0);
+            document.body.style.overflowY = 'hidden';
+        }, 500);
     });
 
     showproducts.addEventListener('click', function() {
         hideactives();
+        document.body.style.overflowY = 'scroll';
     });
 
 
@@ -112,7 +130,7 @@ if(document.body.classList.contains('archive') && (window.innerWidth < 768)) {
 
 
 
-/*** vaildacja formualrz logowania */
+/*** vaildacja formularz logowania */
 
 
 let emailVal = document.getElementById('user_login');
@@ -191,3 +209,140 @@ if(loginSubmit) {
 
 }
 
+
+
+//  ANCHOR mobile
+
+if(window.innerWidth < 769) {
+
+    var btns = document.querySelectorAll('#mobile-menu a');
+
+    function mobilemenu(btn,menu) {
+
+        var cover = document.querySelector('#cover');
+
+        btn.addEventListener('click', function(){
+
+            closeactives();
+
+            btns.forEach(function(el){
+                if(el !== btn) {
+                    el.classList.remove('selected');
+                }
+            })
+
+            btn.classList.toggle('selected');
+
+            if(btn.classList.contains('selected') == true) {
+                document.body.style.overflowY = "hidden";
+            } else {
+                document.body.style.overflowY = "";
+            }
+            
+            if(btn.classList.contains('selected') == true) {
+                menu.style.display = "";
+                setTimeout(() => {
+                    menu.classList.add('active');    
+                }, 200);
+            } else {
+                menu.classList.remove('active');    
+                setTimeout(() => {
+                    cover.classList.remove('active');    
+                }, 200);
+                setTimeout(() => {
+                    menu.style.display = "none";
+                }, 500);
+            }
+        });    
+    }
+
+    function justcover(btn,menu) {
+
+        var cover = document.querySelector('#cover');
+
+        btn.addEventListener('click', function(){
+
+            closeactivemenus();
+
+            btns.forEach(function(el){
+                if(el !== btn) {
+                    el.classList.remove('selected');
+                }
+            })
+
+            btn.classList.toggle('selected');
+
+            if(btn.classList.contains('selected') == true) {
+                document.body.style.overflowY = "hidden";
+            } else {
+                document.body.style.overflowY = "";
+            }
+        });    
+    }
+
+
+    // kategorie
+
+    let prodmenuswitch = document.querySelector('#menu-switcher');
+    let prodmenu = document.querySelector('#menu-product_cat .sub-menu');
+
+    mobilemenu(prodmenuswitch,prodmenu);
+
+    // lista 
+
+    let listmenuswitch = document.querySelector('#list-icon');
+    let listmenu = document.querySelector('#list-btn .submenu');
+
+    mobilemenu(listmenuswitch,listmenu);
+
+    // koszyk
+
+    let cartmenuswitch = document.querySelector('#cart-icon');
+    let cartmenu = document.querySelector('#cart-btn .submenu');
+
+    mobilemenu(cartmenuswitch,cartmenu);
+
+
+    // search 
+
+    let searchswitch = document.querySelector('#search-icon-mobile');
+    let searchmenu = document.querySelector('#search');
+
+    searchswitch.addEventListener('click', function(){
+        if(searchswitch.classList.contains('selected') == true) {
+            document.querySelector('.dgwt-wcas-suggestions-wrapp').classList.add('hide');
+            setTimeout(() => {
+                searchmenu.classList.remove('active');
+            }, 200);
+            setTimeout(() => {
+                cover.classList.remove('active');    
+                document.getElementById('dgwt-wcas-search-input-1').value = "";
+            }, 200);
+        }
+    })
+
+    justcover(searchswitch);
+
+    // ----
+
+    function closeactives() {
+
+        var menus = [prodmenu, listmenu, cartmenu, searchmenu];
+
+        menus.forEach(function(menu){
+            menu.classList.remove('active');
+        })
+    }
+
+    function closeactivemenus() {
+
+        var menus = [prodmenu, listmenu, cartmenu];
+
+        menus.forEach(function(menu){
+            menu.classList.remove('active');
+        })
+    }
+
+    
+
+}

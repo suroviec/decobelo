@@ -11,6 +11,7 @@
 //@green: #70E852;
 @lightblue2: lighten(@lightblue,19%);
 @lightblue3: lighten(@lightblue,9%);
+@lightblue4: lighten(@lightblue,13%);
 @lightgrey: #f1f4f4;
 @lightgrey2: #e8eded;
 @lightgrey3: rgba(@black, 0.2);
@@ -58,9 +59,6 @@
     flex-flow: row wrap;
     justify-content: space-between;
     align-items: flex-start;
-    @media @mobile {
-        display: inline-block;
-    }
 }
 
 .frb {
@@ -74,6 +72,11 @@
     &:extend(.frt);
     & > * {
         flex: 48%;
+    }
+    @media @mobile {
+        & > * {
+            flex: 100%;
+        }
     }
 }
 

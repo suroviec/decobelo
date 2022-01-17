@@ -38,6 +38,7 @@ function mini_update($fragments) {
             </div>
             <div>
                 <a href="<?php echo wc_get_checkout_url(); ?>" class="mainbtn"><?php _e('Złóż zamówienie', 'decobelo'); ?></a>
+                <button class="mainbtn"><?php _e('Kontynuuj akupy', 'decobelo'); ?></button>
             </div>
         </div>
 
