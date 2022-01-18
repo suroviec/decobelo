@@ -146,7 +146,7 @@ jQuery('document').ready(function(){
 
    var width = window.innerWidth;
 
-   if(document.body.classList.contains('archive') && document.querySelector('.lower-filters') && (width > 768) ) {
+   if(document.body.classList.contains('archive') && document.querySelector('.lower-filters') && (width > 882) ) {
 
       var oldpos = window.pageYOffset;
       var filters = document.querySelector('.lower-filters');
@@ -168,7 +168,7 @@ jQuery('document').ready(function(){
          }
       });
 
-       } else if ((document.body.classList.contains('page-template')) && (width > 768)) {
+       } else if ((document.body.classList.contains('page-template')) && (width > 882)) {
 
       console.log(width);
 
@@ -249,7 +249,7 @@ jQuery('document').ready(function(){
 
    var productBox = document.querySelector('.product-float');
 
-   if((productBox == null) || (window.innerWidth < 769)) {
+   if((productBox == null) || (window.innerWidth < 883)) {
       return;
    }
 
@@ -362,8 +362,6 @@ jQuery('document').ready(function(){
  
  });
  
- 
- 
  // glightbox
  
  var lightbox;
@@ -400,7 +398,6 @@ jQuery('document').ready(function(){
 
    } 
 });
-
 
 var activemenus = document.querySelectorAll('.sub-menu, .submenu  ');
 
@@ -535,31 +532,41 @@ jQuery('document').ready(function(){
 
          // ANCHOR zmiana url 
 
+         // search
+
+         if(query.search) {
+            url += "s=" + query.search + '&post_type=product';
+         }
+
          // second term
 
          for (var tax in query.secondTerm) {
 
-         var taxonomy = query.secondTerm[tax];
+            var taxonomy = query.secondTerm[tax];
 
-         if(taxonomy.type) {
+            if(taxonomy.type) {
 
-            if(taxonomy.type == 'product_cat') {
-               url += "produkty=";
-            } else {
-               url += taxonomy.type + "=";
-            }
-            
-            
-            var taxterms = taxonomy.values;
-            for (var key in taxterms) {
+               if(query.search) {
+                  url += "&"; 
+               }
+
+               if(taxonomy.type == 'product_cat') {
+                  url += "produkty=";
+               } else {
+                  url += taxonomy.type + "=";
+               }
                
-               url += taxterms[key].value;
-               if(taxterms.length > 1) url += ',';
+               
+               var taxterms = taxonomy.values;
+               for (var key in taxterms) {
+                  
+                  url += taxterms[key].value;
+                  if(taxterms.length > 1) url += ',';
+               }
+               if(taxterms.length > 1) {
+                  url = url.slice(0, -1);
+               }
             }
-            if(taxterms.length > 1) {
-               url = url.slice(0, -1);
-            }
-         }
          }
          
          // atrybuty
@@ -600,9 +607,12 @@ jQuery('document').ready(function(){
             url += "&sortowanie=" + translateorderby[query.orderby.value];
          }
        
+
          //var newurl = window.location.protocol + "//" + window.location.host + window.location.pathname + url;
          history.pushState({nonce: nonce, query: query}, "title 1", "?" + url);
          
+         console.log(query);
+
          sendQuery(nonce, query);
 
        };
@@ -907,7 +917,7 @@ function sendQuery(nonce,query) {
  
  jQuery(document).ready( function() {
 
-   var productimgs = document.querySelectorAll('.products');
+   var productimgs = document.querySelectorAll('.products, .product');
 
    productimgs.forEach(function(pimg) {
       pimg.addEventListener('click', function(e) {
@@ -1032,7 +1042,7 @@ function sendQuery(nonce,query) {
    coverBtns.forEach((btn)=>{
       btn.addEventListener('click', (e)=> {
          e.preventDefault();
-         if((window.innerWidth > 768) || (btn.parentElement.getAttribute('id') == "user-btn")) {
+         if((window.innerWidth > 882) || (btn.parentElement.getAttribute('id') == "user-btn")) {
             btn.nextElementSibling.classList.add('active');
          } 
          if (btn.classList.contains('selected') == true) {

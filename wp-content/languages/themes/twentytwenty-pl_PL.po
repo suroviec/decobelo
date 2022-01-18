@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Themes - Twenty Twenty package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2021-09-23 13:01:08+0000\n"
+"PO-Revision-Date: 2022-01-12 08:16:57+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -74,17 +74,33 @@ msgstr "Szczegóły wydarzenia"
 msgid "Shop Now"
 msgstr "Kup teraz"
 
+#: inc/block-patterns.php:89
+msgid "An awe-inspiring collection of books, prints, and gifts from our exhibitions."
+msgstr "Niesamowita kolekcja książek, grafik i prezentów z naszych wystaw."
+
 #: inc/block-patterns.php:86
 msgid "The Store"
 msgstr "Sklep"
+
+#: inc/block-patterns.php:74
+msgid "Award-winning exhibitions featuring internationally-renowned artists."
+msgstr "Nagradzane wystawy z udziałem artystów o międzynarodowej renomie."
 
 #: inc/block-patterns.php:71
 msgid "The Museum"
 msgstr "Muzeum"
 
+#: inc/block-patterns.php:61
+msgid "Double Call to Action"
+msgstr "Podwójne wezwanie do działania"
+
 #: inc/block-patterns.php:48
 msgid "Become a Member"
 msgstr "Zostań członkiem"
+
+#: inc/block-patterns.php:42
+msgid "Support the Museum and Get Exclusive Offers"
+msgstr "Wesprzyj muzeum i zdobądź ekskluzywne oferty"
 
 #: inc/block-patterns.php:33
 msgid "Call to Action"
@@ -298,7 +314,7 @@ msgstr "Wpis"
 
 #: template-parts/modal-search.php:26
 msgid "Close search"
-msgstr "Zamknij szukanie"
+msgstr "Zamknij wyszukiwanie"
 
 #: template-parts/modal-menu.php:117
 msgid "Expanded Social links"

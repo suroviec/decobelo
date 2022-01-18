@@ -4,7 +4,7 @@
     display: grid;
     row-gap: 2.5rem;
     column-gap: 1.5rem;
-    row-gap: @columngap;
+    row-gap: @columngap * 1.5;
     @media @desktop {
         grid-template-columns: repeat(4,1fr);
     }
@@ -23,9 +23,7 @@
             display: inline-block;
             position: relative;
             &.add_to_cart_button {
-                @media @mobile {
-                    display: none;
-                }
+                display: none;
                 .before('add_to_cart');
                 &:before {
                     background-color: @blue;
@@ -127,4 +125,9 @@
 
 .archive  .products {
     padding-bottom: 4 * @columngap;
+}
+
+
+.products li a.add_to_cart_button {
+    display: none !important;
 }

@@ -1,3 +1,20 @@
+// ANCHOR hide img title on hover
+
+jQuery('document').ready(function(){
+
+    var pimg = document.querySelector('.wp-post-image');
+    var title = pimg.getAttribute('title');
+
+    pimg.addEventListener('mouseenter', function() {
+        pimg.setAttribute('title', '');
+    })
+
+    pimg.addEventListener('mouseleave', function() {
+        pimg.setAttribute('title', title);
+    })
+
+});
+
 var cover = document.getElementById('cover');
 
 function hideactives() {
@@ -18,9 +35,6 @@ headerSwitchers.forEach(function(switcher) {
         cover.classList.add('active');
     })
 })
-
-
-
 
 // ANCHOR header menu 
 
@@ -101,7 +115,7 @@ searchinput.querySelector('.close').addEventListener('click', function(){
 // ANCHOR filtry
 
 
-if(document.body.classList.contains('archive') && (window.innerWidth < 768)) {
+if(document.body.classList.contains('archive') && (window.innerWidth < 883)) {
 
     let filterswitch = document.querySelector('#filter-switch');
     let filterslist = document.querySelector('.filters-list');
@@ -213,7 +227,7 @@ if(loginSubmit) {
 
 //  ANCHOR mobile
 
-if(window.innerWidth < 769) {
+if(window.innerWidth < 883) {
 
     var btns = document.querySelectorAll('#mobile-menu a');
 

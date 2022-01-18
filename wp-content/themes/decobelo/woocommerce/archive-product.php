@@ -32,10 +32,9 @@ echo get_sidebar();
 
 ?>
 
-
 <?php 
-	global $post;
-	if($post->ID == 233) : ?>
+	
+	if((get_queried_object_id() == 0) && (empty(get_query_var('s')))) : ?>
 
 <header class="woocommerce-products-header">
 	<h1 class="woocommerce-products-header__title page-title">Kategorie produktów</h1>
@@ -119,6 +118,7 @@ if(!function_exists('wc_get_products')) {
 
 	$tax_data = array();
 
+  	
 	$tax_data[] = array(
 		array(
 			'taxonomy' 			=> $current_tax,
@@ -127,13 +127,13 @@ if(!function_exists('wc_get_products')) {
 			'include_children'	=> true
 		)	
 	);
+	
 
 	$args = array();
 
 	if( !empty($current_vars) == true ) {
 
 		foreach( $current_vars as $var => $data ) {
-
 
 			if ($var == 'sortowanie') { // orderby
 
@@ -194,18 +194,20 @@ if(!function_exists('wc_get_products')) {
 	$args['page'] 		= $paged;
 	$args['paginate'] 	= true;
 	$args['return'] 	= 'ids';
-	
+	$args['s']			=  'test';
 
-
-
-	if(!empty($tax_data)) {
+	if(is_null($tax_data[0][0]['taxonomy']) == false) {
         $args['tax_query'] = $tax_query;
-    }
+    } 
 
-
+	if(!empty(get_query_var('s'))) {
+		$args['s'] = get_query_var('s');
+	}
+	
 	$products = wc_get_products($args);
 
-	if($products) {
+
+	if(!empty($products->products)) {
 
 		//do_action('woocommerce_before_shop_loop');
 

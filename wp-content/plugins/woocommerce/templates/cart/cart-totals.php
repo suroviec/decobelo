@@ -38,7 +38,29 @@ defined( 'ABSPATH' ) || exit;
 			</tr>
 		<?php endforeach; ?>
 
-		
+		<?php if ( WC()->cart->needs_shipping() && WC()->cart->show_shipping() ) : ?>
+
+			<?php do_action( 'woocommerce_cart_totals_before_shipping' ); ?>
+
+			<?php wc_cart_totals_shipping_html(); ?>
+
+			<?php do_action( 'woocommerce_cart_totals_after_shipping' ); ?>
+
+		<?php elseif ( WC()->cart->needs_shipping() && 'yes' === get_option( 'woocommerce_enable_shipping_calc' ) ) : ?>
+
+			<tr class="shipping">
+				<th><?php esc_html_e( 'Shipping', 'woocommerce' ); ?></th>
+				<td data-title="<?php esc_attr_e( 'Shipping', 'woocommerce' ); ?>"><?php woocommerce_shipping_calculator(); ?></td>
+			</tr>
+
+		<?php endif; ?>
+
+		<?php foreach ( WC()->cart->get_fees() as $fee ) : ?>
+			<tr class="fee">
+				<th><?php echo esc_html( $fee->name ); ?></th>
+				<td data-title="<?php echo esc_attr( $fee->name ); ?>"><?php wc_cart_totals_fee_html( $fee ); ?></td>
+			</tr>
+		<?php endforeach; ?>
 
 		<?php
 		if ( wc_tax_enabled() && ! WC()->cart->display_prices_including_tax() ) {

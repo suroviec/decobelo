@@ -22,10 +22,50 @@ remove_action( 'woocommerce_after_shop_loop', 'woocommerce_pagination', 10 );
 remove_action( 'woocommerce_product_thumbnails', 'woocommerce_show_product_thumbnails', 20 );
 add_action( 'custom_gallery', 'woocommerce_show_product_thumbnails', 25 );
 
+// ANCHOR disable embed
+
+function my_deregister_scripts(){
+	wp_deregister_script( 'wp-embed' );
+  }
+  add_action( 'wp_footer', 'my_deregister_scripts' );
+
+
+// ANCHOR disable feed
+
+remove_action( 'wp_head', 'feed_links_extra', 3 );
+remove_action( 'wp_head', 'feed_links', 2 );
+
+function disable_feed() {
+	wp_die( __( 'No feed available, please visit the <a href="'. esc_url( home_url( '/' ) ) .'">homepage</a>!' ) );
+   }
+   
+   add_action('do_feed', 'disable_feed', 1);
+   add_action('do_feed_rdf', 'disable_feed', 1);
+   add_action('do_feed_rss', 'disable_feed', 1);
+   add_action('do_feed_rss2', 'disable_feed', 1);
+   add_action('do_feed_atom', 'disable_feed', 1);
+   add_action('do_feed_rss2_comments', 'disable_feed', 1);
+   add_action('do_feed_atom_comments', 'disable_feed', 1);
+
+
 // ANCHOR przesuniecie onsale obok tytulu
+
 
 remove_action('woocommerce_before_single_product_summary', 'woocommerce_show_product_sale_flash', 10);
 add_action('custom_gallery', 'woocommerce_show_product_sale_flash', 5 );
+
+
+// ANCHOR vars a
+
+function action_vars( $vars ) {
+
+    // produkty nie sa przekazywane z list of vars
+    $vars[] = 'a';
+
+	return $vars;
+}
+
+add_filter( 'query_vars', 'action_vars' );
 
 
 // ANCHOR usuniecie ratingu na widoku listy
@@ -34,7 +74,32 @@ remove_action('woocommerce_after_shop_loop_item_title', 'woocommerce_template_lo
 
  // ANCHOR title i meta desc
 
-remove_action('wp_head','_wp_render_title_tag',1);
+add_action('pre_get_document_title',function() {
+
+	global $wp_query;
+	
+	if(is_archive()) {
+
+		$id = get_queried_object()->term_id;
+		$title = get_queried_object()->name;
+		$metatitle = get_term_meta($id, 'metatitle')[0];
+		$metadesc = get_term_meta($id, 'metadesc')[0];
+
+	} else {
+		
+		$id = get_queried_object()->ID;
+		$title = get_queried_object()->post_title;
+		$metatitle = get_post_meta($id, 'seo')[0][0];
+		$metadesc = get_post_meta($id, 'seo')[0][1];
+	}
+
+	if($metatitle) {
+		return $metatitle;
+	}
+
+	return;
+
+});
 
 add_action('wp_head','head_data', 1);
 
@@ -53,14 +118,12 @@ function head_data() {
 		$title = get_queried_object()->post_title;
 		$metatitle = get_post_meta($id, 'seo')[0][0];
 		$metadesc = get_post_meta($id, 'seo')[0][1];
-
 	}
 	
 	echo sprintf(
-		'	<title>%s</title>
+		'
 	<meta name="description" content="%s">
 	',
-		$metatitle ? $metatitle : $title . ' - ' . get_bloginfo('name') . ' - ' . get_bloginfo('description'),
 		$metadesc ? $metadesc : ''
 	);
 }
@@ -168,8 +231,6 @@ function auto_redirect_after_logout(){
 }
 
 
-
-
 /** nowy rozmiar obrazka dla menu kategorii **/
 
 add_image_size( 'menu-img', '354', '200', array('center', 'center') );
@@ -204,16 +265,22 @@ function custom_menu($tax='product_cat', $name='Produkty', $img = false, $main=f
 			$terms[$r_term->term_id] = array(
 				'name' 	=> $r_term->name,
 				'url'	=> get_term_link($r_term->term_id, $tax),
-				'img_id'	=> get_term_meta($r_term->term_id, 'img')[0]
+				'img_id'	=> get_term_meta($r_term->term_id, 'img')[0],
+				'sub'	=> array()
 			);
-		} else {
+		}
+	};
+
+	foreach($r_terms as $r_term) {
+		if($r_term->parent > 0) {
 			$terms[$r_term->parent]['sub'][] = array(
 				'name' 	=> $r_term->name,
-				'url'	=> get_term_link($r_term->term_id, $tax)
+				'url'	=> get_term_link($r_term->term_id, $tax),
+				'parent' => $r_term->parent
 			);
-		};
+		}
+	}
 
-	};
 
 	if($main == false) {
 		echo '<li id="menu-' . $tax . '"><a href="' . $link . '">' . $name . '</a><ul class="sub-menu">';
@@ -296,26 +363,18 @@ function start_products_block($tax='product_cat', $name='Produkty', $img = false
 				'img_id'	=> get_term_meta($r_term->term_id, 'img')[0],
 				'sub'	=> array()
 			);
-		} else {
-			$terms[$r_term->parent]['sub'][] = array(
-				'name' 	=> $r_term->name,
-				'url'	=> get_term_link($r_term->term_id, $tax)
-			);
-		};
-
+		}
 	};
 
-	echo '<pre>';
-	$test = get_terms(array(
-		'taxonomy' 		=> 'product_cat',
-		'hide_empty' 	=> false,
-		'order'			=> 'ASC',
-		'childless'		=> false
-	));	
-	var_dump($test);
-	echo '----';
-	var_dump($terms);
-	echo '</pre>';
+	foreach($r_terms as $r_term) {
+		if($r_term->parent > 0) {
+			$terms[$r_term->parent]['sub'][] = array(
+				'name' 	=> $r_term->name,
+				'url'	=> get_term_link($r_term->term_id, $tax),
+				'parent' => $r_term->parent
+			);
+		}
+	}
 
 	echo '<ul class="">';
 
@@ -338,8 +397,6 @@ function start_products_block($tax='product_cat', $name='Produkty', $img = false
 			if($term['sub']) {
 		
 				echo '<ul>';
-
-					var_dump($term['sub']);
 
 					foreach($term['sub'] as $s_term) {
 

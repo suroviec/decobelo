@@ -49,6 +49,8 @@ function add_to_list_btn() {
 
 // ANCHOR lista ulubionych w panelu użytkownika
 
+/**
+
 add_filter ( 'woocommerce_account_menu_items', 'list_link', 40 );
 function list_link( $menu_links ){
 	
@@ -69,9 +71,15 @@ function lista_endpoint() {
 
 add_action( 'woocommerce_account_lista_endpoint', 'lista_w_panelu' );
 function lista_w_panelu() {
-	echo 'aaaa';
+
+    echo '<pre>';
+	var_dump(get_user_meta(get_current_user_id(), 'list')[0]);
+    //var_dump(WC()->session->get('list'));
+    echo '</pre>';
 
 }
+
+**/
 
 // ANCHOR link w headerze
 

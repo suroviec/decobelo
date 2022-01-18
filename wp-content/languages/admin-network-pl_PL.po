@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WordPress - 5.8.x - Administration - Network Admin package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2021-11-26 09:25:27+0000\n"
+"PO-Revision-Date: 2022-01-17 09:35:31+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -151,7 +151,7 @@ msgstr "Motywy mogą również być udostępniane wyłącznie wybranym witrynom.
 
 #: wp-admin/network/themes.php:300
 msgid "If the network admin disables a theme that is in use, it can still remain selected on that site. If another theme is chosen, the disabled theme will not appear in the site&#8217;s Appearance > Themes screen."
-msgstr "Jeśli administrator sieci witryn wyłączy motyw, który jest przez kogoś używany, nadal będzie on włączony na danej witrynie. Jeśli dana witryna używa innego motywu, wyłączony motyw nie będzie wyświetlany na ekranie Wygląd &rarr; Motywy tej witryny."
+msgstr "Po wyłączeniu motywu w sieci witryn, będzie on włączony na danej witrynie, która go używa, ale nie będzie już wyświetlany na ekranie Wygląd &rarr; Motywy."
 
 #: wp-admin/network/themes.php:299
 msgid "This screen enables and disables the inclusion of themes available to choose in the Appearance menu for each site. It does not activate or deactivate which theme a site is currently using."
@@ -924,7 +924,7 @@ msgstr "Wybierz instalację w sub-domenach lub podkatalogach. Ustawienie to moż
 
 #: wp-admin/network.php:59
 msgid "This screen allows you to configure a network as having subdomains (<code>site1.example.com</code>) or subdirectories (<code>example.com/site1</code>). Subdomains require wildcard subdomains to be enabled in Apache and DNS records, if your host allows it."
-msgstr "Ten ekran pozwala na ustawienie sieci witryn jako korzystającej z adresów w postaci subdomen (<code>site1.example.com</code>) lub podkatalogów (<code>example.com/site1</code>). Użycie konfiguracji subdomenowej wymaga włączenia obsługi subdomen z wieloznacznikiem w konfiguracji Apache i DNS (jeśli Twój hosting na to pozwala)."
+msgstr "Tutaj można ustawić, czy sieć witryn ma korzystać z adresów w postaci domen (<code>site1.example.com</code>) lub podkatalogów (<code>example.com/site1</code>). Użycie konfiguracji domenowej wymaga włączenia ich obsługi w konfiguracji Apache i DNS (jeśli hosting na to pozwala)."
 
 #: wp-admin/network.php:55
 msgid "Create a Network of WordPress Sites"
@@ -1026,7 +1026,7 @@ msgstr "Adres e-mail administratora sieci witryn"
 
 #: wp-admin/includes/network.php:360
 msgid "What would you like to call your network?"
-msgstr "Jak chcesz nazwać swoją sieć witryn?"
+msgstr "Jak się ma nazwać twoja sieć witryn?"
 
 #: wp-admin/includes/network.php:356 wp-admin/network/settings.php:153
 msgid "Network Title"

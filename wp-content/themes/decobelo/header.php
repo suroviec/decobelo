@@ -46,7 +46,7 @@
 					<?php custom_menu('product_cat', 'Produkty', true); ?>
 					<?php custom_menu('kolekcje', 'Kolekcje', true, false, 'kolekcje'); ?>
 					<li><a href="<?php echo get_permalink(60); ?>"><?php _e('Promocje', 'decobelo'); ?></a></li>
-					<li><a href="<?php echo get_permalink(15); ?>"><?php _e('Szyte na miarę', 'decobelo'); ?></a></li>
+					<li><a href="<?php echo get_permalink(259); ?>"><?php _e('Poznaj nas', 'decobelo'); ?></a></li>
 				</ul>
 			</nav><!-- #site-navigation -->
 			<a href="" id="search-icon" class="cover-btn" title="<?php _e('Wyszukaj produkt', 'decobelo'); ?>"><?php _e('Wyszukaj', 'decobelo'); ?></a>	

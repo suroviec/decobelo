@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="2.3443601mm"
+   height="2.86534mm"
+   viewBox="0 0 2.3443601 2.86534"
+   version="1.1"
+   id="svg2765"
+   inkscape:version="1.1.1 (1:1.1+202109281949+c3084ef5ed)"
+   sodipodi:docname="list.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview2767"
+     pagecolor="#505050"
+     bordercolor="#ffffff"
+     borderopacity="1"
+     inkscape:pageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="1"
+     inkscape:document-units="mm"
+     showgrid="false"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0"
+     inkscape:zoom="0.46502525"
+     inkscape:cx="99.99457"
+     inkscape:cy="75.26473"
+     inkscape:window-width="1920"
+     inkscape:window-height="1052"
+     inkscape:window-x="1366"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs2762" />
+  <g
+     inkscape:label="Warstwa 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-78.48299,-128.86044)">
+    <path
+       d="M 80.43664,129.12092 H 80.2837 c -0.0537,-0.15167 -0.19797,-0.26048 -0.36804,-0.26048 H 79.3947 c -0.17007,0 -0.31431,0.10881 -0.36804,0.26048 h -0.15294 c -0.21588,0 -0.39073,0.17485 -0.39073,0.39073 v 1.8234 c 0,0.21588 0.17485,0.39073 0.39073,0.39073 h 1.56292 c 0.21587,0 0.39071,-0.17485 0.39071,-0.39073 v -1.8234 c 0,-0.21588 -0.17484,-0.39073 -0.39071,-0.39073 z m -1.04194,0 h 0.52096 c 0.0719,0 0.13019,0.0583 0.13019,0.13025 0,0.0719 -0.0583,0.13024 -0.13019,0.13024 H 79.3947 c -0.0719,0 -0.1302,-0.0583 -0.1302,-0.13024 0,-0.0719 0.0583,-0.13025 0.1302,-0.13025 z m 1.17218,2.21413 c 0,0.072 -0.0583,0.13024 -0.13018,0.13024 h -1.56292 c -0.0719,0 -0.13018,-0.0583 -0.13018,-0.13024 v -1.8234 c 0,-0.072 0.0583,-0.13024 0.13018,-0.13024 h 0.15294 c 0.0537,0.15166 0.19796,0.26048 0.36803,0.26048 h 0.52096 c 0.17007,0 0.31431,-0.10882 0.36805,-0.26048 h 0.15294 c 0.0719,0 0.13018,0.0583 0.13018,0.13024 z"
+       id="path2"
+       style="fill:#0278a3;fill-opacity:1;stroke-width:0.0325607" />
+  </g>
+</svg>

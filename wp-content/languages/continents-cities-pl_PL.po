@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WordPress - 5.8.x - Continents & Cities package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2021-11-12 08:04:19+0000\n"
+"PO-Revision-Date: 2022-01-17 10:35:30+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -105,7 +105,7 @@ msgstr "Majuro"
 
 #: wp-admin/includes/continents-cities.php:524
 msgid "Kwajalein"
-msgstr "Atol Kwajalein"
+msgstr "Kwajalein"
 
 #: wp-admin/includes/continents-cities.php:523
 msgid "Kosrae"
@@ -213,7 +213,7 @@ msgstr "Wyspy Kerguelena"
 
 #: wp-admin/includes/continents-cities.php:496
 msgid "Comoro"
-msgstr "Comoro"
+msgstr "Komory"
 
 #: wp-admin/includes/continents-cities.php:495
 msgid "Cocos"
@@ -1249,7 +1249,7 @@ msgstr "Winnipeg"
 
 #: wp-admin/includes/continents-cities.php:229
 msgid "Whitehorse"
-msgstr "White Horse"
+msgstr "Whitehorse"
 
 #: wp-admin/includes/continents-cities.php:228
 msgid "Virgin"
