@@ -4,7 +4,7 @@ Tags: translation, translators, localization, localisation, l10n, i18n, Gettext,
 Requires at least: 4.1
 Requires PHP: 5.2.4
 Tested up to: 5.8.3
-Stable tag: 2.5.6
+Stable tag: 2.5.7
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -99,6 +99,11 @@ We don't collect your data or snoop on you. See the [plugin privacy notice](http
 
 
 == Changelog ==
+
+= 2.5.7 = 
+* Fixed bug in 2.5.6 where remote APIs could not be used in batch mode
+* Enforcing 10k character limit per request for Microsoft and Yandex Translators
+* Style fix for revision/diff table under restore tab
 
 = 2.5.6 =
 * Added loco_api_provider_source filter
@@ -439,7 +444,7 @@ We don't collect your data or snoop on you. See the [plugin privacy notice](http
 
 == Upgrade Notice ==
 
-= 2.5.6 =
+= 2.5.7 =
 * Various improvements and bug fixes
 
 

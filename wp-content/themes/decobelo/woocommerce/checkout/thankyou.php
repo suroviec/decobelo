@@ -76,6 +76,10 @@ defined( 'ABSPATH' ) || exit;
 					</li>
 				<?php endif; ?>
 
+				<?php var_dump($order->get_payment_method()); ?>
+
+				<?php var_dump($order->get_shipping_method()); ?>
+
 			</ul>
 
 			</div>

@@ -483,6 +483,21 @@ function jk_woocommerce_breadcrumbs() {
         );
 }
 
+// ANCHOR usuniecie slecta kraju
+
+
+function remove_country( $fields ) {
+
+	unset($fields['billing']['billing_country']);
+	unset($fields['shipping']['shipping_country']);
+	
+return $fields;
+
+}
+	
+add_filter('woocommerce_checkout_fields','remove_country');
+
+
 // ANCHOR promo i new przy tytule produktu 
 
 add_action('woocommerce_single_product_summary','onsale_badge', 5 );
