@@ -1086,7 +1086,7 @@ function sendQuery(nonce,query) {
    coverBtns.forEach((btn)=>{
       btn.addEventListener('click', (e)=> {
          e.preventDefault();
-         if((window.innerWidth > 882) || (btn.parentElement.getAttribute('id') == "user-btn")) {
+         if((window.innerWidth > 882) || (btn.parentElement.getAttribute('id') == "user-btn") || (btn.parentElement.getAttribute('id') == "mobile-info-cont")) {
             btn.nextElementSibling.classList.add('active');
          } 
          if (btn.classList.contains('selected') == true) {

@@ -61,16 +61,23 @@
 			<ul>
 				<li id="mobile-info-cont" class="mobile">
 					<a href="" id="mobile-info-switcher" class="cover-btn"></a>
-					<nav id="mobile-info" class="footer-navigation" style="display:none">
-						<?php
-						wp_nav_menu(
-							array(
-								'theme_location' => 'menu-stopki',
-								'menu_id'        => 'menu-stopki',
-							)
-						);
+					<ul class="submenu">
+						<div class="close"></div>
+						<span class="submenu-header"><?php _e('Menu', 'decobelo'); ?></span>
+						<?php 
+							$mobile_menu_items = wp_get_nav_menu_items(75);
+
+							foreach($mobile_menu_items as $id => $mobile_menu_item) {
+								echo sprintf(
+									'<li><a href="%s" title="%s">%s</a></li>',
+									$mobile_menu_item->url,
+									$mobile_menu_item->title,
+									$mobile_menu_item->title
+								);
+								
+							}
 						?>
-					</nav> 
+					</ul> 
 				</li>
 				<li id="list-btn">
 					<a href="" class="cover-btn" title="<?php _e('Lista Twoich ulubionych produktów', 'decobelo'); ?>">

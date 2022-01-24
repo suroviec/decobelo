@@ -1682,6 +1682,9 @@ select {
         @media @wide {
             margin-top: 5rem;   
         }
+        @media @mobile {
+            font-size: 1.2rem;
+        }
     }
 }
 
@@ -2825,7 +2828,7 @@ select {
 
 
 
-#cart-btn, #list-btn, #user-btn  {
+#cart-btn, #list-btn, #user-btn, #mobile-info-cont  {
     .submenu {
         padding: 3.5rem 3.5rem 3.5rem 3.5rem;
         @media @mobile {
@@ -3162,6 +3165,20 @@ select {
             }
         }
     }
+    #mobile-info-cont {
+        .submenu {
+            &:extend(.activesubmenu all);
+            @media @mobile {
+                padding-top: 4rem;
+            }
+            li {
+                padding: 0.5rem 0;
+                a {
+                    &:extend(.smallbtn);
+                }
+            }
+        }
+    }
 }
 
 .woocommerce-lost-password {
@@ -3255,7 +3272,6 @@ select {
     div {
         position: relative;
         overflow: hidden;
-        line-height: 0;
         img {
             object-fit: cover;
             width: 100%;
@@ -3297,6 +3313,7 @@ select {
     }
     .b2 {
         grid-column: span 4;
+        line-height: 0;
     }
     .b3, .b4 {
         grid-column: span 3;
@@ -3660,6 +3677,9 @@ h1 {
     text-transform: uppercase;
     letter-spacing: 2px;
     font-weight: 700;
+    @media @mobile {
+        font-size: 1.2rem;
+    }
 }
 
 h2 {

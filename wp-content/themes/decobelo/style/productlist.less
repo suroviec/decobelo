@@ -16,6 +16,9 @@
         width: 100%;
         row-gap: @columngap * 2;
     }
+    @media (max-width:480px) {
+        grid-template-columns: 1fr;
+    }
     li {
         aspect-ratio: 1;
         position: relative;
