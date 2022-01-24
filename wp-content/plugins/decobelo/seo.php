@@ -11,7 +11,7 @@ add_action('admin_head', function() {
         'Pozycjonowanie',
         'seo_metabox',
         array('page', 'post', 'product'),
-        'advanced',
+        'side',
         'default'
     );
 });

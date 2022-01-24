@@ -29,6 +29,9 @@ require('seo.php');
 require('cart.php');
 require('checkout.php');
 require('single-product/single-product.php');
+require('dodatkowe.php');
+require('ikony.php');
+require('email.php');
 
 
 

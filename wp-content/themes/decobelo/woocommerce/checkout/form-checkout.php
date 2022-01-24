@@ -147,7 +147,7 @@ if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_requir
 			
 			<h3 id="order_review_heading"><?php esc_html_e( 'Your order', 'woocommerce' ); ?></h3>
 
-			<a href="<?php echo wc_get_cart_url(); ?>" class="smallbtn1"><?php _e('Edytuj', 'decobelo') ;?></a>
+			<a href="<?php echo wc_get_cart_url(); ?>" class="smallbtn1"><?php _e('Zobacz koszyk', 'decobelo') ;?></a>
 
 		</div>
 		

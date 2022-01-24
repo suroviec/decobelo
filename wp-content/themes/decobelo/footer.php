@@ -16,7 +16,12 @@
 		
 		window.easyPackAsyncInit = function () {
 		easyPack.init({
-			defaultLocation: [51.778711878622225, 19.451706487124284]
+			mobileSize: 1082,
+			map : {
+				useGeolocation: false,
+				initialZoom: 13,
+				defaultLocation: [49.64881510695456, 18.86506431225084]
+			}
 		});
 		var map = easyPack.mapWidget('map-widget', function(point){
 			console.log(point);
@@ -43,6 +48,11 @@
 	<?php endif; ?>
 	
 	<footer id="colophon" class="site-footer">
+
+			<div id="cookies">
+				<span>Wykorzystujemy ciasteczka. <a href="<?php echo get_permalink(3); ?>" title="Dowiedz się więcej w naszej Polityce prywatności" rel="nofollow"> Dowiedz się więcej.</a></span>
+				<a id="cookie-close">Akceptuję</a>
+			</div>
 
 			<?php if(is_archive()) : ?>
 

@@ -25,7 +25,7 @@ add_action( 'custom_gallery', 'woocommerce_show_product_thumbnails', 25 );
 // ANCHOR disable embed
 
 function my_deregister_scripts(){
-	wp_deregister_script( 'wp-embed' );
+	//wp_deregister_script( 'wp-embed' );
   }
   add_action( 'wp_footer', 'my_deregister_scripts' );
 
@@ -48,11 +48,61 @@ function disable_feed() {
    add_action('do_feed_atom_comments', 'disable_feed', 1);
 
 
-// ANCHOR przesuniecie onsale obok tytulu
-
-
+// ANCHOR przesuniecie onsale 
 remove_action('woocommerce_before_single_product_summary', 'woocommerce_show_product_sale_flash', 10);
-add_action('custom_gallery', 'woocommerce_show_product_sale_flash', 5 );
+//add_action('custom_gallery', 'woocommerce_show_product_sale_flash', 5 );
+
+add_action('new_badge', 'new_badge');
+
+function new_badge() {
+	global $product;
+	if((get_the_terms($product->get_id(), 'pa_nowosc')[0]->slug) == 'tak') {
+		echo sprintf(
+			'<div class="new">%s</div>',
+			__('Nowy', 'decobelo')
+		);
+	};
+}
+
+
+// ANCHOR promo price
+
+add_action( 'woocommerce_after_shop_loop_item_title', 'reg_price', 4 );
+
+function reg_price() {
+
+	global $product;
+
+	if ( $product->is_type( 'variable' ) && ($product->is_on_sale())) {
+		echo '<span class="custom_variation_price variation-sale"><del><bdi>';
+		echo $product->get_variation_regular_price();
+		echo ' - ';	
+		echo $product->get_variation_regular_price('max');
+		echo 'zł';	
+		echo '</bdi></del></span>';
+	}
+
+}
+
+add_filter('woocommerce_variable_sale_price_html', 'shop_variable_product_price', 10, 2);
+//add_filter('woocommerce_variable_price_html','shop_variable_product_price', 10, 2 );
+function shop_variable_product_price( $price, $product ){
+    $variation_min_reg_price = $product->get_variation_regular_price('min', true);
+    $variation_min_sale_price = $product->get_variation_sale_price('min', true);
+    if ( $product->is_on_sale() && !empty($variation_min_sale_price)){
+        if ( !empty($variation_min_sale_price) )
+            $price = '<del class="strike">' .  wc_price($variation_min_reg_price) . '</del>
+        <ins class="highlight">' .  wc_price($variation_min_sale_price) . '</ins>';
+    } else {
+        if(!empty($variation_min_reg_price))
+            $price = '<ins class="highlight">'.wc_price( $variation_min_reg_price ).'</ins>';
+        else
+            $price = '<ins class="highlight">'.wc_price( $product->regular_price ).'</ins>';
+    }
+    return $price;
+}
+
+
 
 
 // ANCHOR vars a
@@ -433,6 +483,21 @@ function jk_woocommerce_breadcrumbs() {
         );
 }
 
+// ANCHOR promo i new przy tytule produktu 
+
+add_action('woocommerce_single_product_summary','onsale_badge', 5 );
+
+function onsale_badge() {
+	global $product;
+	if($product->is_on_sale() == 1) {
+		echo sprintf(
+			'<div class="onsale">%s</div>',
+			__('Promo', 'decobelo')
+		);
+	}
+}
+
+add_action('woocommerce_single_product_summary','new_badge', 5 );
 
 // REDIRECT JESLI BLAD W LOGOWANIU
 
@@ -459,6 +524,7 @@ function custom_archive_product_img() {
 	);
 	
 }
+
 
 // PRZESUNIECIE ADD TO CART NA LISCIE PRODUKTOW
 

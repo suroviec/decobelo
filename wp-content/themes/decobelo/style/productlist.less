@@ -74,7 +74,7 @@
                 .trans(0.75s);
             }
         }
-        span.onsale {
+        span.onsale, .new {
             display: inline-block;
             color: #fff;
             background-color: @green;
@@ -90,6 +90,7 @@
             z-index: 7;
             width: 4rem;
             text-align: center;
+            position: absolute;
         } 
     }
     .product-title {
@@ -111,12 +112,19 @@
         position: relative;
         del {
             margin-right: 0.25rem;
+            opacity: 1;
+            bdi {
+                color: @lightgrey4 !important;
+            }
         }
         ins {
             text-decoration: none;
         }
         .added_to_cart {
             display: none;
+        }
+        .variation-sale bdi {
+            color: @lightgrey4 !important;
         }
     }
 }

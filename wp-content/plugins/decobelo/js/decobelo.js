@@ -5,7 +5,7 @@ var nonce;
 
 jQuery('document').ready(function(){
 
-   if(document.body.classList.contains('archive') || document.body.classList.contains('page-template-db_promocje')){
+   if(document.body.classList.contains('archive') || document.body.classList.contains('page-template-db_promocje') || document.body.classList.contains('page-template-db_nowosci')) {
 
       // przygotowanie query
 
@@ -17,6 +17,12 @@ jQuery('document').ready(function(){
       var currentTerm = document.querySelector('.filters').getAttribute('data-current_term');
       var currentSearch = document.querySelector('.filters').getAttribute('data-search');
       var promocje = document.querySelector('.filters').getAttribute('data-promocje');
+      
+      var nowosci;
+
+      if(document.body.classList.contains('page-template-db_nowosci') == true) {
+         nowosci = true;
+      }
    
       nonce = document.querySelector('.filters').getAttribute('data-nonce');
       
@@ -138,6 +144,14 @@ jQuery('document').ready(function(){
 
 
       });
+
+      if(nowosci == true) {
+         query.attrs['pa_nowosc'] = {
+            'title'  : 'Nowość',
+            'values' : ['tak']
+         };
+      }
+      
    };
 
 });
@@ -222,25 +236,36 @@ jQuery('document').ready(function(){
 
 // ANCHOR nip
 
-window.onload = function() {
+jQuery('document').ready(function(){
 
-   if(document.body.classList.contains('woocommerce-checkout')) {
+   if(document.body.classList.contains('woocommerce-checkout') == true) {
+      
       const invoice = document.querySelector('#invoice_field input');
       const nip = document.querySelector('#nip_field');
-   
-      if(invoice.checked) {
-         nip.classList.add('visible');
-      }
-   
-      invoice.addEventListener('input', ()=> {
+
+      try {
+
          if(invoice.checked) {
             nip.classList.add('visible');
-         } else {
-            nip.classList.remove('visible');
          }
-      })
- }
-}
+      
+         invoice.addEventListener('click', function(e) {
+      
+            if(invoice.checked) {
+               nip.classList.add('visible');
+            } else {
+               nip.classList.remove('visible');
+            }
+         })
+
+      } catch(e) {
+
+      }
+   }
+
+})
+
+   
  
  
  // ANCHOR hold body
@@ -428,6 +453,7 @@ jQuery('document').ready(function(){
 
        if(e.target.classList.contains('filter')) {
 
+
           var filter = e.target;
  
           e.preventDefault(); 
@@ -606,7 +632,6 @@ jQuery('document').ready(function(){
          if(query.orderby.value) {
             url += "&sortowanie=" + translateorderby[query.orderby.value];
          }
-       
 
          //var newurl = window.location.protocol + "//" + window.location.host + window.location.pathname + url;
          history.pushState({nonce: nonce, query: query}, "title 1", "?" + url);
@@ -732,6 +757,15 @@ function sendQuery(nonce,query) {
 
             }
 
+            // usuniecie parametru nowosci na stronie nowosci
+
+            if(document.body.classList.contains('page-template-db_nowosci') == true) {
+               for(i=0; i < activeArr.length; i++) {  
+                  if(activeArr[i].term_slug == "pa_nowosc") {
+                     activeArr.splice(i,1);
+                  };
+               }
+            };
             // render aktywnych filtrow
 
             activeArr.forEach(active => {
@@ -917,39 +951,49 @@ function sendQuery(nonce,query) {
  
  jQuery(document).ready( function() {
 
-   var productimgs = document.querySelectorAll('.products, .product');
 
-   productimgs.forEach(function(pimg) {
-      pimg.addEventListener('click', function(e) {
-         
-         if(e.target.classList.contains('list-btn') == true) {
+   try {
 
-            e.preventDefault(); 
-            product_id = e.target.getAttribute("data-product_id");
-            nonce = e.target.getAttribute("data-nonce");
-            user = e.target.getAttribute("data-user");
-            jQuery.ajax({
-               type : "post",
-               dataType : "json",
-               url : my_ajax.ajax_url,
-               data : {action: "list", product_id : product_id, nonce: nonce, user: user},
-               
-               success: function(response) {
-                  if(response.type == "success") {
-                     document.querySelector('.list-'+product_id).classList.add('inlist');
-                     document.querySelector('.list-count').textContent = response.length;
-                     document.querySelector('.list-count-mobile').textContent = response.length;
-                     jQuery('.saved-list').html(response.lista);
-                  } else {
-                     console.log('err');
-                  }
-               }
-            });
+      var productimgs = document.querySelectorAll('.products, .product');
 
-         };
+      productimgs.forEach(function(pimg) {
+         pimg.addEventListener('click', function(e) {
+            
+            if(e.target.classList.contains('list-btn') == true) {
    
+               e.preventDefault(); 
+               product_id = e.target.getAttribute("data-product_id");
+               nonce = e.target.getAttribute("data-nonce");
+               user = e.target.getAttribute("data-user");
+               jQuery.ajax({
+                  type : "post",
+                  dataType : "json",
+                  url : my_ajax.ajax_url,
+                  data : {action: "list", product_id : product_id, nonce: nonce, user: user},
+                  
+                  success: function(response) {
+                     if(response.type == "success") {
+                        document.querySelector('.list-'+product_id).classList.add('inlist');
+                        document.querySelector('.list-count').textContent = response.length;
+                        document.querySelector('.list-count-mobile').textContent = response.length;
+                        jQuery('.saved-list').html(response.lista);
+                     } else {
+                        console.log('err');
+                     }
+                  }
+               });
+   
+            };
+      
+         })
       })
-   })
+
+   } catch(e) {
+
+      alert(e);
+
+   }
+
 });
 
  jQuery(document).ready(function(){

@@ -418,7 +418,7 @@ function catch_filters($current_vars, $term, $value) {
 };
 
 // SECTION Render filters
-function render_filters($filters=null, $current_vars=null) {
+function render_filters($filters=null, $current_vars=null, $nowosci=false) {
 
     ob_start(); ?>
 
@@ -525,6 +525,10 @@ function render_filters($filters=null, $current_vars=null) {
                         <div class="attrs">
 
                             <?php foreach($filters['attributes'] as $attribute) {
+
+
+                                // usuniecie filtra nowosci z nowosci
+                                if (($nowosci == true) && ($attribute['slug'] == "pa_nowosc")) continue;
 
                                 $get_parameter = preg_replace('/pa/','filter',$attribute['slug']);
                                 $parameter_raw = sanitize_text_field($_GET[$get_parameter]);

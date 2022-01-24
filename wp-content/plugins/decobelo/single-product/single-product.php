@@ -36,8 +36,25 @@ function custom_product_header() {
     add_action('woocommerce_single_product_summary', 'display_collection', 7);
     add_action('woocommerce_single_product_summary', 'woocommerce_template_single_excerpt', 5);
     add_action('woocommerce_single_product_summary', 'availability_status', 50);
+    add_action('woocommerce_single_product_summary', 'choinka', 60);
     add_action('woocommerce_single_product_summary', 'end_product_float', 100);
+    
 };
+
+
+function choinka() {
+    ob_start();
+    ?>
+
+        <div class="choinka">
+            <span>Przesyłka już od <b>8,99zł</b></span>
+            <span>Darmowa dostawa od <b>100 zł</b></span>
+            <span>Zapłać wygodnie </span> <img src="<?php echo get_template_directory_uri(); ?>/style/i/payu_alt.svg" /><img src="<?php echo get_template_directory_uri(); ?>/style/i/blik.svg" />
+        </div>
+
+    <?php
+    echo ob_get_clean();
+}
 
 function start_product_float() {
     echo '<div class="product-float">';
@@ -50,12 +67,18 @@ function availability_status() {
     $str = get_the_terms($product->get_id(), 'pa_dostepnosc')[0]->name;
     $availability = strtoupper(substr($str,0,1)) . substr($str, 1);
 
-    echo sprintf(
-        '<div class="availability-info">
-            <span>%s</span>
-        </div>',
-        $availability
-    );
+    if($str) {
+
+        echo sprintf(
+            '<div class="availability-info">
+                <span><img src="%s"/> %s</span>
+            </div>',
+            get_template_directory_uri().'/style/i/box.svg',
+            $availability
+        );
+
+    }
+
 
 };
 
@@ -76,7 +99,7 @@ function display_collection() {
     }; 
 };
 
-// product bottom
+// ANCHOR product bottom
 
 add_action( 'after_setup_theme', 'custom_product_bottom' ); 
 
@@ -94,23 +117,134 @@ function custom_product_bottom() {
 
 function custom_product_hook() {
     echo '<div class="product-bottom">';
+        
         echo '<div class="product-data">';
+        
             echo '<div class="desc">';
                 wc_get_template( 'single-product/tabs/description.php' );
             echo '</div>';
+
+            echo '<div class="dodatkowe">';
+                render_dodatkowe();
+            echo '</div>';
+
             echo '<div class="attrs">';
                 echo '<h2>' . __('Cechy produktu', 'decobelo') . '</h2>';
                     echo '<div class="terms">';
                         product_attrs();
                     echo '</div>';
             echo '</div>';
-                comments_template();
+
+            echo '<div class="ikony">';
+                render_ikony();
+            echo '</div>';
+            
+            comments_template();
+            
             do_action('custom_related_products');
-        echo '</div>';
+        
+            echo '</div>';
         
     echo '</div>';
 }
 
+function render_ikony() {
+    global $product;
+
+    $ikony = get_post_meta($product->get_id(), 'ikony')[0];
+
+    $options = get_option('ikony');
+
+    if($ikony) {
+
+        echo '<h2>' . __('Konserwacja', 'decobelo') . '</h2>';
+
+        if(count($ikony) == 1) {
+
+            foreach($ikony as $slug => $data) {
+
+              foreach($data['values'] as $ikona) {
+
+                echo sprintf(
+                    '<img src="%s" title="asdasd">',
+                    wp_get_attachment_image_url($options[$ikona]['img']),
+                    $options[$ikona]['title'],
+                    
+                    
+                );
+
+              } 
+
+            };
+
+        } else {
+
+            echo '<div class="g">';
+
+            foreach($ikony as $slug => $data) {
+
+                echo '<div>';
+
+                echo '<span><b>' . $data['title'] . '</b></span>';
+
+                    foreach($data['values'] as $ikona) {
+    
+                        echo sprintf(
+                            '<img src="%s" title="asdasd">',
+                            wp_get_attachment_image_url($options[$ikona]['img']),
+                            $options[$ikona]['title'],
+                            
+                            
+                        );
+    
+                    } ;
+
+                echo '</div>';
+  
+              };
+
+              echo '</div>';
+
+        };
+
+        foreach($ikony as $slug => $data) {
+
+            $option_data = get_option('ikony')[$slug];
+
+            echo sprintf(
+                '<h2>%s</h2>%s',
+                $option_data['title'],
+                $option_data['content']
+            );
+        };
+    };
+
+
+}
+
+
+function render_dodatkowe() {
+
+    global $product;
+
+    $dodatkowe = get_post_meta($product->get_id(), 'dodatkowe')[0];
+
+    if($dodatkowe) {
+
+        foreach($dodatkowe as $slug) {
+
+            $option_data = get_option('dodatkowe')[$slug];
+
+            echo sprintf(
+                '<h2>%s</h2>%s',
+                $option_data['title'],
+                $option_data['content']
+            );
+        };
+    };
+
+
+}
 
 function product_attrs() {
     global $product;

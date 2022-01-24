@@ -37,6 +37,9 @@ if ( empty( $product ) || ! $product->is_visible() ) {
 	do_action( 'woocommerce_before_shop_loop_item' );
 
 	echo '<div class="product-imgs">';
+
+	do_action('new_badge');
+
 	/**
 	 * Hook: woocommerce_before_shop_loop_item_title.
 	 *

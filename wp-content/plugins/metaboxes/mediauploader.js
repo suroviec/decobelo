@@ -7,15 +7,16 @@ jQuery(function($){
 
 		var button = $(this),
 		custom_uploader = wp.media({
-			title: 'Insert image',
+			title: 'Wybierz ikonę SVG',
 			library : {
+				// uploadedTo : wp.media.view.settings.post.id, // attach to the current post?
 				type : 'image'
 			},
 			button: {
-				text: 'Dodaj wybrane zdjęcie'
+				text: 'Użyj tego pliku' // button label text
 			},
-			multiple: true
-		}).on('select', function() {
+			multiple: false
+		}).on('select', function() { // it also has "open" and "close" events
 			var attachment = custom_uploader.state().get('selection').first().toJSON();
 			button.html('<img src="' + attachment.url + '">').next().show().next().val(attachment.id);
 		}).open();
@@ -24,10 +25,12 @@ jQuery(function($){
 
 	// on remove button click
 	$('body').on('click', '.misha-rmv', function(e){
+
 		e.preventDefault();
+
 		var button = $(this);
 		button.next().val(''); // emptying the hidden field
-		button.hide().prev().html('<a class="button">Dodaj zdjęcie</a>');
+		button.hide().prev().html('Dodaj grafikę');
 	});
 
 });

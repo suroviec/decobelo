@@ -103,7 +103,7 @@ body {
 }
 
 footer #mobile-menu {
-    @media (min-width:883) {
+    @media (min-width:883px) {
         display: none;
     }
     @media @mobile {
@@ -262,6 +262,59 @@ abbr.required {
 
 .woocommerce-checkout h1 {
     margin-bottom: 1rem;
+}
+
+.woocommerce-order-received {
+    address {
+        font-style: normal;
+    }
+    section {
+        padding-top: 0 !important;
+    }
+    .woocommerce-order {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: auto auto;
+        column-gap: 2 * @columngap;
+        & > p {
+            grid-column: 1/4;
+            grid-row: 1/2;
+        }
+        .woocommerce-order-details {
+            grid-column: 1/2;
+            grid-row: 2/3;
+        }
+        .woocommerce-order-overview {
+            grid-column: 2/3;
+            grid-row: 2/3;
+        }
+        tr {
+            padding:0;
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            text-align: left;
+            th, td {
+                border-left: 1px solid @lightgrey3;
+                border-top: 1px solid @lightgrey3;
+                &:last-of-type {
+                    border-right: 1px solid @lightgrey3;
+                }
+                padding: 0.5rem 1rem;
+            }
+        }
+        tfoot {
+            th:last-of-type {
+                border-right: none;
+            }
+        }
+    }
+    table {
+        border-collapse: collapse;
+        border-bottom: 1px solid @lightgrey3;
+        a {
+            font-weight: bold;
+        }
+    }
 }
 
 // ANCHOR koszyk
@@ -547,7 +600,7 @@ form.woocommerce-checkout {
     }
     .right-header {
         display: grid;
-        grid-template-columns: 1fr 85px;
+        grid-template-columns: 1fr 150px;
         padding-bottom: 1rem;
         align-items: center;
         h3 {
@@ -704,8 +757,26 @@ form.woocommerce-checkout {
                     cursor: pointer;
                     background-position: center 1.5rem;
                     background-repeat: no-repeat;
+                    .trans();
                     &.selected {
                         border-color: @black;
+                        position: relative;
+                        &:before {
+                            background-image: url('../style/i/check3.svg');
+                            position: absolute;
+                            left: 0;
+                            top: 0;
+                            content: '';
+                            width: 1rem;
+                            height: 1rem;
+                            background-repeat: no-repeat;
+                            background-size: contain;
+                        }
+                        
+                    }
+                    &:hover {
+                        border-color: @black;
+                        .trans();
                     }
                 }
                 label[for=shipping_method_0_flat_rate8] {
@@ -770,8 +841,9 @@ form.woocommerce-checkout {
         }
         #place_order {
             &:extend(.mainbtn);
-            width: 100%;;
-            padding: 1rem;
+            width: 100%;
+            padding-top: 0.75rem !important;
+            padding-bottom: 0.75rem !important;
         }
         #order_review {
             .variation {
@@ -872,6 +944,10 @@ form.woocommerce-checkout {
     }
 }
 
+#map-leaflet {
+    height:60vh;
+}
+
 // ANCHOR kupon w checkout
 
 .woocommerce-form-coupon-toggle {
@@ -908,7 +984,9 @@ form.woocommerce-checkout {
 }
 
 .checkout-button {
-    &:extend(.mainbtn);
+    &:extend(.mainbtn all);
+    padding-top: 0.75rem !important;
+    padding-bottom: 0.75rem !important;
     @media @mobile {
         width: 100%;
         padding: 1rem;
@@ -1120,9 +1198,6 @@ form.woocommerce-checkout {
 /** produkt ***/
 
 .site-main { 
-    .onsale {
-        position: absolute;
-    }
     .product {
         padding: 1rem 0 2rem 0 ;
         display: grid;
@@ -1140,6 +1215,13 @@ form.woocommerce-checkout {
         }
         .added_to_cart {
             display: none;
+        }
+        del {
+            opacity: 1;
+            bdi, span {
+                font-weight: 400 !important;
+                color:@lightgrey4 !important;  
+            }
         }
         figure {
             margin: 0;
@@ -1224,13 +1306,26 @@ form.woocommerce-checkout {
         .price {
             &:extend(.products .product-price all);
         }
-        .onsale {
-            font-size: 0;
-            width: 0.5rem;
-            height: 0.5rem;
-            border-radius: 0;
-            background-color: @red;
-            height: auto;
+        .onsale, .new {
+            display: inline-block;
+            color: #fff;
+            background-color: @green;
+            padding: 0.25rem;
+            .bold();
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            font-size: .7rem;
+            line-height: 1;
+            letter-spacing: .75px;
+            left: 0;
+            top: 0.5rem;
+            z-index: 7;
+            width: 4rem;
+            text-align: center;
+            margin-right: 0.5rem;
+            margin-left:0.5rem;
+            vertical-align: text-bottom;
+            margin-bottom: 0.5rem;
         }
         .single_add_to_cart_button {
             &:extend(.mainbtn);
@@ -1262,6 +1357,9 @@ form.woocommerce-checkout {
                         }
                     }
                 }
+            }
+            th {
+                text-align: left;
             }
             .reset_variations {
                 display: none;
@@ -1295,13 +1393,50 @@ form.woocommerce-checkout {
             display: flex;
         }
         .availability-info {
-            margin-top: 1rem;
+            margin-top: 1.25rem;
+            margin-bottom: 1.25rem;
             .normal();
-        }   
-        .desc,
+            line-height: 1;
+            img {
+                height: 0.85rem;
+                vertical-align: middle;
+                width: auto;
+            }
+        } 
+        .ikony,  
         .attrs {
             padding-bottom: 1rem;
         }
+        .ikony,
+        .attrs {
+            padding-top: 1rem;
+        }
+        
+        .ikony {
+            .g {
+                display: grid;
+                grid-template-columns: repeat(4,1fr);
+                @media @mobile {
+                    grid-template-columns: 1fr;
+                }
+            }
+            span {
+                text-transform: uppercase;
+                display: block;
+                .bold();
+                font-size: 0.7rem;
+                letter-spacing: 2px;
+                margin-bottom: 1rem;
+                margin-top: 0.5rem;
+            }
+            img {
+                width: 2rem;
+                height: auto;
+                margin-left: 1rem;
+                display: inline-block;
+            }
+        }
+
         .product-data {
             padding: 2rem 0;
             @media @mobile {
@@ -1406,6 +1541,31 @@ form.woocommerce-checkout {
             }
             .add_to_cart_button {
                 display: none;
+            }
+        }
+        .choinka {
+            margin-top: 2rem;
+            span {
+                display: block;
+                //text-transform: uppercase;
+                .opacity();
+                font-size:0.8rem;
+                margin-bottom: 0.5rem;
+                b {
+                    font-size:0.75rem;
+                    letter-spacing: 0.5px;
+                }
+                &:last-of-type {
+                    display: inline;
+                }
+            }
+            img {
+                width: auto;
+                display: inline;
+                height: 1rem;
+                vertical-align: text-top;
+                margin-left: 0.25rem;
+
             }
         }
     }
@@ -2022,6 +2182,7 @@ select {
     }
 }
 
+
 .filters .active-filters {
     @media @mobile {
         margin-bottom: 0;
@@ -2040,6 +2201,12 @@ select {
             background-position: center right 0.7rem;
         }
     }
+}
+
+
+// ANCHOR nowosci
+
+.page-template-db_nowosci {
 }
 
 .archive #primary {
@@ -3088,6 +3255,7 @@ select {
     div {
         position: relative;
         overflow: hidden;
+        line-height: 0;
         img {
             object-fit: cover;
             width: 100%;
@@ -3513,7 +3681,7 @@ p {
     margin-top: 0;
 }
 
-ul {
+ol, ul {
     list-style-type: none;
     padding: 0;
     margin: 0;
@@ -3523,6 +3691,11 @@ ul {
     a {
         display: block;
     }
+}
+
+ol {
+   list-style-type: decimal;
+   padding-left: 0.9rem;
 }
 
 span {
@@ -3755,4 +3928,77 @@ footer {
 ::-webkit-resizer {
     background-image: url('../style/i/dpd.svg');
     background-size: cover;
+}
+
+footer {
+
+
+#cookies {
+    position: fixed;
+    width: 90%;
+    transform: translateX(-50%);
+    bottom: 0.5rem;
+    left: 50%;
+    background: #fff;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    z-index: 999;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.07), 0 3px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 2s cubic-bezier(0.16, 1, 0.3, 1);
+    transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+    opacity: 0;
+    visibility: hidden;
+    color: @black;
+  }
+  @media only screen and (min-width: 1025px) {
+    #cookies {
+      width: 450px;
+    }
+  }
+  #cookies.show {
+    opacity: 1;
+    visibility: visible;
+  }
+  #cookies.hide {
+    transform: translateY(300%) translateX(-50%);
+    transition: transform 2s cubic-bezier(0.16, 1, 0.3, 1);
+    transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+    opacity: 1;
+    visibility: visible;
+  }
+  #cookies a {
+    margin-bottom: 0;
+    color: @black !important;
+  }
+  #cookies > a {
+    margin-bottom: 0;
+    cursor: pointer;
+    padding-left: 1rem;
+    font-weight: bold;
+  }
+  #cookies > a:before {
+    content: '';
+    display: inline-block;
+    width: 0.6rem;
+    height: 0.6rem;
+    margin-right: 0.5rem;
+    background-image: url('../style/i/close.svg');
+    margin-bottom: -0.15rem;
+    background-size: cover;
+    position: absolute;
+    left:0;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  @media only screen and (max-width: 1024px) {
+    #cookies > a {
+      flex: 0 0 30%;
+    }
+  }
+  #cookies > a:hover {
+    text-decoration: underline;
+  }
+
 }

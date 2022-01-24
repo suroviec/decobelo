@@ -12,9 +12,50 @@
   display: inline-block;
   margin-right: 0.5rem;
 }
+.fw {
+  width: 100%;
+}
+.g3,
 #advanced-sortables {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
+  grid-column-gap: 0.5rem;
+  grid-row-gap: 0.5rem;
+}
+#wpbody-content {
+  padding-bottom: 1rem;
+}
+#metabox_ikony h2,
+.g2 h2,
+.g6 h2,
+.g3 h2 {
+  padding: 8px 14px;
+  margin: 0;
+}
+#metabox_ikony b,
+.g2 b,
+.g6 b,
+.g3 b {
+  display: inline-block;
+  margin-bottom: 8px;
+}
+#metabox_ikony input[type=text],
+.g2 input[type=text],
+.g6 input[type=text],
+.g3 input[type=text] {
+  margin-left: -1px;
+}
+.wrap h1.wp-heading-inline {
+  margin-bottom: 8px;
+  display: inline-block;
+}
+.g2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+.g6 {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
   grid-column-gap: 0.5rem;
   grid-row-gap: 0.5rem;
 }
@@ -23,12 +64,62 @@
 .custom-postbox textarea {
   width: 100%;
 }
+.misha-upl img {
+  width: 100%;
+  margin-bottom: 8px;
+}
+.ikony .misha-upl img {
+  width: 50%;
+  margin: 25% auto;
+  display: block;
+}
+#metabox_ikony .inside {
+  display: grid;
+  padding: 0.5rem 1rem 1rem 1rem;
+  grid-template-columns: repeat(4, 1fr);
+  column-gap: 0;
+  row-gap: 1rem;
+}
+#metabox_ikony .inside h4 {
+  margin-top: 0;
+  margin-bottom: 8px;
+}
+#metabox_ikony .inside > div {
+  padding: 1rem;
+  position: relative;
+  padding-bottom: 0;
+  overflow: hidden;
+  border-left: 1px solid lightgrey;
+  border-top: 1px solid lightgrey;
+  border-bottom: 1px solid lightgrey;
+}
+#metabox_ikony .inside > div .btm {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #eee;
+  padding: 0.5rem 0.75rem;
+}
+#metabox_ikony .inside > div:last-of-type {
+  border-right: 1px solid lightgrey;
+}
+#metabox_ikony .inside .fw {
+  grid-column: 1/5;
+}
+#metabox_ikony .inside input[type=text] {
+  margin: 0.25rem 0;
+}
 img {
   max-width: 100%;
 }
 .meta-box-sortables input,
 .meta-box-sortables textarea {
   width: 100%;
+}
+.meta-box-sortables input[type=button],
+.meta-box-sortables input[type=checkbox] {
+  width: auto;
 }
 div.fs-notice.updated,
 div.fs-notice.success,

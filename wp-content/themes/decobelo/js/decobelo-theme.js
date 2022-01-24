@@ -2,16 +2,26 @@
 
 jQuery('document').ready(function(){
 
-    var pimg = document.querySelector('.wp-post-image');
-    var title = pimg.getAttribute('title');
+    try {
 
-    pimg.addEventListener('mouseenter', function() {
-        pimg.setAttribute('title', '');
-    })
+        var pimg = document.querySelector('.wp-post-image');
+        var title = pimg.getAttribute('title');
 
-    pimg.addEventListener('mouseleave', function() {
-        pimg.setAttribute('title', title);
-    })
+        pimg.addEventListener('mouseenter', function() {
+            pimg.setAttribute('title', '');
+        })
+
+        pimg.addEventListener('mouseleave', function() {
+            pimg.setAttribute('title', title);
+        })
+
+    } catch (e) {
+
+        
+
+    }
+
+    
 
 });
 
@@ -142,6 +152,44 @@ if(document.body.classList.contains('archive') && (window.innerWidth < 883)) {
 
 }
 
+
+// ANCHOR cookies
+
+
+function getCookie(cname) {
+    var name = cname + "=";
+    var ca = document.cookie.split(';');
+    for(var i = 0; i < ca.length; i++) {
+      var c = ca[i];
+      while (c.charAt(0) == ' ') {
+        c = c.substring(1);
+      }
+      if (c.indexOf(name) == 0) {
+        return c.substring(name.length, c.length);
+      }
+    }
+    return "";
+  }
+
+function checkCookie() {
+    var check = getCookie("cookie_info");
+    var cookieInfo = document.querySelector('#cookies');
+    if (check == 'hide') {
+        cookieInfo.classList.add('hide');
+    } else {
+        cookieInfo.classList.add('show');
+    }
+}
+
+jQuery('document').ready(function(){
+    checkCookie()
+});
+
+document.querySelector('#cookie-close').addEventListener('click', function() {
+    document.querySelector('#cookies').classList.add('hide');
+    document.querySelector('#cookies').classList.remove('show');
+    document.cookie = "cookie_info=hide"; 
+});
 
 
 /*** vaildacja formularz logowania */

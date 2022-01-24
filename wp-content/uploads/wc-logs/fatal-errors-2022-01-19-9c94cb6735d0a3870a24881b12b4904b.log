@@ -1,0 +1,72 @@
+2022-01-19T17:28:48+00:00 CRITICAL syntax error, unexpected ';', expecting ')' w /opt/lampp/htdocs/decobelo/wp-content/themes/decobelo/db_nowosci.php w linii 111
+
+2022-01-19T18:31:00+00:00 CRITICAL Uncaught Error: Call to undefined method WC_Product_Variable::ID() in /opt/lampp/htdocs/decobelo/wp-content/themes/decobelo/functions.php:59
+Stack trace:
+#0 /opt/lampp/htdocs/decobelo/wp-includes/class-wp-hook.php(303): new_badge('')
+#1 /opt/lampp/htdocs/decobelo/wp-includes/class-wp-hook.php(327): WP_Hook->apply_filters('', Array)
+#2 /opt/lampp/htdocs/decobelo/wp-includes/plugin.php(470): WP_Hook->do_action(Array)
+#3 /opt/lampp/htdocs/decobelo/wp-content/themes/decobelo/woocommerce/content-product.php(41): do_action('new_badge')
+#4 /opt/lampp/htdocs/decobelo/wp-includes/template.php(772): require('/opt/lampp/htdo...')
+#5 /opt/lampp/htdocs/decobelo/wp-content/plugins/woocommerce/includes/wc-core-functions.php(284): load_template('/opt/lampp/htdo...', false)
+#6 /opt/lampp/htdocs/decobelo/wp-content/themes/decobelo/db_nowosci.php(120): wc_get_template_part('content', 'product')
+#7 /opt/lampp/htdocs/decobelo/wp-includes/template-loader.php(106): include('/opt/lampp/htdo...')
+#8 /opt/lampp/htdocs/decobelo/wp-blog w /opt/lampp/htdocs/decobelo/wp-content/themes/decobelo/functions.php w linii 59
+
+2022-01-19T18:34:49+00:00 CRITICAL syntax error, unexpected ';', expecting ')' w /opt/lampp/htdocs/decobelo/wp-content/themes/decobelo/functions.php w linii 62
+
+2022-01-19T18:34:54+00:00 CRITICAL Uncaught Error: Call to undefined function spritf() in /opt/lampp/htdocs/decobelo/wp-content/themes/decobelo/functions.php:60
+Stack trace:
+#0 /opt/lampp/htdocs/decobelo/wp-includes/class-wp-hook.php(303): new_badge('')
+#1 /opt/lampp/htdocs/decobelo/wp-includes/class-wp-hook.php(327): WP_Hook->apply_filters('', Array)
+#2 /opt/lampp/htdocs/decobelo/wp-includes/plugin.php(470): WP_Hook->do_action(Array)
+#3 /opt/lampp/htdocs/decobelo/wp-content/themes/decobelo/woocommerce/content-product.php(41): do_action('new_badge')
+#4 /opt/lampp/htdocs/decobelo/wp-includes/template.php(772): require('/opt/lampp/htdo...')
+#5 /opt/lampp/htdocs/decobelo/wp-content/plugins/woocommerce/includes/wc-core-functions.php(284): load_template('/opt/lampp/htdo...', false)
+#6 /opt/lampp/htdocs/decobelo/wp-content/themes/decobelo/db_nowosci.php(120): wc_get_template_part('content', 'product')
+#7 /opt/lampp/htdocs/decobelo/wp-includes/template-loader.php(106): include('/opt/lampp/htdo...')
+#8 /opt/lampp/htdocs/decobelo/wp-blog-header.php(19) w /opt/lampp/htdocs/decobelo/wp-content/themes/decobelo/functions.php w linii 60
+
+2022-01-19T18:35:26+00:00 CRITICAL Uncaught Error: Call to undefined function spritf() in /opt/lampp/htdocs/decobelo/wp-content/themes/decobelo/functions.php:60
+Stack trace:
+#0 /opt/lampp/htdocs/decobelo/wp-includes/class-wp-hook.php(303): new_badge('')
+#1 /opt/lampp/htdocs/decobelo/wp-includes/class-wp-hook.php(327): WP_Hook->apply_filters('', Array)
+#2 /opt/lampp/htdocs/decobelo/wp-includes/plugin.php(470): WP_Hook->do_action(Array)
+#3 /opt/lampp/htdocs/decobelo/wp-content/themes/decobelo/woocommerce/content-product.php(41): do_action('new_badge')
+#4 /opt/lampp/htdocs/decobelo/wp-includes/template.php(772): require('/opt/lampp/htdo...')
+#5 /opt/lampp/htdocs/decobelo/wp-content/plugins/woocommerce/includes/wc-core-functions.php(284): load_template('/opt/lampp/htdo...', false)
+#6 /opt/lampp/htdocs/decobelo/wp-content/themes/decobelo/db_nowosci.php(120): wc_get_template_part('content', 'product')
+#7 /opt/lampp/htdocs/decobelo/wp-includes/template-loader.php(106): include('/opt/lampp/htdo...')
+#8 /opt/lampp/htdocs/decobelo/wp-blog-header.php(19) w /opt/lampp/htdocs/decobelo/wp-content/themes/decobelo/functions.php w linii 60
+
+2022-01-19T19:46:08+00:00 CRITICAL syntax error, unexpected ''<span class="onsale">%s</span' (T_CONSTANT_ENCAPSED_STRING), expecting ';' or ',' w /opt/lampp/htdocs/decobelo/wp-content/themes/decobelo/functions.php w linii 495
+
+2022-01-19T19:46:23+00:00 CRITICAL syntax error, unexpected ''<span class="onsale">%s</span' (T_CONSTANT_ENCAPSED_STRING), expecting ';' or ',' w /opt/lampp/htdocs/decobelo/wp-content/themes/decobelo/functions.php w linii 495
+
+2022-01-19T19:46:33+00:00 CRITICAL syntax error, unexpected ''<span class="onsale">%s</span' (T_CONSTANT_ENCAPSED_STRING), expecting ';' or ',' w /opt/lampp/htdocs/decobelo/wp-content/themes/decobelo/functions.php w linii 495
+
+2022-01-19T19:47:06+00:00 CRITICAL syntax error, unexpected ''<span class="onsale">%s</span' (T_CONSTANT_ENCAPSED_STRING), expecting ';' or ',' w /opt/lampp/htdocs/decobelo/wp-content/themes/decobelo/functions.php w linii 495
+
+2022-01-19T21:00:02+00:00 CRITICAL Uncaught Error: Object of class WPDocs_Options_Page could not be converted to string in /opt/lampp/htdocs/decobelo/wp-includes/functions.php:2128
+Stack trace:
+#0 /opt/lampp/htdocs/decobelo/wp-includes/functions.php(2128): preg_replace('|(?<=.)/+|', '/', Array)
+#1 /opt/lampp/htdocs/decobelo/wp-includes/plugin.php(706): wp_normalize_path(Array)
+#2 /opt/lampp/htdocs/decobelo/wp-admin/includes/plugin.php(1388): plugin_basename(Array)
+#3 /opt/lampp/htdocs/decobelo/wp-content/plugins/decobelo/dodatkowe.php(23): add_submenu_page('Dodatkowe infor...', 'Dodatkowe infor...', 'manage_options', 'dodatkowe', Array)
+#4 /opt/lampp/htdocs/decobelo/wp-includes/class-wp-hook.php(303): WPDocs_Options_Page->admin_menu('')
+#5 /opt/lampp/htdocs/decobelo/wp-includes/class-wp-hook.php(327): WP_Hook->apply_filters(NULL, Array)
+#6 /opt/lampp/htdocs/decobelo/wp-includes/plugin.php(470): WP_Hook->do_action(Array)
+#7 /opt/lampp/htdocs/decobelo/wp-admin/includes/menu.php(155): do_action('admin_menu', '')
+#8 /opt/lampp/htdocs/decobelo/wp-a w /opt/lampp/htdocs/decobelo/wp-includes/functions.php w linii 2128
+
+2022-01-19T21:00:40+00:00 CRITICAL Uncaught Error: Object of class WPDocs_Options_Page could not be converted to string in /opt/lampp/htdocs/decobelo/wp-includes/functions.php:2128
+Stack trace:
+#0 /opt/lampp/htdocs/decobelo/wp-includes/functions.php(2128): preg_replace('|(?<=.)/+|', '/', Array)
+#1 /opt/lampp/htdocs/decobelo/wp-includes/plugin.php(706): wp_normalize_path(Array)
+#2 /opt/lampp/htdocs/decobelo/wp-admin/includes/plugin.php(1388): plugin_basename(Array)
+#3 /opt/lampp/htdocs/decobelo/wp-content/plugins/decobelo/dodatkowe.php(23): add_submenu_page('Dodatkowe infor...', 'Dodatkowe infor...', 'manage_options', 'op', Array)
+#4 /opt/lampp/htdocs/decobelo/wp-includes/class-wp-hook.php(303): WPDocs_Options_Page->admin_menu('')
+#5 /opt/lampp/htdocs/decobelo/wp-includes/class-wp-hook.php(327): WP_Hook->apply_filters(NULL, Array)
+#6 /opt/lampp/htdocs/decobelo/wp-includes/plugin.php(470): WP_Hook->do_action(Array)
+#7 /opt/lampp/htdocs/decobelo/wp-admin/includes/menu.php(155): do_action('admin_menu', '')
+#8 /opt/lampp/htdocs/decobelo/wp-admin/me w /opt/lampp/htdocs/decobelo/wp-includes/functions.php w linii 2128
+
