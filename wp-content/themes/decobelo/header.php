@@ -37,7 +37,7 @@
 	
 	<header id="masthead" class="site-header <?php is_page() ? 'sticky' : '' ?>">
 		<div class="site-branding">
-			<?php the_custom_logo(); ?>asdasd
+			<?php the_custom_logo(); ?>111
 		</div><!-- .site-branding -->
 
 		<div id="main-menu">
