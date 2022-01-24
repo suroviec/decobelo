@@ -166,11 +166,9 @@ function render_ikony() {
               foreach($data['values'] as $ikona) {
 
                 echo sprintf(
-                    '<img src="%s" title="asdasd">',
+                    '<img src="%s" title="%s">',
                     wp_get_attachment_image_url($options[$ikona]['img']),
-                    $options[$ikona]['title'],
-                    
-                    
+                    $options[$ikona]['title']
                 );
 
               } 
@@ -192,9 +190,7 @@ function render_ikony() {
                         echo sprintf(
                             '<img src="%s" title="asdasd">',
                             wp_get_attachment_image_url($options[$ikona]['img']),
-                            $options[$ikona]['title'],
-                            
-                            
+                            $options[$ikona]['title']
                         );
     
                     } ;

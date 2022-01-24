@@ -65,6 +65,72 @@ function new_badge() {
 }
 
 
+// ANCHOR funkcja do emaili
+
+function email($etap, $shipping, $payment) {
+
+	$options = get_option('emaile');
+	$e = $options[$etap];
+
+	$ts = array(
+		'local_pickup' => 'osobisty',
+		'flat_rate' => 'wysylka',
+		'free_shipping' => 'wysylka'
+	);
+
+	$tp = array(
+		'cod' => 'pobranie',
+		'payustandard' => 'payu',
+		'bacs' => 'przelew'
+	);
+	
+	$translate = $ts[$shipping].'-'.$tp[$payment];
+
+	echo wpautop($options[$etap][$translate]);	
+
+}
+
+// ANCHOR tresci maili
+
+add_action( 'woocommerce_email_order_details', 'add_email_order_meta', 10, 3 );
+
+function add_email_order_meta( $order, $sent_to_admin, $plain_text ){
+
+	// wysylka
+	$shipping = '';				
+	$shipping_methods = $order->get_shipping_methods();
+	foreach($shipping_methods as $id => $shipping_data) {
+		$shipping = $shipping_data->get_method_id();
+	}
+
+	// platnosc
+	$payment = $order->get_payment_method();
+
+	// status
+	$status = $order->get_status();
+
+	if(($status == 'on-hold') || ($status == 'pending')){
+		$etap = 'potwierdzenie';
+	} elseif ($status == 'processing') {
+		$etap = 'realizacja';
+	} elseif($status == 'completed') {
+		$etap = 'zakonczenie';
+	}
+
+	if ( $plain_text === false ) {
+	
+		echo '<p>' . email($etap, $shipping, $payment) . '</p>';
+	
+	} else {
+	
+		echo email($etap, $shipping, $payment);
+	
+	}
+	
+}
+
+
+
 // ANCHOR promo price
 
 add_action( 'woocommerce_after_shop_loop_item_title', 'reg_price', 4 );

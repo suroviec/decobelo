@@ -264,9 +264,14 @@ abbr.required {
     margin-bottom: 1rem;
 }
 
+
 .woocommerce-order-received {
     address {
         font-style: normal;
+    }
+    .order-again a {
+        &:extend(.mainbtn all);
+        margin-top: 2rem;
     }
     section {
         padding-top: 0 !important;
@@ -789,17 +794,22 @@ form.woocommerce-checkout {
                 label[for=shipping_method_0_local_pickup9] {
                     background-image: url('../style/i/osobisty.svg');
                 }
-                label[for=payment_method_cheque] {
+                label[for=payment_method_payustandard] {
                     background-image: url('../style/i/payu.svg');
-                }
-                label[for=payment_method_cheque] {
-                    background-image: url('../style/i/payu.svg');
+                    img {
+                        display: none;
+                    }
                 }
                 label[for=payment_method_bacs] {
                     background-image: url('../style/i/transfer.svg');
                 }
                 label[for=payment_method_cod] {
                     background-image: url('../style/i/cod.svg');
+                }
+                &.payment_method_payustandard {
+                    p {
+                        display: none;
+                    }
                 }
             }   
         }
@@ -1432,8 +1442,9 @@ form.woocommerce-checkout {
             img {
                 width: 2rem;
                 height: auto;
-                margin-left: 1rem;
+                margin-right: 1rem;
                 display: inline-block;
+                cursor: pointer;
             }
         }
 
@@ -3638,7 +3649,7 @@ a {
             background-size: 200%;
         }
         &:hover{
-            //decoration: none;
+            text-decoration: none;
             padding-left: 3.75rem;
             transition: 0.25s ease;
             &:before {
@@ -3965,6 +3976,7 @@ footer {
     align-items: center;
     padding: 0.5rem 1rem;
     z-index: 999;
+    border-radius: 2px;
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.07), 0 3px 6px rgba(0, 0, 0, 0.1);
     transition: transform 2s cubic-bezier(0.16, 1, 0.3, 1);
     transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);

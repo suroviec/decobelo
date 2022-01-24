@@ -76,12 +76,36 @@ defined( 'ABSPATH' ) || exit;
 					</li>
 				<?php endif; ?>
 
-				<?php var_dump($order->get_payment_method()); ?>
-
-				<?php var_dump($order->get_shipping_method()); ?>
 
 			</ul>
 
+					<h2 class="woocommerce-order-details__title" style="margin-top:2rem"><?php _e('Informacje do zamówienia', 'decobelo'); ?></h2>
+
+					<?php
+					
+						$payment = $order->get_payment_method();
+						$shipping = '';
+					
+						$shipping_methods = $order->get_shipping_methods();
+
+						foreach($shipping_methods as $id => $shipping_data) {
+							$shipping = $shipping_data->get_method_id();
+						}
+					
+						$status = $order->get_status();
+
+						if(($status == 'on-hold') || ($status == 'pending')){
+							$etap = 'potwierdzenie';
+						} elseif ($status == 'processing') {
+							$etap = 'realizacja';
+						} elseif($status == 'completed') {
+							$etap = 'zakonczenie';
+						}
+
+						email($etap, $shipping, $payment);
+
+					?>
+					
 			</div>
 
 		<?php endif; ?>

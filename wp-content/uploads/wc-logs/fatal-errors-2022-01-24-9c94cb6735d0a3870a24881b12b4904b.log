@@ -8,3 +8,11 @@ Stack trace:
 #5 /opt/lampp/htdocs/decobelo/wp-includes/shortcodes.php(356): WC_Shortcodes::checkout('', '', 'woocommerce_che...')
 #6 [internal funct w /opt/lampp/htdocs/decobelo/wp-content/themes/decobelo/woocommerce/checkout/thankyou.php w linii 79
 
+2022-01-24T18:53:23+00:00 CRITICAL Uncaught ArgumentCountError: Too few arguments to function add_email_order_meta(), 3 passed in /home/dauqsryoab/domains/surowiec.io/public_html/decobelo/wp-includes/class-wp-hook.php on line 305 and exactly 4 expected in /home/dauqsryoab/domains/surowiec.io/public_html/decobelo/wp-content/themes/decobelo/functions.php:97
+Stack trace:
+#0 /home/dauqsryoab/domains/surowiec.io/public_html/decobelo/wp-includes/class-wp-hook.php(305): add_email_order_meta(Object(WC_Order), true, false)
+#1 /home/dauqsryoab/domains/surowiec.io/public_html/decobelo/wp-includes/class-wp-hook.php(327): WP_Hook->apply_filters('', Array)
+#2 /home/dauqsryoab/domains/surowiec.io/public_html/decobelo/wp-includes/plugin.php(470): WP_Hook->do_action(Array)
+#3 /home/dauqsryoab/domains/surowiec.io/public_html/decobelo/wp-content/plugins/woocommerce/templates/emails/admin-new-order.php(40): do_action('woocommerce_ema...', Object(WC_Order), true, false, Object(WC_Email_New_Order))
+#4 /home/dauqsryoab/domains/surowiec.io/public_html/decobelo/wp-con w /home/dauqsryoab/domains/surowiec.io/public_html/decobelo/wp-content/themes/decobelo/functions.php w linii 97
+
