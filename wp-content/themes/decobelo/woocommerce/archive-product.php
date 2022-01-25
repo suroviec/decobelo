@@ -48,6 +48,7 @@ echo get_sidebar();
 
 
 <header class="woocommerce-products-header">
+
 	<?php if ( apply_filters( 'woocommerce_show_page_title', true ) ) : ?>
 		<h1 class="woocommerce-products-header__title page-title"><?php woocommerce_page_title(); ?></h1>
 	<?php endif; ?>
@@ -74,7 +75,6 @@ echo get_sidebar();
 		$current = array();
 		$current_tax = $query['taxonomy'];
 		$current_slug = $query['term'];
-
 
 		$list_of_vars = list_of_vars($current_tax);
 
@@ -118,7 +118,6 @@ if(!function_exists('wc_get_products')) {
 
 	$tax_data = array();
 
-  	
 	$tax_data[] = array(
 		array(
 			'taxonomy' 			=> $current_tax,
@@ -194,7 +193,6 @@ if(!function_exists('wc_get_products')) {
 	$args['page'] 		= $paged;
 	$args['paginate'] 	= true;
 	$args['return'] 	= 'ids';
-	$args['s']			=  'test';
 
 	if(is_null($tax_data[0][0]['taxonomy']) == false) {
         $args['tax_query'] = $tax_query;
@@ -205,7 +203,6 @@ if(!function_exists('wc_get_products')) {
 	}
 	
 	$products = wc_get_products($args);
-
 
 	if(!empty($products->products)) {
 
