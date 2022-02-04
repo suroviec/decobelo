@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Decobelo\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-25 22:23+0000\n"
+"POT-Creation-Date: 2022-01-26 01:24+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: \n"
@@ -13,8 +13,16 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Loco https://localise.biz/\n"
-"X-Loco-Version: 2.5.5; wp-5.8.2\n"
+"X-Loco-Version: 2.5.7; wp-5.8.3\n"
 "X-Domain: decobelo"
+
+#: functions.php:422 functions.php:508
+msgid " - zobacz produkty"
+msgstr ""
+
+#: functions.php:436 functions.php:522
+msgid " - zobacz produkty z kategorii"
+msgstr ""
 
 #. number of items in the mini cart.
 #: inc/woocommerce.php:188
@@ -29,8 +37,20 @@ msgstr[1] ""
 msgid ", "
 msgstr ""
 
-#: functions.php:151
+#: functions.php:766
 msgid "Add widgets here."
+msgstr ""
+
+#: functions.php:327
+msgid "Adres email"
+msgstr ""
+
+#: functions.php:318
+msgid "Adresy"
+msgstr ""
+
+#: 404.php:17
+msgid "Błędny adres"
 msgstr ""
 
 #: comments.php:68
@@ -52,14 +72,26 @@ msgstr[1] ""
 msgid "Continue reading<span class=\"screen-reader-text\"> \"%s\"</span>"
 msgstr ""
 
+#: woocommerce/checkout/thankyou.php:46
+msgid "Dane zamówienia"
+msgstr ""
+
 #. Name of the theme
 msgid "Decobelo"
+msgstr ""
+
+#: woocommerce/checkout/form-checkout.php:39
+msgid "Dostawa"
 msgstr ""
 
 #. %s: Name of current post. Only visible to screen readers
 #: inc/template-tags.php:100 template-parts/content-page.php:39
 #, php-format
 msgid "Edit <span class=\"screen-reader-text\">%s</span>"
+msgstr ""
+
+#: functions.php:312
+msgid "Edytuj dane"
 msgstr ""
 
 #. Author URI of the theme
@@ -70,14 +102,8 @@ msgstr ""
 msgid "http://underscores.me/"
 msgstr ""
 
-#: footer.php:16
-msgid "https://wordpress.org/"
-msgstr ""
-
-#: 404.php:21
-msgid ""
-"It looks like nothing was found at this location. Maybe try one of the links "
-"below or a search?"
+#: woocommerce/checkout/thankyou.php:82
+msgid "Informacje do zamówienia"
 msgstr ""
 
 #: template-parts/content-none.php:44
@@ -86,7 +112,23 @@ msgid ""
 "searching can help."
 msgstr ""
 
-#: header.php:63
+#: footer.php:81 db_startpage.php:55 db_startpage.php:61
+msgid "Kategorie produktów"
+msgstr ""
+
+#: db_kolekcje.php:14 db_startpage.php:160
+msgid "Kolekcje produktów"
+msgstr ""
+
+#: footer.php:135 footer.php:138
+msgid "Konto Facebook"
+msgstr ""
+
+#: footer.php:124 footer.php:127
+msgid "Konto Instagram"
+msgstr ""
+
+#: footer.php:67 header.php:114 header.php:119
 msgid "Koszyk"
 msgstr ""
 
@@ -102,28 +144,64 @@ msgctxt "list item separator"
 msgid ", "
 msgstr ""
 
-#: header.php:61
+#: header.php:83
+msgid "Lista Twoich ulubionych produktów"
+msgstr ""
+
+#: header.php:84
 msgid "Lista ulubionych"
+msgstr ""
+
+#: functions.php:323
+msgid "Logowanie"
+msgstr ""
+
+#: woocommerce/myaccount/form-login.php:38
+msgid "Logowanie nieudane, sprawdź adres e-mail i hasło"
 msgstr ""
 
 #. Author of the theme
 msgid "Marcin Surowiec"
 msgstr ""
 
-#: header.php:62
+#: header.php:66
+msgid "Menu"
+msgstr ""
+
+#: functions.php:689
+msgid "Menu główne"
+msgstr ""
+
+#: header.php:103
 msgid "Moje konto"
 msgstr ""
 
-#: 404.php:30
-msgid "Most Used Categories"
+#: db_nowosci.php:26
+msgid "Najnowsze produkty"
+msgstr ""
+
+#: db_contactpage.php:51 footer.php:101
+msgid "Nawigacja Google Maps"
 msgstr ""
 
 #: single.php:24
 msgid "Next:"
 msgstr ""
 
+#: functions.php:335
+msgid "Nie masz konta?"
+msgstr ""
+
 #: template-parts/content-none.php:14
 msgid "Nothing Found"
+msgstr ""
+
+#: header.php:49
+msgid "Nowości"
+msgstr ""
+
+#: functions.php:62
+msgid "Nowy"
 msgstr ""
 
 #. 1: title.
@@ -132,12 +210,12 @@ msgstr ""
 msgid "One thought on &ldquo;%1$s&rdquo;"
 msgstr ""
 
-#: 404.php:17
-msgid "Oops! That page can&rsquo;t be found."
-msgstr ""
-
 #: template-parts/content.php:53 template-parts/content-page.php:25
 msgid "Pages:"
+msgstr ""
+
+#: db_startpage.php:188
+msgid "Polecane produkty"
 msgstr ""
 
 #. %s: post author.
@@ -164,18 +242,28 @@ msgstr ""
 msgid "Previous:"
 msgstr ""
 
-#: functions.php:75
-msgid "Primary"
+#: footer.php:81
+msgid "Produkty"
+msgstr ""
+
+#: db_promocje.php:26
+msgid "Produkty w promocji"
+msgstr ""
+
+#: functions.php:576
+msgid "Promo"
 msgstr ""
 
 #: header.php:48
-msgid "Primary Menu"
+msgid "Promocje"
 msgstr ""
 
-#. %s: CMS name, i.e. WordPress.
-#: footer.php:19
-#, php-format
-msgid "Proudly powered by %s"
+#: footer.php:60
+msgid "Przeglądaj opcje"
+msgstr ""
+
+#: woocommerce/checkout/form-checkout.php:57
+msgid "Płatność"
 msgstr ""
 
 #. 1: link to WP admin new post page.
@@ -191,7 +279,7 @@ msgstr ""
 msgid "Search Results for: %s"
 msgstr ""
 
-#: functions.php:149
+#: functions.php:764
 msgid "Sidebar"
 msgstr ""
 
@@ -199,6 +287,22 @@ msgstr ""
 msgid ""
 "Sorry, but nothing matched your search terms. Please try again with some "
 "different keywords."
+msgstr ""
+
+#. Name of the template
+msgid "Strona kolekcji (wszystkich)"
+msgstr ""
+
+#. Name of the template
+msgid "Strona kontaktu"
+msgstr ""
+
+#. Name of the template
+msgid "Strona nowosci"
+msgstr ""
+
+#. Name of the template
+msgid "Strona promocji"
 msgstr ""
 
 #. Name of the template
@@ -211,18 +315,71 @@ msgstr ""
 msgid "Tagged %1$s"
 msgstr ""
 
-#. 1: Theme name, 2: Theme author.
-#: footer.php:25
-#, php-format
-msgid "Theme: %1$s by %2$s."
+#: functions.php:302
+msgid "Twoje konto"
 msgstr ""
 
-#. %1$s: smiley
-#: 404.php:48
-#, php-format
-msgid "Try looking in the monthly archives. %1$s"
+#: footer.php:71
+msgid "Ulubione"
 msgstr ""
 
 #: inc/woocommerce.php:184
 msgid "View your shopping cart"
+msgstr ""
+
+#: db_contactpage.php:51 footer.php:101
+msgid "Wskazówki dojazdu"
+msgstr ""
+
+#: db_startpage.php:144
+msgid "Wybrane produkty w promocji"
+msgstr ""
+
+#: footer.php:163
+#, php-format
+msgid "Wykonanie: %1$s."
+msgstr ""
+
+#: functions.php:320
+msgid "Wyloguj"
+msgstr ""
+
+#: footer.php:80 header.php:52
+msgid "Wyszukaj"
+msgstr ""
+
+#: footer.php:80 header.php:52
+msgid "Wyszukaj produkt"
+msgstr ""
+
+#: functions.php:316
+msgid "Zamówienia"
+msgstr ""
+
+#: header.php:95 functions.php:314
+msgid "Zapisane produkty"
+msgstr ""
+
+#: woocommerce/checkout/form-checkout.php:150
+msgid "Zobacz koszyk"
+msgstr ""
+
+#: db_startpage.php:92
+msgid "Zobacz produkty z kategorii"
+msgstr ""
+
+#: db_startpage.php:145
+msgid "Zobacz wszystkie"
+msgstr ""
+
+#: db_startpage.php:189
+msgid "Zobacz wszystkie polecane produkty"
+msgstr ""
+
+#: db_startpage.php:145
+msgid "Zobacz wszystkie promocje"
+msgstr ""
+
+#: header.php:113
+msgid "Zobacz zawartość koszyka"
 msgstr ""

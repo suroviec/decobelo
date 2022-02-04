@@ -7,7 +7,7 @@ function decobelo_script() {
         wp_enqueue_style( 'glightbox_css', WP_PLUGIN_URL . '/decobelo/style/glightbox.min.css', false, '1.0.0' );
         wp_enqueue_script( 'glightbox_js', WP_PLUGIN_URL . '/decobelo/js/glightbox.min.js', array(), _S_VERSION, true );
     }
-    wp_enqueue_script( 'decobelo-script', WP_PLUGIN_URL . '/decobelo/js/decobelo.js', array('jquery'), '1.0.0' , true );
+    wp_enqueue_script( 'decobelo-script', WP_PLUGIN_URL . '/decobelo/js/decobelo.min.js', array('jquery'), '1.0.0' , true );
     wp_localize_script( 'decobelo-script', 'my_ajax', array( 'ajax_url' => admin_url( 'admin-ajax.php' ) ) );
     wp_enqueue_style( 'decobelo-slider', WP_PLUGIN_URL . '/decobelo/style/decobelo-slider.css', false, '1.0.0' );
 }

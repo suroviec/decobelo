@@ -10,6 +10,10 @@ get_header();
 
 	<main id="primary" class="site-main">
 
+	<?php $info = get_post_meta($post->ID, 'info')[0]; ?>
+
+	<!--
+
 	<section id="promowane-kolekcje">
 		<div id="start-boxes-1" class="g">
 			<div class="b1">
@@ -49,6 +53,55 @@ get_header();
 			?>
 		</div>	
 	</section>
+
+				$slider['title'],
+				$slider['content'],
+				$slider['url'],
+				$slider['link_name'],
+				$slider['link_name']
+
+	-->
+
+	<section id="promowane-kolekcje">
+		<div id="start-boxes-1" class="g">
+			<div class="b1">
+				<?php 
+					$s = get_post_meta($post->ID, 'slides')[0][0];
+				?>
+					<span class="title"><?php echo $s['title']; ?></span>
+					<span class="content"><?php echo $s['content']; ?></span>
+					<a href="<?php echo $s['url']; ?>" class="ar"><?php echo $s['link_name']; ?></a>
+			</div>
+
+			<?php
+
+				$slider = get_post_meta($post->ID, 'slides')[0][0];
+				
+				echo sprintf(
+					'<div class="b2">
+					<a href="%s" title="%s">
+						%s
+						%s
+						<div class="slider-content">
+							<span class="small-header">%s</span>
+							<span class="text">%s</span>
+							<button class="mainbtn">Więcej</button>
+						</div>
+					</a>
+					</div>',
+					$slider['url'],
+					$slider['link_name'],
+					wp_get_attachment_image($slider['img']['desktop'], 'desktop', false, array('class' => 'desktop')),
+					wp_get_attachment_image($slider['img']['mobile'], 'mobile', false, array('class' => 'mobile')),
+					$slider['title'],
+					$slider['content']
+				);		
+
+			?>
+		</div>	
+	</section>
+
+	
 
 	<section id="kategorie">
 
@@ -104,6 +157,8 @@ get_header();
 		--->
 	</section>
 
+	
+
 	<section id="bannery">
 
 	<?php
@@ -140,20 +195,27 @@ get_header();
 
 	</section>
 
+	<!--
+	
+	<section id="info-1" class="info-12">
+		<span class="bigheader">
+			<?php echo $info[0]['title']; ?></span>
+		<span class="content">
+			<span class="text"><?php echo $info[0]['content']; ?></span>
+			<a href="<?php echo get_site_url(). '/' . $info[0]['url']; ?>" class="mainbtn"><?php echo $info[0]['linkname']; ?></a>
+		</span>
+	</section>
+
+	-->
+
 	<section id="promocje">
 		<span class="header"><?php _e('Wybrane produkty w promocji', 'decobelo'); ?></span>
 		<a href="<?php echo get_permalink(60); ?>" title="<?php _e('Zobacz wszystkie', 'decobelo'); ?>" class="smallbtn1 flr"><?php _e('Zobacz wszystkie promocje', 'decobelo'); ?></a>
 		<?php echo do_shortcode('[sale_products limit="8"  orderby="rand" order="rand"]'); ?>
 	</section>
 
-	<section id="info-1" class="info-12">
-		<span class="bigheader">
-			Bezpieczne produkty produkowane w Polsce</span>
-		<span class="content">
-			<span class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ut vulputate purus, sit amet hendrerit enim. Sed nec egestas felis. Duis sagittis rhoncus erat sollicitudin aliquam. In rhoncus nulla in dui iaculis fermentum. </span>
-			<a href="" class="mainbtn">Zobacz jak pracujemy</a>
-		</span>
-	</section>
+
+	<!---
 
 	<section id="kolekcje">
 
@@ -162,24 +224,33 @@ get_header();
 		<?php custom_menu('kolekcje', 'Kolekcje', true, true); ?>
 		
 	</section>
+
+	--->
 	
 
 	
 
 	<section id="info-2" class="info-22">
 		<div class="">
-			<?php echo wp_get_attachment_image(258, 'full'); ?>
+			<?php 
+			$info_img_id = $info[1]['img'];
+			echo wp_get_attachment_image($info_img_id, 'full'); ?>
 		</div>
 		<div class="dark">
 			<span class="bigheader">
-				Bezpieczne produkty produkowane w Polsce</span>
+				<?php echo $info[1]['title']; ?></span>
 			<span class="content">
-				<span class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ut vulputate purus, sit amet hendrerit enim. Sed nec egestas felis. Duis sagittis rhoncus erat sollicitudin aliquam. In rhoncus nulla in dui iaculis fermentum. </span>
-				<a href="" class="mainbtn">Zobacz jak pracujemy</a>
+				<span class="text"><?php echo $info[1]['content']; ?></span>
+				<a href="<?php echo get_site_url(). '/' . $info[1]['url']; ?>" class="mainbtn"><?php echo $info[1]['linkname']; ?></a>
 			</span>
 		</div>
 	</section>
 
+	<section>
+		<div class="desc">
+			<?php the_content(); ?>
+		</div>
+	</section>
 	
 	
 	<!--

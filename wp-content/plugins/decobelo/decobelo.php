@@ -32,6 +32,5 @@ require('single-product/single-product.php');
 require('dodatkowe.php');
 require('ikony.php');
 require('email.php');
-
-
-
+require('tracking_number.php');
+require('hide_shipping.php');

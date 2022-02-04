@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Themes - Twenty Twenty package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2022-01-12 08:16:57+0000\n"
+"PO-Revision-Date: 2022-01-21 08:59:46+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -20,12 +20,12 @@ msgstr "Nasz domyślny motyw na 2020 ma na celu pełne wykorzystanie elastyczno�
 msgid "Twenty Twenty"
 msgstr "Twenty Twenty"
 
-#: classes/class-twentytwenty-customize.php:130
+#: classes/class-twentytwenty-customize.php:131
 msgctxt "color"
 msgid "Custom"
 msgstr "Własne"
 
-#: classes/class-twentytwenty-customize.php:129
+#: classes/class-twentytwenty-customize.php:130
 msgctxt "color"
 msgid "Default"
 msgstr "Domyślny"
@@ -140,7 +140,7 @@ msgstr "Podstawowy"
 msgid "Nothing Found"
 msgstr "Niczego nie znaleziono"
 
-#: classes/class-twentytwenty-customize.php:250
+#: classes/class-twentytwenty-customize.php:251
 msgid "Show author bio"
 msgstr "Pokaż biogram autora"
 
@@ -221,35 +221,35 @@ msgstr "Najważniejsze miejsce dla sztuki współczesnej w północnej Szwecji. 
 msgid "The New UMoMA Opens its Doors"
 msgstr "Nowe Muzeum Sztuki Nowoczesnej otwarło swoje powoje"
 
-#: classes/class-twentytwenty-customize.php:399
+#: classes/class-twentytwenty-customize.php:400
 msgid "Overlay Opacity"
 msgstr "Nieprzezroczystość nakładki"
 
-#: classes/class-twentytwenty-customize.php:379
+#: classes/class-twentytwenty-customize.php:380
 msgid "The color used for the text in the overlay."
 msgstr "Kolor używany do tekstu w nakładce."
 
-#: classes/class-twentytwenty-customize.php:378
+#: classes/class-twentytwenty-customize.php:379
 msgid "Overlay Text Color"
 msgstr "Kolor tekstu nakładki"
 
-#: classes/class-twentytwenty-customize.php:357
+#: classes/class-twentytwenty-customize.php:358
 msgid "The color used for the overlay. Defaults to the accent color."
 msgstr "Kolor używany w nakładce. Domyślnie kolor akcentu."
 
-#: classes/class-twentytwenty-customize.php:356
+#: classes/class-twentytwenty-customize.php:357
 msgid "Overlay Background Color"
 msgstr "Kolor tła nakładki"
 
-#: classes/class-twentytwenty-customize.php:287
+#: classes/class-twentytwenty-customize.php:288
 msgid "Settings for the \"Cover Template\" page template. Add a featured image to use as background."
 msgstr "Ustawienia \"Szablonu z okładką\" dla stron. Proszę dodać obrazek wyróżniający aby ustawić tło okładki."
 
-#: classes/class-twentytwenty-customize.php:187
+#: classes/class-twentytwenty-customize.php:188
 msgid "Apply a custom color for links, buttons, featured images."
 msgstr "Zastosuj własny kolor dla odnośników, przycisków, obrazków wyróżniających."
 
-#: classes/class-twentytwenty-customize.php:127
+#: classes/class-twentytwenty-customize.php:128
 msgid "Primary Color"
 msgstr "Kolor wiodący"
 
@@ -270,12 +270,12 @@ msgstr[1] "Znaleziono %s wyniki dla wyszukiwania."
 msgstr[2] "Znaleziono %s wyników dla wyszukiwania."
 
 #. translators: %s: HTML character for up arrow.
-#: footer.php:49
+#: footer.php:55
 msgid "Up %s"
 msgstr "W górę %s"
 
 #. translators: %s: HTML character for up arrow.
-#: footer.php:43
+#: footer.php:49
 msgid "To the top %s"
 msgstr "Na górę %s"
 
@@ -332,7 +332,6 @@ msgstr "Odnośniki społecznościowe"
 msgid "Footer"
 msgstr "Stopka"
 
-#. translators: %s: Author name.
 #. translators: %s: Author name.
 #: inc/template-tags.php:375 template-parts/entry-author-bio.php:20
 msgid "By %s"
@@ -502,13 +501,13 @@ msgstr "Rozwinięte menu dla komputerów stacjonarnych"
 msgid "Desktop Horizontal Menu"
 msgstr "Poziome menu dla komputerów stacjonarnych"
 
-#: footer.php:33
+#: footer.php:39
 msgid "Powered by WordPress"
 msgstr "Oparte na WordPressie"
 
 #: comments.php:127
 msgid "Comments are closed."
-msgstr "Możliwość komentowania jest wyłączona."
+msgstr "Możliwość komentowania została wyłączona."
 
 #: comments.php:88
 msgid "Comments"
@@ -541,12 +540,12 @@ msgstr "W odpowiedzi na &ldquo;%s&rdquo;"
 msgid "Leave a comment"
 msgstr "Dodaj komentarz"
 
-#: classes/class-twentytwenty-walker-page.php:110 inc/template-tags.php:580
+#: classes/class-twentytwenty-walker-page.php:115 inc/template-tags.php:580
 msgid "Show sub menu"
 msgstr "Pokaż podmenu"
 
 #. translators: %d: ID of a post.
-#: classes/class-twentytwenty-walker-page.php:73
+#: classes/class-twentytwenty-walker-page.php:78
 msgid "#%d (no title)"
 msgstr "#%d (bez tytułu)"
 
@@ -571,52 +570,52 @@ msgstr "%1$s o %2$s"
 msgid "says:"
 msgstr "komentarz:"
 
-#: classes/class-twentytwenty-customize.php:400
+#: classes/class-twentytwenty-customize.php:401
 msgid "Make sure that the contrast is high enough so that the text is readable."
 msgstr "Proszę się upewnić, że kontrast jest wystarczająco wysoki, aby tekst był czytelny."
 
-#: classes/class-twentytwenty-customize.php:310
+#: classes/class-twentytwenty-customize.php:311
 msgid "Creates a parallax effect when the visitor scrolls."
 msgstr "Tworzy efekt paralaksy, podczas przewijania strony przez odwiedzającego."
 
-#: classes/class-twentytwenty-customize.php:309
+#: classes/class-twentytwenty-customize.php:310
 msgid "Fixed Background Image"
 msgstr "Stałe położenie tła"
 
 #. Template Name of the theme
-#: classes/class-twentytwenty-customize.php:285
+#: classes/class-twentytwenty-customize.php:286
 msgid "Cover Template"
 msgstr "Szablon z okładką"
 
-#: classes/class-twentytwenty-customize.php:274
+#: classes/class-twentytwenty-customize.php:275
 msgid "Summary"
 msgstr "Podsumowanie"
 
-#: classes/class-twentytwenty-customize.php:273
+#: classes/class-twentytwenty-customize.php:274
 msgid "Full text"
 msgstr "całą treść"
 
-#: classes/class-twentytwenty-customize.php:271
+#: classes/class-twentytwenty-customize.php:272
 msgid "On archive pages, posts show:"
 msgstr "Na stronach archiwów, pokazywać wpisy:"
 
-#: classes/class-twentytwenty-customize.php:229
+#: classes/class-twentytwenty-customize.php:230
 msgid "Show search in header"
 msgstr "Pokaż wyszukiwarkę w nagłówku"
 
-#: classes/class-twentytwenty-customize.php:206
+#: classes/class-twentytwenty-customize.php:207
 msgid "Theme Options"
 msgstr "Opcje motywu"
 
-#: classes/class-twentytwenty-customize.php:105
+#: classes/class-twentytwenty-customize.php:106
 msgid "Header &amp; Footer Background Color"
 msgstr "Kolor tła nagłówka i stopki"
 
-#: classes/class-twentytwenty-customize.php:86
+#: classes/class-twentytwenty-customize.php:87
 msgid "Scales the logo to half its uploaded size, making it sharp on high-res screens."
 msgstr "Skaluje logo do połowy wielkości zachowując ostrość na ekranach wysokiej rozdzielczości."
 
-#: classes/class-twentytwenty-customize.php:85
+#: classes/class-twentytwenty-customize.php:86
 msgid "Retina logo"
 msgstr "Retina logo"
 
@@ -629,7 +628,7 @@ msgid "Page Not Found"
 msgstr "Strona nie została znaleziona"
 
 #. Author URI of the theme
-#: footer.php:32
+#: footer.php:38
 msgid "https://wordpress.org/"
 msgstr "https://pl.wordpress.org/"
 

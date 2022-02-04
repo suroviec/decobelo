@@ -11,6 +11,19 @@ function cart_count_update($fragments){
     return $fragments;
 }
 
+
+add_filter( 'woocommerce_add_to_cart_fragments', 'mobile_cart_count_update');
+function mobile_cart_count_update($fragments){
+    ob_start();
+    ?>
+    <div class="cart-count-mobile">
+        <?php echo WC()->cart->get_cart_contents_count(); ?>
+    </div>
+    <?php
+        $fragments['.cart-count-mobile'] = ob_get_clean();
+return $fragments;
+}
+
 remove_action('woocommerce_widget_shopping_cart_total', 'woocommerce_widget_shopping_cart_subtotal', 10 );
 
 add_filter('woocommerce_add_to_cart_fragments', 'cart_list_update');
@@ -38,7 +51,7 @@ function mini_update($fragments) {
             </div>
             <div>
                 <a href="<?php echo wc_get_checkout_url(); ?>" class="mainbtn"><?php _e('Złóż zamówienie', 'decobelo'); ?></a>
-                <button class="mainbtn"><?php _e('Kontynuuj akupy', 'decobelo'); ?></button>
+                <button class="mainbtn"><?php _e('Kontynuuj zakupy', 'decobelo'); ?></button>
             </div>
         </div>
 
@@ -93,7 +106,7 @@ function custom_jquery_add_to_cart_script(){
                         let cartmsg = document.querySelector('#cart-msg');
                         cartmsg.classList.add('active');
                         cartmsg.innerHTML = "<span>Dodano " + name + " do koszyka</span>";
-                        document.querySelector('.minicart-cont').style.gridTemplateRows = "4.4rem 1fr 7rem 3rem";
+                        document.querySelector('.minicart-cont').style.gridTemplateRows = "auto 1fr 7rem 3rem";
                     });
 
                     jQuery('document').ready(function(){

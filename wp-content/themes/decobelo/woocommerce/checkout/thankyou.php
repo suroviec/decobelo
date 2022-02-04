@@ -82,6 +82,7 @@ defined( 'ABSPATH' ) || exit;
 					<h2 class="woocommerce-order-details__title" style="margin-top:2rem"><?php _e('Informacje do zamówienia', 'decobelo'); ?></h2>
 
 					<?php
+
 					
 						$payment = $order->get_payment_method();
 						$shipping = '';
@@ -91,6 +92,8 @@ defined( 'ABSPATH' ) || exit;
 						foreach($shipping_methods as $id => $shipping_data) {
 							$shipping = $shipping_data->get_method_id();
 						}
+
+						echo '</pre>';
 					
 						$status = $order->get_status();
 
@@ -102,8 +105,15 @@ defined( 'ABSPATH' ) || exit;
 							$etap = 'zakonczenie';
 						}
 
-						email($etap, $shipping, $payment);
+						email($etap, $shipping, $payment, $order->get_id());
 
+					?>
+
+					<?php 
+
+					
+						
+					
 					?>
 					
 			</div>

@@ -15,7 +15,7 @@
 <head>
 	<meta charset="<?php bloginfo( 'charset' ); ?>">
 	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
-
+	<meta name="theme-color" content="#f2f2f2" />
 	<link rel="profile" href="https://gmpg.org/xfn/11">
 	<?php wp_head(); ?>
 </head>
@@ -43,7 +43,7 @@
 		<div id="main-menu">
 			<nav id="site-navigation" class="main-navigation">
 				<ul id="primary-menu" class="menu">
-					<?php custom_menu('product_cat', 'Produkty', true); ?>
+					<?php custom_menu('product_cat', 'Kategorie', true); ?>
 					<?php custom_menu('kolekcje', 'Kolekcje', true, false, 'kolekcje'); ?>
 					<li><a href="<?php echo get_permalink(60); ?>"><?php _e('Promocje', 'decobelo'); ?></a></li>
 					<li><a href="<?php echo get_permalink(294); ?>"><?php _e('Nowości', 'decobelo'); ?></a></li>

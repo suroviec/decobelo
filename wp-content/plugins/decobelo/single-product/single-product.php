@@ -52,6 +52,25 @@ function choinka() {
             <span>Zapłać wygodnie </span> <img src="<?php echo get_template_directory_uri(); ?>/style/i/payu_alt.svg" /><img src="<?php echo get_template_directory_uri(); ?>/style/i/blik.svg" />
         </div>
 
+        <div class="share">
+
+            <?php 
+                echo sprintf(
+                    '<a class="icon" title="%s" onclick="copytext()" data-url="%s" data-text="%s" data-alt="%s">
+                        <img src="%s" />
+                        <span>%s</span>
+                    </a>',
+                    __('Udostępnij', 'decobelo'),
+                    get_permalink(),
+                    get_the_title() . __(' | Sklep Decobelo, coś więcej?'),
+                    __('Link skopiowany ;-)', 'decobelo'),
+                    get_template_directory_uri().'/style/i/share.svg',
+                    __('Udostępnij', 'decobelo')
+                );
+            ?>
+            
+        </div>
+
     <?php
     echo ob_get_clean();
 }
@@ -110,7 +129,7 @@ function custom_product_bottom() {
     add_action('woocommerce_after_single_product_summary', 'custom_product_hook', 10 );
     remove_action('woocommerce_single_product_summary', 'woocommerce_template_single_rating', 10 );
     remove_action('woocommerce_single_product_summary', 'woocommerce_template_single_meta', 40 );
-    remove_action('woocommerce_single_product_summary', 'woocommerce_template_single_sharing', 50 );
+    //remove_action('woocommerce_single_product_summary', 'woocommerce_template_single_sharing', 50 );
     remove_action('woocommerce_after_single_product_summary', 'woocommerce_upsell_display', 15 );
     add_action('custom_related_products', 'woocommerce_upsell_display', 10 );
 }
@@ -266,7 +285,7 @@ function product_attrs() {
                 $terms[] = get_term($term_id, $tax)->name;
             }
             
-            $terms_arr = implode(',',$terms);
+            $terms_arr = implode(', ',$terms);
 
             
             echo sprintf(

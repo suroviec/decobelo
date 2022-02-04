@@ -442,6 +442,11 @@ function render_filters($filters=null, $current_vars=null, $nowosci=false) {
     
     <?php endif; ?>  
 
+    <?php 
+
+
+    ?>
+
     <?php   
         echo sprintf(
             '<div class="filters" data-nonce="%s" data-current_type="%s" data-current_term="%s" data-search="%s" data-promocje="%s">',
@@ -460,8 +465,10 @@ function render_filters($filters=null, $current_vars=null, $nowosci=false) {
             
             <div class="filters-list">
 
-                    <div class="switcher"><?php _e('Filtry', 'decobelo') ?></div>
-         
+                <div class="switcher"><?php _e('Filtry', 'decobelo') ?></div>
+
+                <div class="list-items">
+            
                     <?php if($filters['second_term']) : ?>
 
                         <div class="second-term">
@@ -485,7 +492,7 @@ function render_filters($filters=null, $current_vars=null, $nowosci=false) {
                                             $filters['second_term']['tax'] == 'kolekcje' ? add_query_arg('kolekcja', $term['slug']) : add_query_arg('kategoria', $term['slug']),
                                             $term['slug'],
                                             $filters['second_term']['tax'],
-                                            catch_filters($current_vars, $filters['second_term']['tax'], $term['slug'],),
+                                            catch_filters($current_vars, $filters['second_term']['tax'], $term['slug']),
                                             $term['name']
                                         );
 
@@ -497,7 +504,7 @@ function render_filters($filters=null, $current_vars=null, $nowosci=false) {
                                                 echo sprintf(
                                                     '<li><a href="%s" class="filter %s" data-type="%s" data-value="%s">%s</a></li>',
                                                     $filters['second_term']['tax'] == 'kolekcje' ? add_query_arg('kolekcja', $term['slug']) : add_query_arg('kategoria', $term['slug']),
-                                                    catch_filters($current_vars, $filters['second_term']['tax'], $term['slug'],),
+                                                    catch_filters($current_vars, $filters['second_term']['tax'], $term['slug']),
                                                     $filters['second_term']['tax'],
                                                     $subcat['slug'],
                                                     $subcat['name']
@@ -562,7 +569,7 @@ function render_filters($filters=null, $current_vars=null, $nowosci=false) {
                                                 $url = add_query_arg($get_parameter, $term);
                                             };
                                         }
-   
+
                                         echo wp_sprintf(
 
                                             '<li>
@@ -659,9 +666,13 @@ function render_filters($filters=null, $current_vars=null, $nowosci=false) {
                         
                     <?php endif; ?>
 
+                </div>
+
                 <div id="show-products">
                     <button class="mainbtn"><?php _e('Pokaż produkty', 'decobelo'); ?></button>
-                </div>    
+                </div>  
+
+                
             </div>
         </div>
 

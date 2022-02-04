@@ -22,6 +22,8 @@
 
 // ** MySQL settings - You can get this info from your web host ** //
 /** The name of the database for WordPress */
+define('WP_CACHE', true);
+define( 'WPCACHEHOME', '/home/dauqsryoab/domains/surowiec.io/public_html/decobelo/wp-content/plugins/wp-super-cache/' );
 define( 'DB_NAME', 'dauqsryoab_decobelo' );
 
 /** MySQL database username */

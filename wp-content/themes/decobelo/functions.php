@@ -7,7 +7,6 @@
  * @package Decobelo
  */
 
-
 remove_action('woocommerce_widget_shopping_cart_total', 'woocommerce_widget_shopping_cart_subtotal', 10 );
 add_action('mini_cart_bottom_total', 'woocommerce_widget_shopping_cart_total',1 );
 
@@ -56,7 +55,7 @@ add_action('new_badge', 'new_badge');
 
 function new_badge() {
 	global $product;
-	if((get_the_terms($product->get_id(), 'pa_nowosc')[0]->slug) == 'tak') {
+	if((get_the_terms($product->get_id(), 'pa_nowosc') == true)&&((get_the_terms($product->get_id(), 'pa_nowosc')[0]->slug) == 'tak')) {
 		echo sprintf(
 			'<div class="new">%s</div>',
 			__('Nowy', 'decobelo')
@@ -65,9 +64,83 @@ function new_badge() {
 }
 
 
+
+
 // ANCHOR funkcja do emaili
 
-function email($etap, $shipping, $payment) {
+class Tracking {
+
+	public $order_id;
+	public $shipping_id;
+	public $method;
+	public $prefix;
+	public $order_data;
+
+	function __construct($order_id) {
+		$this->order_id = $order_id;
+		$this->order_data = new WC_Order($order_id);
+		$this->shipping_id = $this->get_shipping_id();
+		$this->method = $this->get_method();
+	}
+
+	function get_status() {
+		return($this->order_data->has_status('completed'));
+	}
+
+	function get_shipping_id() {
+		
+		$shipping_methods = $this->order_data->get_shipping_methods();
+
+		foreach($shipping_methods as $id => $shipping_data) {
+			$shipping_id = $shipping_data->get_instance_id();
+		}
+		return $shipping_id;
+	}
+
+	function get_tracking_id() {
+		return get_post_meta($this->order_id, 'tracking')[0];
+	}
+
+	function get_method() {
+		$methods = array(
+			'dpd' => array(8),
+			'inpost' => array(7,10)
+		);
+		foreach($methods as $method_id => $values) {
+			if(in_array($this->shipping_id, $values)) {
+				$method = $method_id;
+			};
+		};
+		return $method;
+	}
+
+	function get_btn() {
+
+		if($this->get_status() == false) return;
+		
+		if($this->get_tracking_id() == '') return;
+
+		if($this->get_method() == '') return;
+
+		if($this->method == 'dpd') {
+			$url =  'https://tracktrace.dpd.com.pl/parcelDetails?p1=' . $this->get_tracking_id();
+		} elseif($this->method == 'inpost') {
+			$url =  'https://inpost.pl/sledzenie-przesylek?number=' . $this->get_tracking_id();
+		}
+
+		echo sprintf('
+			<a class="mainbtn" title="%s" href="%s" target="_blank" style="background-color: #0278a3; padding: 8px 12px; color: #fff; font-weight: bold; text-decoration: none; margin-bottom:8px; margin-top:8px;">%s</a><p></p>',
+			__('Śledź przesyłkę', 'decobelo'),
+			$url,
+			__('Śledź przesyłkę', 'decobelo')
+		);
+
+	}
+
+}
+
+
+function email($etap, $shipping, $payment, $order_id) {
 
 	$options = get_option('emaile');
 	$e = $options[$etap];
@@ -88,7 +161,17 @@ function email($etap, $shipping, $payment) {
 
 	echo wpautop($options[$etap][$translate]);	
 
+	//var_dump($shipping_id);
+
+	//var_dump(get_post_meta($order_id, 'tracking'));
+
+	$tracking = new Tracking($order_id);
+	$tracking->get_btn();
+
+
 }
+
+
 
 // ANCHOR tresci maili
 
@@ -109,6 +192,9 @@ function add_email_order_meta( $order, $sent_to_admin, $plain_text ){
 	// status
 	$status = $order->get_status();
 
+	// id
+	$order_id = $order->get_id();
+
 	if(($status == 'on-hold') || ($status == 'pending')){
 		$etap = 'potwierdzenie';
 	} elseif ($status == 'processing') {
@@ -119,16 +205,27 @@ function add_email_order_meta( $order, $sent_to_admin, $plain_text ){
 
 	if ( $plain_text === false ) {
 	
-		echo '<p>' . email($etap, $shipping, $payment) . '</p>';
+		echo '<p>' . email($etap, $shipping, $payment, $order_id) . '</p>';
 	
 	} else {
 	
-		echo email($etap, $shipping, $payment);
+		echo email($etap, $shipping, $payment, $order_id);
 	
 	}
 	
 }
 
+add_action( 'woocommerce_email_order_details', 'add_tracking_code', 10, 4 );
+
+function tracking_code($order) {
+	$id = $order->get_id();
+
+	if($order->get_status() == 'completed') {
+		var_dump(get_post_meta($id, 'tracking'));
+		
+	}
+	
+}
 
 
 // ANCHOR promo price
@@ -317,7 +414,7 @@ function header_login() {
 			wc_get_endpoint_url('edit-address', '', get_permalink(get_option('woocommerce_myaccount_page_id'))),
 			__('Adresy', 'decobelo'),
 			wc_logout_url(),
-			__('Wyloguj', 'decobelo'),
+			__('Wyloguj', 'decobelo')
 		);
 	} else {
 		echo '<span class="submenu-header">' . __('Logowanie', 'decobelo') . '</span>';
@@ -353,7 +450,7 @@ add_image_size( 'menu-img', '354', '200', array('center', 'center') );
 add_image_size( 'desktop', '1280', '845', array('center', 'center') );
 add_image_size( 'vertical', '690', '455', array('center', 'center') );
 add_image_size( 'mobile', '746', '746', array('center', 'center') );
-add_image_size( 'img_on_product_list', '420', '420', true,  );
+add_image_size( 'img_on_product_list', '420', '420', true  );
 
 
 // ANCHOR custom menu 
@@ -363,7 +460,7 @@ function custom_menu($tax='product_cat', $name='Produkty', $img = false, $main=f
 	$r_terms = get_terms(
 		array(
 			'taxonomy' 		=> $tax,
-   			'hide_empty' 	=> false,
+   			'hide_empty' 	=> true,
 			'order'			=> 'ASC',
 			'childless'		=> false
 		)
@@ -458,7 +555,7 @@ function start_products_block($tax='product_cat', $name='Produkty', $img = false
 	$r_terms = get_terms(
 		array(
 			'taxonomy' 		=> $tax,
-   			'hide_empty' 	=> false,
+   			'hide_empty' 	=> true,
 			'order'			=> 'ASC',
 			'childless'		=> false
 		)
@@ -606,6 +703,33 @@ function custom_archive_product_img() {
 	
 }
 
+// ANCHOR media title
+
+add_action( 'add_attachment', 'my_set_image_meta_upon_image_upload' );
+function my_set_image_meta_upon_image_upload( $post_ID ) {
+
+    if ( wp_attachment_is_image( $post_ID ) ) {
+      
+        $my_image_title = get_post( $post_ID )->post_title;
+      
+        $my_image_title = preg_replace( '%\s*[-_\s]+\s*%', ' ',  $my_image_title );
+
+        $my_image_title = ucfirst( strtolower( $my_image_title ) );
+
+        $my_image_meta = array(
+            'ID'        => $post_ID,            // Specify the image (ID) to be updated
+            'post_title'    => $my_image_title,     // Set image Title to sanitized title
+            'post_excerpt'  => $my_image_title,     // Set image Caption (Excerpt) to sanitized title
+            'post_content'  => $my_image_title,     // Set image Description (Content) to sanitized title
+        );
+
+        update_post_meta( $post_ID, '_wp_attachment_image_alt', $my_image_title );
+
+        wp_update_post( $my_image_meta );
+
+    } 
+}
+
 
 // PRZESUNIECIE ADD TO CART NA LISCIE PRODUKTOW
 
@@ -619,23 +743,23 @@ add_action('woocommerce_after_shop_loop_item_title', 'woocommerce_template_loop_
 add_action( 'woocommerce_before_shop_loop_item_title', 'woocommerce_show_product_loop_sale_flash', 10 ); 
 
 
-// CUSTOM SCRIPTS W PANELU ADMINA
-
-add_action('wp_head', 'custom_head_scripts');
-
-function custom_head_scripts() {
-?>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;700;800&display=swap" rel="stylesheet"> 
-<?php
-}
-
 // CUSTOM SCRIPTS WE FRONTENDZIE
 
 function decobelo_custom_scripts() {
-	wp_enqueue_style( 'decobelo-style', get_template_directory_uri().'/style/all.css' , array(), _S_VERSION );
-	wp_enqueue_script( 'decobelo-theme-script', get_template_directory_uri() . '/js/decobelo-theme.js', array(), _S_VERSION, true );
+
+	// Date-time will have value of 'now'
+	$dateTime = new DateTime();
+	// Override current time
+	$dateTime->setTime(20, 0);
+	$timestamp = $dateTime->getTimestamp();                
+	// Date-time will have value of 'now'
+	$dateTime = new DateTime();
+	// Override current time
+	$dateTime->setTime(20, 0);
+	$timestamp = $dateTime->getTimestamp();                
+
+	wp_enqueue_style( 'decobelo-style', get_template_directory_uri().'/style/all.css' , array(), $timestamp );
+	wp_enqueue_script( 'decobelo-theme-script', get_template_directory_uri() . '/js/decobelo-theme.js', array(), 1.1, true );
 }
 add_action( 'wp_enqueue_scripts', 'decobelo_custom_scripts' );
 

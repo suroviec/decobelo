@@ -1,3 +1,13 @@
+// ANCHOR 100vh
+
+let vh = window.innerHeight * 0.01;
+document.documentElement.style.setProperty('--vh', `${vh}px`);
+
+window.addEventListener('resize', () => {    
+    let vh = window.innerHeight * 0.01;
+    document.documentElement.style.setProperty('--vh', `${vh}px`);
+});
+
 // ANCHOR hide img title on hover
 
 jQuery('document').ready(function(){
@@ -16,14 +26,51 @@ jQuery('document').ready(function(){
         })
 
     } catch (e) {
-
-        
-
     }
-
-    
-
 });
+
+// ANCHOR mobile close cart list
+
+
+var cartlist = document.querySelector('.cart-container');
+
+cartlist.addEventListener('click', function(e) {
+    if(e.target.classList.contains('mainbtn') == true) {
+        cartlist.classList.remove('active');
+        document.body.style.overflowY = "scroll";
+        setTimeout(() => {
+            cover.classList.remove('active');    
+        }, 200);
+        
+    }
+});
+
+
+
+// ANCHOR copy text
+
+function copytext() {
+
+    var btn = document.querySelector('.share .icon');
+    var title = btn.getAttribute('data-title');
+    var text = btn.getAttribute('data-text');
+    var url = btn.getAttribute('data-url');
+    var alt = btn.getAttribute('data-alt');  
+    var sharespan = document.querySelector('.share .icon span');
+  
+    if (navigator.share) {
+        navigator.share({
+            title: title,
+            text: text,
+            url: url,
+          })
+          .then(() => console.log('Shared'))
+          .catch((error) => console.log('Error', error));
+      } else {
+        navigator.clipboard.writeText(url);
+        sharespan.textContent = alt;
+      }
+  } 
 
 var cover = document.getElementById('cover');
 
@@ -174,6 +221,7 @@ function getCookie(cname) {
 function checkCookie() {
     var check = getCookie("cookie_info");
     var cookieInfo = document.querySelector('#cookies');
+
     if (check == 'hide') {
         cookieInfo.classList.add('hide');
     } else {
@@ -188,7 +236,7 @@ jQuery('document').ready(function(){
 document.querySelector('#cookie-close').addEventListener('click', function() {
     document.querySelector('#cookies').classList.add('hide');
     document.querySelector('#cookies').classList.remove('show');
-    document.cookie = "cookie_info=hide"; 
+    document.cookie = "cookie_info=hide;secure=true"; 
 });
 
 
@@ -312,7 +360,7 @@ if(window.innerWidth < 883) {
                     cover.classList.remove('active');    
                 }, 200);
                 setTimeout(() => {
-                    menu.style.display = "none";
+                    //menu.style.display = "none";
                 }, 500);
             }
         });    

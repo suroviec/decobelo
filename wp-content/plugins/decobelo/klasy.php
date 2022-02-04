@@ -17,7 +17,7 @@ class CheckboxMetabox{
         $this->meta = $options['meta'];
         $this->places = $options['places'];
         $this->limit = $options['limit'];
-        $this->postid = $options['post_id'];
+        //$this->postid = $options['post_id'];
     }
 
     public function setData($data) {
